@@ -87,8 +87,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if (in_array('freelancer', $data['user_types'])) {
-            $user->user_type = 'freelancer';
+        if (in_array('expert', $data['user_types'])) {
+            $user->user_type = 'expert';
         }
         if(in_array('client', $data['user_types'])) {
             $user->user_type = 'client';
@@ -98,10 +98,10 @@ class RegisterController extends Controller
 
         $address = new Address;
         $user->address()->save($address);
-        
+
 
         $user_profile = new UserProfile;
-        $user_profile->user_id = $user->id;        
+        $user_profile->user_id = $user->id;
         $user_profile->save();
 
         return $user;

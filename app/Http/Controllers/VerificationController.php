@@ -19,7 +19,7 @@ class VerificationController extends Controller
     {
 
             $sort_search = null;
-            $users = User::where('user_type', 'freelancer')->orWhere('user_type', 'client')->orderBy('created_at', 'desc');
+            $users = User::where('user_type', 'expert')->orWhere('user_type', 'client')->orderBy('created_at', 'desc');
 
             if ($request->has('search')){
                 $sort_search = $request->search;

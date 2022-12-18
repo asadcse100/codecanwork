@@ -46,9 +46,9 @@ class NotificationUtility
         $panel = '';
         if (isClient()) {
             $panel = 'client';
-        } else if (isFreelancer()) {
-            $panel = 'freelancer';
-        } else if (!isClient() && !isFreelancer()) {
+        } else if (isExpert()) {
+            $panel = 'expert';
+        } else if (!isClient() && !isExpert()) {
             $panel = 'admin';
         }
 
@@ -94,9 +94,9 @@ class NotificationUtility
             $panel = '';
             if (isClient()) {
                 $panel = 'client';
-            } else if (isFreelancer()) {
-                $panel = 'freelancer';
-            } else if (!isClient() && !isFreelancer()) {
+            } else if (isExpert()) {
+                $panel = 'expert';
+            } else if (!isClient() && !isExpert()) {
                 $panel = 'admin';
             }
 

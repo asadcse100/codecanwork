@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BookmarkedFreelancer;
+use App\Models\BookmarkEdexpert;
 use Auth;
 
-class BookmarkedFreelancerController extends Controller
+class BookmarkedExpertController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class BookmarkedFreelancerController extends Controller
      */
     public function index()
     {
-        $bookmarked_freelancers = BookmarkedFreelancer::where('user_id', Auth::user()->id)->paginate(8);
-        return view('frontend.default.user.client.bookmarked-freelancers', compact('bookmarked_freelancers'));
+        $bookmarked_experts = BookmarkedExpert::where('user_id', Auth::user()->id)->paginate(8);
+        return view('frontend.default.user.client.bookmarked-experts', compact('bookmarked_experts'));
     }
 
     /**
@@ -39,50 +39,16 @@ class BookmarkedFreelancerController extends Controller
     {
         $userPackage = Auth::user()->userPackage;
         if($userPackage->following_status){
-            $bookmarked_freelancer = new BookmarkedFreelancer;
-            $bookmarked_freelancer->user_id = Auth::user()->id;
-            $bookmarked_freelancer->freelancer_user_id = decrypt($id);
-            $bookmarked_freelancer->save();
+            $bookmarked_expert = new BookmarkEdexpert;
+            $bookmarked_expert->user_id = Auth::user()->id;
+            $bookmarked_expert->expert_user_id = decrypt($id);
+            $bookmarked_expert->save();
         }
         else {
-            flash(translate('Freelancer following option is not available on your package.'))->warning();
+            flash(translate('Expert following option is not available on your package.'))->warning();
         }
 
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -93,7 +59,7 @@ class BookmarkedFreelancerController extends Controller
      */
     public function destroy($id)
     {
-        BookmarkedFreelancer::destroy($id);
+        BookmarkedExpert::destroy($id);
         return back();
     }
 }

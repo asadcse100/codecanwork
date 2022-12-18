@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SystemConfiguration; 
+use App\Models\SystemConfiguration;
 use Artisan;
 use Session;
 
@@ -12,7 +12,7 @@ class SystemConfigurationController extends Controller
     public function __construct()
     {
         $this->middleware(['permission:show activation setting'])->only('activation_view');
-        $this->middleware(['permission:show freelancer payment'])->only('freelancer_payment_config');
+        $this->middleware(['permission:show expert payment'])->only('expert_payment_config');
         $this->middleware(['permission:show refund setting'])->only('refund_settings');
     }
 
@@ -21,9 +21,9 @@ class SystemConfigurationController extends Controller
         return view('admin.default.system_configurations.activation');
     }
 
-    public function freelancer_payment_config()
+    public function expert_payment_config()
     {
-        return view('admin.default.system_configurations.freelancer_payment_config');
+        return view('admin.default.system_configurations.expert_payment_config');
     }
 
     public function refund_settings()
@@ -163,18 +163,18 @@ class SystemConfigurationController extends Controller
 
     //return policy page
     public function policy_index($type)
-    { 
+    {
             $policy = SystemConfiguration::where('type', $type)->first();
-            return view('admin.default.policies.index', compact('policy')); 
+            return view('admin.default.policies.index', compact('policy'));
     }
 
     //policy info update
     public function policy_update(Request $request)
-    { 
+    {
         $system_policy = SystemConfiguration::where('type', $request->type)->first();
         $system_policy->value = $request->value;
         $system_policy->save();
         flash("System Policy has been updated successfully")->success();
-        return back(); 
+        return back();
     }
 }

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Skill; 
+use App\Models\Skill;
 
 class SkillController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware(['permission:show freelancer skills'])->only('index');
+        $this->middleware(['permission:show expert skills'])->only('index');
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class SkillController extends Controller
     public function index()
     {
         $skills = Skill::latest()->paginate(10);
-        return view('admin.default.freelancer.skills.index', compact('skills'));
+        return view('admin.default.expert.skills.index', compact('skills'));
 
     }
 
@@ -74,7 +74,7 @@ class SkillController extends Controller
     public function edit($id)
     {
         $skill = Skill::findOrFail(decrypt($id));
-        return view('admin.default.freelancer.skills.edit', compact('skill'));
+        return view('admin.default.expert.skills.edit', compact('skill'));
     }
 
     /**

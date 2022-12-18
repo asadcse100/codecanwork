@@ -20,7 +20,7 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] =  Hash::make($input['password']);
         $input['user_name'] = Str::slug($input['name'], '-').date('Ymd-his');//) . rand(10, 10000);Str::slug($user->name, '-').date('Ymd-his');
-        $input['user_type'] = 'freelancer';
+        $input['user_type'] = 'expert';
 
         if(!empty($request->refer)){
             $referCode = ReferralCode::where('code', $request->refer)->first();

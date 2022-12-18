@@ -19,18 +19,18 @@ class DataController extends Controller
 {
     public function getService(Request $request){
         $imagepath = asset('storage/uploads/services/') ;
-        $QuaryString = "select id,title,about_service,CONCAT('".$imagepath."',image) as imagepath from freelancer_services where product_service_id =". $request->service_id;
+        $QuaryString = "select id,title,about_service,CONCAT('".$imagepath."',image) as imagepath from expert_services where product_service_id =". $request->service_id;
         $service_list = DB::select($QuaryString) ;
         return json_encode($service_list);
 
     }
 
-    public function getCategoryData(Request $request){       
+    public function getCategoryData(Request $request){
         $service_list = ProductCategory::where('status',1)->select('id','name')->orderby('order_by')->get();
         return response()->json([
             'result' => true,
             'service_list' => $service_list
-        ]);       
+        ]);
 
     }
 

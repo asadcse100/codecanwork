@@ -16,23 +16,23 @@ use Auth;
 
 class HireController extends Controller
 {
-    //private project freelancer
+    //private project expert
     public function private_projects()
     {
         $private_projects = HireInvitation::where('sent_to_user_id', Auth::user()->id)->where('status', '=', 'pending')->paginate(8);
-        return view('frontend.default.user.freelancer.projects.private', compact('private_projects'));
+        return view('frontend.default.user.expert.projects.private', compact('private_projects'));
     }
 
-    //freelancer invition sending page
-    public function freelancer_invition($username)
+    //expert invition sending page
+    public function expert_invition($username)
     {
-        $freelancer = User::where('user_name', $username)->first();
+        $expert = User::where('user_name', $username)->first();
         $categories = ProjectCategory::all();
         $client_package = Auth::user()->userPackage;
-        return view('frontend.default.user.freelancer_hire_invitation.create', compact('freelancer', 'categories', 'client_package'));
+        return view('frontend.default.user.expert_hire_invitation.create', compact('expert', 'categories', 'client_package'));
     }
 
-    //Store sent info for hiring freelancers
+    //Store sent info for hiring experts
     public function store(Request $request)
     {
         $project = new Project;
@@ -53,31 +53,31 @@ class HireController extends Controller
         if ($project->save()) {
             $hire_invitation = new HireInvitation;
             $hire_invitation->project_id = $project->id;
-            $hire_invitation->sent_to_user_id = $request->freelancer_id;
+            $hire_invitation->sent_to_user_id = $request->expert_id;
             $hire_invitation->sent_by_user_id = Auth::user()->id;
             $hire_invitation->save();
-            $existing_chat_thread = ChatThread::where('sender_user_id', Auth::user()->id)->where('receiver_user_id', $request->freelancer_id)->first();
+            $existing_chat_thread = ChatThread::where('sender_user_id', Auth::user()->id)->where('receiver_user_id', $request->expert_id)->first();
             if ($existing_chat_thread == null) {
                 $existing_chat_thread = new ChatThread;
-                $existing_chat_thread->thread_code = $request->freelancer_id.date('Ymd').Auth::user()->id;
+                $existing_chat_thread->thread_code = $request->expert_id.date('Ymd').Auth::user()->id;
                 $existing_chat_thread->sender_user_id = Auth::user()->id;
-                $existing_chat_thread->receiver_user_id = $request->freelancer_id;
+                $existing_chat_thread->receiver_user_id = $request->expert_id;
                 $existing_chat_thread->save();
             }
 
-            //from client to freelancer
+            //from client to expert
             NotificationUtility::set_notification(
-                "freelancer_proposal_for_project",
+                "expert_proposal_for_project",
                 translate('You have recieved a proposal for a project by'),
                 route('project.details',['slug'=>$project->slug],false),
-                $request->freelancer_id,
+                $request->expert_id,
                 Auth::user()->id,
-                'freelancer'
+                'expert'
             );
             EmailUtility::send_email(
                 translate('You got a new project proposal for project -').$project->name,
                 translate('You have recieved a proposal for a project by'). $project->client->name,
-                get_email_by_user_id($request->freelancer_id),
+                get_email_by_user_id($request->expert_id),
                 route('project.details',['slug'=>$project->slug])
             );
 
@@ -90,7 +90,7 @@ class HireController extends Controller
         }
     }
 
-    //after taking interview client hires freelancer
+    //after taking interview client hires expert
     public function hire(Request $request)
     {
         $project = Project::find($request->project_id);
@@ -111,14 +111,14 @@ class HireController extends Controller
             $invited_project->save();
         }
 
-        //from freelancer to client
+        //from expert to client
         NotificationUtility::set_notification(
-            "freelancer_hired_for_project",
+            "expert_hired_for_project",
             translate('You have been hired for a project by'),
             route('project.details',['slug'=>$project->slug],false),
             $request->user_id,
             Auth::user()->id,
-            'freelancer'
+            'expert'
         );
         EmailUtility::send_email(
             translate('You have been hired for project -').$project->name,

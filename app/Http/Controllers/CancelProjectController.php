@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\CancelProject;
 use App\Models\MilestonePayment;
 use App\Models\Project;
-use App\Models\Wallet; 
+use App\Models\Wallet;
 use Auth;
 
 class CancelProjectController extends Controller
@@ -79,7 +79,7 @@ class CancelProjectController extends Controller
 
     //Cancel Request accepted by admin
     public function request_accepted(Request $request)
-    { 
+    {
         $project = Project::findOrFail($request->project_id);
         $project->cancel_status = 1;
         $project->cancel_by_user_id = $request->cancel_by_user_id;
@@ -87,18 +87,18 @@ class CancelProjectController extends Controller
 
             $milestone_payments = MilestonePayment::where('project_id', $project->id)->where('paid_status',1)->get();
             $total_amount = 0;
-            $freelancer_profit = 0;
+            $expert_profit = 0;
             foreach ($milestone_payments as $key =>$milestone_payment) {
                 $total_amount += $milestone_payment->amount;
-                $freelancer_profit += $milestone_payment->freelancer_profit;
+                $expert_profit += $milestone_payment->expert_profit;
             }
             if( $milestone_payments != null &&  $total_amount > 0){
-                $deduct_freelancer_amount  = ($freelancer_profit * $request->refund_percentage) /100;
+                $deduct_expert_amount  = ($expert_profit * $request->refund_percentage) /100;
                 $refund_to_client_amount   = ($total_amount * $request->refund_percentage) /100;
 
-                $freelancer_profile          = $project->project_user->user->profile;
-                $freelancer_profile->balance = $freelancer_profile->balance - $deduct_freelancer_amount;
-                $freelancer_profile->save();
+                $expert_profile          = $project->project_user->user->profile;
+                $expert_profile->balance = $expert_profile->balance - $deduct_expert_amount;
+                $expert_profile->save();
 
                 $client_profile          = $project->client->profile;
                 $client_profile->balance = $client_profile->balance + $refund_to_client_amount;
@@ -118,14 +118,14 @@ class CancelProjectController extends Controller
             }
 
 
-            //admin to freelancer
+            //admin to expert
             NotificationUtility::set_notification(
                 "project_cancel_request_approved_by_admin",
                 translate('A Project cancellation is approved by'),
                 route('projects.my_cancelled_project',[],false),
                 $project->project_user->user_id,
                 Auth::user()->id,
-                'freelancer'
+                'expert'
             );
             EmailUtility::send_email(
                 translate('A Project cancellation is approved'),
@@ -156,11 +156,11 @@ class CancelProjectController extends Controller
         else {
             flash(translate('Sorry! Something went wrong.'))->error();
             return back();
-        } 
+        }
     }
 
     public function destroy($id)
-    { 
+    {
         CancelProject::destroy($id);
         flash(translate('Project Cancel Request has been deleted successfully'))->success();
         return redirect()->route('cancel-project-request.index');

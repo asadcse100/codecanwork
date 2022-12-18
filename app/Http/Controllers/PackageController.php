@@ -14,15 +14,15 @@ class PackageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['permission:show freelancer packages|show client packages'])->only('index');
-        $this->middleware(['permission:create new freelancer package|create new freelancer package'])->only('create');
+        $this->middleware(['permission:show expert packages|show client packages'])->only('index');
+        $this->middleware(['permission:create new expert package|create new expert package'])->only('create');
     }
 
     public function index($type)
     {
         $packages = Package::latest()->where('type', $type)->paginate(10);
-        if ($type == 'freelancer') {
-            return view('admin.default.freelancer.packages.index', compact('packages'));
+        if ($type == 'expert') {
+            return view('admin.default.expert.packages.index', compact('packages'));
         }
         elseif ($type == 'client') {
             return view('admin.default.client.packages.index', compact('packages'));
@@ -32,8 +32,8 @@ class PackageController extends Controller
 
     public function create($type)
     {
-        if ($type == 'freelancer') {
-            return view('admin.default.freelancer.packages.create');
+        if ($type == 'expert') {
+            return view('admin.default.expert.packages.create');
         }
         elseif ($type == 'client') {
             return view('admin.default.client.packages.create');
@@ -49,7 +49,7 @@ class PackageController extends Controller
         $package->badge = $request->badge;
         $package->photo = $request->photo;
         $package->number_of_days = $request->number_of_days;
-        if ($request->type == 'freelancer') {
+        if ($request->type == 'expert') {
             $package->commission = $request->commission;
             $package->commission_type = $request->commission_type;
         }
@@ -171,9 +171,9 @@ class PackageController extends Controller
                 $packages = Package::where('type', 'client')->where('active', '1')->get();
                 return view('frontend.default.user.client.package_select', compact('packages'));
             }
-            elseif (isFreelancer()) {
-                $packages = Package::where('type', 'freelancer')->where('active', '1')->get();
-                return view('frontend.default.user.freelancer.package_select', compact('packages'));
+            elseif (isexpert()) {
+                $packages = Package::where('type', 'expert')->where('active', '1')->get();
+                return view('frontend.default.user.expert.package_select', compact('packages'));
             }
         }
         else {

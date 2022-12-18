@@ -44,7 +44,7 @@ class ProjectController extends Controller
             $projects = Project::where('client_user_id', Auth::user()->id)->where('biddable', '0')->open()->notcancel()->latest()->paginate(10);
             return view('frontend.default.user.client.projects.my_running_project', compact('projects'));
         }
-        elseif (isFreelancer()) {
+        elseif (isExpert()) {
             $running_projects = DB::table('projects')
                     ->join('project_users', 'projects.id', '=', 'project_users.project_id')
                     ->where('project_users.user_id', Auth::user()->id)
@@ -53,7 +53,7 @@ class ProjectController extends Controller
                     ->select('projects.id','project_users.hired_at')
                     ->distinct()
                     ->paginate(10);
-            return view('frontend.default.user.freelancer.projects.my_running_project', compact('running_projects'));
+            return view('frontend.default.user.expert.projects.my_running_project', compact('running_projects'));
         }
     }
 
@@ -61,7 +61,7 @@ class ProjectController extends Controller
     {
         $bidded_projects = ProjectBid::where('bid_by_user_id', Auth::user()->id)->paginate(10);
         $total_bidded_projects = ProjectBid::where('bid_by_user_id', Auth::user()->id)->get();
-        return view('frontend.default.user.freelancer.projects.bidded', compact('bidded_projects', 'total_bidded_projects'));
+        return view('frontend.default.user.expert.projects.bidded', compact('bidded_projects', 'total_bidded_projects'));
     }
 
     public function my_cancelled_project()
@@ -70,7 +70,7 @@ class ProjectController extends Controller
             $projects = Project::where('client_user_id', Auth::user()->id)->where('cancel_status', '1')->latest()->paginate(10);
             return view('frontend.default.user.client.projects.my_cancelled_project', compact('projects'));
         }
-        elseif (isFreelancer()) {
+        elseif (isExpert()) {
             $cancelled_projects = DB::table('projects')
                     ->orderBy('projects.created_at', 'desc')
                     ->join('project_users', 'projects.id', '=', 'project_users.project_id')
@@ -80,7 +80,7 @@ class ProjectController extends Controller
                     ->distinct()
                     ->paginate(10);
 
-            return view('frontend.default.user.freelancer.projects.my_cancelled_project', compact('cancelled_projects'));
+            return view('frontend.default.user.expert.projects.my_cancelled_project', compact('cancelled_projects'));
         }
 
     }
@@ -91,9 +91,9 @@ class ProjectController extends Controller
             $projects = Project::where('client_user_id', Auth::user()->id)->closed()->latest()->paginate(10);
             return view('frontend.default.user.client.projects.my_completed_project', compact('projects'));
         }
-        elseif (isFreelancer()) {
-            $completed_projects = getCompletedProjectsByFreelancer(Auth::user()->id)->paginate(10);
-            return view('frontend.default.user.freelancer.projects.my_completed_project', compact('completed_projects'));
+        elseif (isExpert()) {
+            $completed_projects = getCompletedProjectsByExpert(Auth::user()->id)->paginate(10);
+            return view('frontend.default.user.expert.projects.my_completed_project', compact('completed_projects'));
         }
     }
 
@@ -343,19 +343,19 @@ class ProjectController extends Controller
             $project->save();
             try {
                 $this->check_for_client_project_badge($project->client_user_id);
-                $this->check_for_freelancer_project_badge($project->project_user->user_id);
+                $this->check_for_expert_project_badge($project->project_user->user_id);
             } catch (\Exception $e) {
 
             }
 
-            //to freelancer
+            //to expert
             NotificationUtility::set_notification(
                 "project_completed_by_client",
                 translate('A Project has been marked as completed by'),
                 route('project.details',['slug'=>$project->slug],false),
                 $project->project_user->user_id,
                 Auth::user()->id,
-                'freelancer'
+                'expert'
             );
             EmailUtility::send_email(
                 translate('A Project has been marked as completed'),
@@ -389,8 +389,8 @@ class ProjectController extends Controller
         }
     }
 
-    public function check_for_freelancer_project_badge($user_id){
-        $badges = Badge::where('type','project_badge')->where('role_id', 'freelancer')->orderBy('value', 'desc')->get();
+    public function check_for_expert_project_badge($user_id){
+        $badges = Badge::where('type','project_badge')->where('role_id', 'expert')->orderBy('value', 'desc')->get();
         $total = 0;
         foreach (ProjectUser::where('user_id', $user_id)->get() as $key => $project_user) {
             if($project_user->project != null){

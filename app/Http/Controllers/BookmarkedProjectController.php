@@ -16,7 +16,7 @@ class BookmarkedProjectController extends Controller
     public function index()
     {
         $bookmarked_projects = BookmarkedProject::where('user_id', Auth::user()->id)->paginate(8);
-        return view('frontend.default.user.freelancer.bookmarked-projects', compact('bookmarked_projects'));
+        return view('frontend.default.user.expert.bookmarked-projects', compact('bookmarked_projects'));
     }
 
     /**

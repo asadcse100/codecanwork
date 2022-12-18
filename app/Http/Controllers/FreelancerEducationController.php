@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\EducationDetail;
 use Auth;
 
-class FreelancerEducationController extends Controller
+class ExpertEducationController extends Controller
 {
     public function store(Request $request)
     {
@@ -29,8 +29,8 @@ class FreelancerEducationController extends Controller
     public function edit($id)
     {
         $education = EducationDetail::findOrFail(decrypt($id));
-        if (isFreelancer()) {
-            return view('frontend.default.user.freelancer.setting.education_edit', compact('education'));
+        if (isExpert()) {
+            return view('frontend.default.user.expert.setting.education_edit', compact('education'));
         }
     }
 

@@ -64,8 +64,8 @@ class HomeController extends Controller
     {
         $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
 
-        if(isFreelancer()){
-            return view('frontend.default.user.freelancer.dashboard');
+        if(isExpert()){
+            return view('frontend.default.user.expert.dashboard');
         }
         elseif(isClient()){
             return view('frontend.default.user.client.dashboard');
@@ -130,19 +130,19 @@ class HomeController extends Controller
         return view('frontend.default.clients-listing', compact('clients', 'total_clients'));
     }
 
-    //Show all freelancer's list to user
-    public function freelancer_list()
+    //Show all expert's list to user
+    public function expert_list()
     {
-        $freelancers = UserProfile::where('user_role_id', '2')->paginate(8);
-        $total_freelancers = UserProfile::where('user_role_id', '2')->get();
-        return view('frontend.default.freelancers-listing', compact('freelancers', 'total_freelancers'));
+        $experts = UserProfile::where('user_role_id', '2')->paginate(8);
+        $total_experts = UserProfile::where('user_role_id', '2')->get();
+        return view('frontend.default.experts-listing', compact('experts', 'total_experts'));
     }
 
-    //Show specific freelancer details to user
-    public function freelancer_details($username)
+    //Show specific expert details to user
+    public function expert_details($username)
     {
-        $freelancer = User::where('user_name', $username)->first();
-        return view('frontend.default.freelancer-single', compact('freelancer'));
+        $expert = User::where('user_name', $username)->first();
+        return view('frontend.default.expert-single', compact('expert'));
     }
 
     //check if username exists
@@ -196,14 +196,14 @@ class HomeController extends Controller
         Permission::create(['name' => 'show project category', 'guard_name' => 'web']);
         Permission::create(['name' => 'show verification requests', 'guard_name' => 'web']);
         Permission::create(['name' => 'show user chats', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show all freelancers', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer packages', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer skills', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer badges', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show all experts', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert packages', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert skills', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert badges', 'guard_name' => 'web']);
         Permission::create(['name' => 'show all clients', 'guard_name' => 'web']);
         Permission::create(['name' => 'show client packages', 'guard_name' => 'web']);
         Permission::create(['name' => 'show client badges', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancers reviews', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show experts reviews', 'guard_name' => 'web']);
         Permission::create(['name' => 'show client reviews', 'guard_name' => 'web']);
         Permission::create(['name' => 'show active tickets', 'guard_name' => 'web']);
         Permission::create(['name' => 'show my tickets', 'guard_name' => 'web']);
@@ -213,8 +213,8 @@ class HomeController extends Controller
         Permission::create(['name' => 'show project payments', 'guard_name' => 'web']);
         Permission::create(['name' => 'show package payments', 'guard_name' => 'web']);
         Permission::create(['name' => 'show service payments', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer withdraw requests', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer payouts', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert withdraw requests', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert payouts', 'guard_name' => 'web']);
         Permission::create(['name' => 'show header', 'guard_name' => 'web']);
         Permission::create(['name' => 'show footer', 'guard_name' => 'web']);
         Permission::create(['name' => 'show pages', 'guard_name' => 'web']);
@@ -228,19 +228,19 @@ class HomeController extends Controller
         Permission::create(['name' => 'show email setting', 'guard_name' => 'web']);
         Permission::create(['name' => 'show payment gateways setting', 'guard_name' => 'web']);
         Permission::create(['name' => 'show third party api setting', 'guard_name' => 'web']);
-        Permission::create(['name' => 'show freelancer payment', 'guard_name' => 'web']);
+        Permission::create(['name' => 'show expert payment', 'guard_name' => 'web']);
         Permission::create(['name' => 'show manual payment methods', 'guard_name' => 'web']);
         Permission::create(['name' => 'show offline project payments', 'guard_name' => 'web']);
         Permission::create(['name' => 'show offline package payments', 'guard_name' => 'web']);
         Permission::create(['name' => 'show offline service payments', 'guard_name' => 'web']);
         Permission::create(['name' => 'show addon manager', 'guard_name' => 'web']);
         Permission::create(['name' => 'create new client package', 'guard_name' => 'web']);
-        Permission::create(['name' => 'create new freelancer package', 'guard_name' => 'web']);
+        Permission::create(['name' => 'create new expert package', 'guard_name' => 'web']);
         Permission::create(['name' => 'show dashboard', 'guard_name' => 'web']);
         Permission::create(['name' => 'show create staff', 'guard_name' => 'web']);
         Permission::create(['name' => 'show create roles', 'guard_name' => 'web']);
         Permission::create(['name' => 'single user chat details', 'guard_name' => 'web']);
-        Permission::create(['name' => 'freelancer delete', 'guard_name' => 'web']);
+        Permission::create(['name' => 'expert delete', 'guard_name' => 'web']);
         Permission::create(['name' => 'project cat delete', 'guard_name' => 'web']);
         Permission::create(['name' => 'project cat edit', 'guard_name' => 'web']);
         Permission::create(['name' => 'project cat create', 'guard_name' => 'web']);

@@ -105,7 +105,7 @@ class MilestonePaymentController extends Controller
             }
             else{
                 flash(translate('You do not have enough wallet balance.'))->error();
-                return back(); 
+                return back();
             }
         }
     }
@@ -113,8 +113,8 @@ class MilestonePaymentController extends Controller
     public function milestone_payment_done($payment_data, $payment)
     {
         $milestone_req = MilestonePayment::findOrFail($payment_data['milestone_request_id']);
-        $project = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->freelancer_user_id)->first();
-        $userProfile = UserProfile::where('user_id', $milestone_req->freelancer_user_id)->first();
+        $project = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->expert_user_id)->first();
+        $userProfile = UserProfile::where('user_id', $milestone_req->expert_user_id)->first();
         $package = Package::findOrFail($userProfile->user->userPackage->package_id);
         if ($milestone_req != null) {
             $milestone_req->payment_details = $payment;
@@ -125,32 +125,32 @@ class MilestonePaymentController extends Controller
             else {
                 $milestone_req->admin_profit = $package->commission;
             }
-            $milestone_req->freelancer_profit = $payment_data['amount'] - $milestone_req->admin_profit;
+            $milestone_req->expert_profit = $payment_data['amount'] - $milestone_req->admin_profit;
             $milestone_req->paid_status = 1;
             $milestone_req->save();
 
-            $userProfile->balance += $milestone_req->freelancer_profit;
+            $userProfile->balance += $milestone_req->expert_profit;
             $userProfile->save();
 
             try {
-                $this->check_for_earning_badge($milestone_req->freelancer_user_id);
+                $this->check_for_earning_badge($milestone_req->expert_user_id);
                 $this->check_for_spent_badge($milestone_req->client_user_id);
             } catch (\Exception $e) {
 
             }
-            //from admin to freelancer
+            //from admin to expert
             NotificationUtility::set_notification(
-                "milestone_payments_done_to_freelancer",
+                "milestone_payments_done_to_expert",
                 translate('Your milestone payment request has been accepted by'),
                 route('sent-milestone-requests.all',[],false),
-                $milestone_req->freelancer_user_id,
+                $milestone_req->expert_user_id,
                 Auth::user()->id,
-                'freelancer'
+                'expert'
             );
             EmailUtility::send_email(
                 translate('Your milestone payment request has been accepted'),
                 translate('Your milestone payment request has been accepted by '). Auth::user()->name,
-                get_email_by_user_id($milestone_req->freelancer_user_id)
+                get_email_by_user_id($milestone_req->expert_user_id)
             );
 
             //from client to admin
@@ -176,9 +176,9 @@ class MilestonePaymentController extends Controller
     }
 
     public function check_for_earning_badge($user_id){
-        $badges = Badge::where('type','earning_badge')->where('role_id', 'freelancer')->orderBy('value', 'desc')->get();
+        $badges = Badge::where('type','earning_badge')->where('role_id', 'expert')->orderBy('value', 'desc')->get();
         foreach ($badges as $key => $badge) {
-            if(MilestonePayment::where('freelancer_user_id', $user_id)->where('paid_status', 1)->sum('freelancer_profit') >= $badge->value){
+            if(MilestonePayment::where('expert_user_id', $user_id)->where('paid_status', 1)->sum('expert_profit') >= $badge->value){
                 $user_badge = UserBadge::where('user_id', $user_id)->where('type', 'earning_badge')->first();
                 if($user_badge == null){
                     $user_badge = new UserBadge;
@@ -221,8 +221,8 @@ class MilestonePaymentController extends Controller
         $milestone_req->receipt         = $request->photo;
         $milestone_req->approval        = 0;
 
-        $project = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->freelancer_user_id)->first();
-        $userProfile = UserProfile::where('user_id', $milestone_req->freelancer_user_id)->first();
+        $project = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->expert_user_id)->first();
+        $userProfile = UserProfile::where('user_id', $milestone_req->expert_user_id)->first();
         $package = Package::findOrFail($userProfile->user->userPackage->package_id);
 
         if ($package->commission_type == 'percent') {
@@ -231,7 +231,7 @@ class MilestonePaymentController extends Controller
         else {
             $milestone_req->admin_profit = $package->commission;
         }
-        $milestone_req->freelancer_profit = $milestone_req->amount - $milestone_req->admin_profit;
+        $milestone_req->expert_profit = $milestone_req->amount - $milestone_req->admin_profit;
         if($milestone_req->save())
         {
           flash(translate('Offline payment has been done. Please wait for admin approval.'))->success();
@@ -247,36 +247,36 @@ class MilestonePaymentController extends Controller
     public function approve_offline_project_payment($id)
     {
       $milestone_req  = MilestonePayment::findOrFail($id);
-      $project        = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->freelancer_user_id)->first();
-      $userProfile    = UserProfile::where('user_id', $milestone_req->freelancer_user_id)->first();
+      $project        = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->expert_user_id)->first();
+      $userProfile    = UserProfile::where('user_id', $milestone_req->expert_user_id)->first();
       $package        = Package::findOrFail($userProfile->user->userPackage->package_id);
 
       $milestone_req->approval = 1;
       $milestone_req->paid_status = 1;
       $milestone_req->save();
 
-      $userProfile->balance += $milestone_req->freelancer_profit;
+      $userProfile->balance += $milestone_req->expert_profit;
       $userProfile->save();
 
       try {
-          $this->check_for_earning_badge($milestone_req->freelancer_user_id);
+          $this->check_for_earning_badge($milestone_req->expert_user_id);
           $this->check_for_spent_badge($milestone_req->client_user_id);
       } catch (\Exception $e) {
 
       }
-      //from admin to freelancer
+      //from admin to expert
       NotificationUtility::set_notification(
-          "milestone_payments_done_to_freelancer",
+          "milestone_payments_done_to_expert",
           translate('Your milestone payment request has been accepted by'),
           route('sent-milestone-requests.all',[],false),
-          $milestone_req->freelancer_user_id,
+          $milestone_req->expert_user_id,
           $milestone_req->client_user_id,
-          'freelancer'
+          'expert'
       );
       EmailUtility::send_email(
           translate('Your milestone payment request has been accepted'),
           translate('Your milestone payment request has been accepted by '). Auth::user()->name,
-          get_email_by_user_id($milestone_req->freelancer_user_id)
+          get_email_by_user_id($milestone_req->expert_user_id)
       );
 
       flash(translate('Offline payment approved successfully.'))->success();
@@ -299,14 +299,14 @@ class MilestonePaymentController extends Controller
 
     public function sent_milestone_request_index()
     {
-        $milestones = MilestonePayment::where('freelancer_user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(12);
-        return view('frontend.default.user.freelancer.milestone_payments.index', compact('milestones'));
+        $milestones = MilestonePayment::where('expert_user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(12);
+        return view('frontend.default.user.expert.milestone_payments.index', compact('milestones'));
     }
 
     public function recieved_milestone_payment_index()
     {
-        $milestones = MilestonePayment::where('freelancer_user_id', Auth::user()->id)->where('paid_status', 1)->orderBy('created_at', 'desc')->paginate(12);
-        return view('frontend.default.user.freelancer.earnings.history', compact('milestones'));
+        $milestones = MilestonePayment::where('expert_user_id', Auth::user()->id)->where('paid_status', 1)->orderBy('created_at', 'desc')->paginate(12);
+        return view('frontend.default.user.expert.earnings.history', compact('milestones'));
     }
 
     // public function all_milestone_request_index(Request $request)
@@ -340,12 +340,12 @@ class MilestonePaymentController extends Controller
         $milestone = new MilestonePayment;
         $milestone->client_user_id = $request->client_id;
         $milestone->project_id = $request->project_id;
-        $milestone->freelancer_user_id = Auth::user()->id;
+        $milestone->expert_user_id = Auth::user()->id;
         $milestone->amount = $request->amount;
         $milestone->message = $request->message;
         if ($milestone->save()) {
 
-            //from freelancer to client
+            //from expert to client
             NotificationUtility::set_notification(
                 "milestone_payment_request_to_client",
                 translate('A milestone payment has been requested by'),
@@ -361,7 +361,7 @@ class MilestonePaymentController extends Controller
                 route('milestone-requests.all')
             );
 
-            //from freelancer to admin
+            //from expert to admin
             NotificationUtility::set_notification(
                 "milestone_payment_request_to_admin",
                 translate('A milestone payment has been requested by'),

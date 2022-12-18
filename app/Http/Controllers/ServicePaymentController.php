@@ -67,8 +67,8 @@ class ServicePaymentController extends Controller
             $service_package_payment->admin_profit = $package->commission;
         }
 
-        $service_package_payment->freelancer_profit = $payment_data['amount'] - $service_package_payment->admin_profit;
-        $userProfile->balance += $service_package_payment->freelancer_profit;
+        $service_package_payment->expert_profit = $payment_data['amount'] - $service_package_payment->admin_profit;
+        $userProfile->balance += $service_package_payment->expert_profit;
 
         $service_package_payment->payment_details = json_encode($payment);
 
@@ -112,7 +112,7 @@ class ServicePaymentController extends Controller
         } else {
             $service_package_payment->admin_profit      = $package->commission;
         }
-        $service_package_payment->freelancer_profit     = $service_package->service_price - $service_package_payment->admin_profit;
+        $service_package_payment->expert_profit     = $service_package->service_price - $service_package_payment->admin_profit;
         $service_package_payment->payment_details       = $request->trx_id;
         $service_package_payment->offline_payment       = 1;
         $service_package_payment->receipt               = $request->photo;
@@ -133,7 +133,7 @@ class ServicePaymentController extends Controller
             $service_package = ServicePackage::findOrFail($service_package_payment->service_package_id);
             $userProfile = UserProfile::where('user_id', $service_package->service->user->id)->first();
 
-            $userProfile->balance += $service_package_payment->freelancer_profit;
+            $userProfile->balance += $service_package_payment->expert_profit;
             if($userProfile->save()) {
                 $existing_chat_thread = ChatThread::where('sender_user_id', $service_package_payment->user_id)->where('receiver_user_id', $service_package->service->user->id)->first();
                 if ($existing_chat_thread == null) {

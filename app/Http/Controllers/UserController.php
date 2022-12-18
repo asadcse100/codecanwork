@@ -5,58 +5,58 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserProfile;
-use App\Models\FreelancerAccount;
+use App\Models\ExpertAccount;
 use Cache;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['permission:show all freelancers'])->only('all_freelancers');
+        $this->middleware(['permission:show all experts'])->only('all_experts');
         $this->middleware(['permission:show all clients'])->only('all_clients');
 
     }
 
-    public function all_freelancers(Request $request)
+    public function all_experts(Request $request)
     {
         $sort_search = null;
         $col_name = null;
         $query = null;
-        $freelancers = UserProfile::query();
+        $experts = UserProfile::query();
 
         $user_ids = User::where(function($user) use ($sort_search){
-            $user->where('user_type', 'freelancer');
+            $user->where('user_type', 'expert');
         })->pluck('id')->toArray();
 
-        $freelancers = $freelancers->where(function($freelancer) use ($user_ids){
-            $freelancer->whereIn('user_id', $user_ids);
+        $experts = $experts->where(function($expert) use ($user_ids){
+            $expert->whereIn('user_id', $user_ids);
         });
 
         if ($request->search != null || $request->type != null) {
             if ($request->has('search')){
                 $sort_search = $request->search;
                 $user_ids = User::where(function($user) use ($sort_search){
-                    $user->where('user_type', 'freelancer')->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
+                    $user->where('user_type', 'expert')->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
                 })->pluck('id')->toArray();
 
-                $freelancers = $freelancers->where(function($freelancer) use ($user_ids){
-                    $freelancer->whereIn('user_id', $user_ids);
+                $experts = $experts->where(function($expert) use ($user_ids){
+                    $expert->whereIn('user_id', $user_ids);
                 });
             }
             if ($request->type != null){
                 $var = explode(",", $request->type);
                 $col_name = $var[0];
                 $query = $var[1];
-                $freelancers = $freelancers->orderBy($col_name, $query);
+                $experts = $experts->orderBy($col_name, $query);
             }
 
-            $freelancers = $freelancers->paginate(10);
+            $experts = $experts->paginate(10);
         }
         else {
-            $freelancers = $freelancers->orderBy('created_at', 'desc')->paginate(10);
+            $experts = $experts->orderBy('created_at', 'desc')->paginate(10);
         }
 
-        return view('admin.default.freelancer.freelancers.index', compact('freelancers', 'sort_search', 'col_name', 'query'));
+        return view('admin.default.expert.experts.index', compact('experts', 'sort_search', 'col_name', 'query'));
 
     }
 
@@ -80,8 +80,8 @@ class UserController extends Controller
             $user->where('user_type', 'client');
         })->pluck('id')->toArray();
 
-        $freelancers = $clients->where(function($freelancer) use ($user_ids){
-            $freelancer->whereIn('user_id', $user_ids);
+        $experts = $clients->where(function($expert) use ($user_ids){
+            $expert->whereIn('user_id', $user_ids);
         });
 
 
@@ -110,19 +110,19 @@ class UserController extends Controller
         return view('admin.default.client.clients.index', compact('clients', 'sort_search', 'col_name', 'query'));
     }
 
-    public function freelancer_details($user_name)
+    public function expert_details($user_name)
     {
         $user = User::where('user_name', $user_name)->first();
         $user_profile = UserProfile::where('user_id', $user->id)->first();
-        $user_account = FreelancerAccount::where('user_id', $user->id)->first();
-        return view('admin.default.freelancer.freelancers.show', compact('user', 'user_profile', 'user_account'));
+        $user_account = expertAccount::where('user_id', $user->id)->first();
+        return view('admin.default.expert.experts.show', compact('user', 'user_profile', 'user_account'));
     }
 
     public function client_details($user_name)
     {
         $user = User::where('user_name', $user_name)->first();
         $user_profile = UserProfile::where('user_id', $user->id)->first();
-        $user_account = FreelancerAccount::where('user_id', $user->id)->first();
+        $user_account = expertAccount::where('user_id', $user->id)->first();
         $projects = $user->number_of_projects()->paginate(10);
         return view('admin.default.client.clients.show', compact('user', 'user_profile', 'user_account','projects'));
     }

@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Address;
 use App\Models\UserProfile;
 use App\Models\Verification;
-use App\Models\FreelancerAccount;
+use App\Models\ExpertAccount;
 use Illuminate\Support\Str;
 
 class ProfileController extends Controller
@@ -44,7 +44,7 @@ class ProfileController extends Controller
         }
         flash(translate('This Email is already used.'))->error();
         return back();
-        
+
     }
 
     //Redirect to user profile page to update profile
@@ -56,8 +56,8 @@ class ProfileController extends Controller
         if (isClient()) {
             return view('frontend.default.user.client.settings.profile', compact('user_profile', 'verification'));
         }
-        elseif (isFreelancer()) {
-            return view('frontend.default.user.freelancer.setting.profile', compact('user_profile','verification'));
+        elseif (isExpert()) {
+            return view('frontend.default.user.expert.setting.profile', compact('user_profile','verification'));
         }
         else {
             flash(translate('Sorry! Something went wrong.'))->error();
@@ -67,8 +67,8 @@ class ProfileController extends Controller
 
     public function user_account()
     {
-        $freelancer_account = FreelancerAccount::where('user_id', Auth::user()->id)->first();
-        return view('frontend.default.user.freelancer.setting.account', compact('freelancer_account'));
+        $expert_account = ExpertAccount::where('user_id', Auth::user()->id)->first();
+        return view('frontend.default.user.expert.setting.account', compact('expert_account'));
     }
 
     public function basic_info_update(Request $request)

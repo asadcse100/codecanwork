@@ -163,10 +163,10 @@ if (!function_exists('isClient')) {
     }
 }
 
-if (!function_exists('isFreelancer')) {
-    function isFreelancer()
+if (!function_exists('isExpert')) {
+    function isExpert()
     {
-        return getUserRole() == "freelancer" ? 1 : 0;
+        return getUserRole() == "expert" ? 1 : 0;
     }
 }
 
@@ -194,7 +194,7 @@ function translate($key, $lang = null){
     }
 }
 
-function getCompletedProjectsByFreelancer($id)
+function getCompletedProjectsByExpert($id)
 {
     return DB::table('projects')
         ->join('project_users', 'projects.id', '=', 'project_users.project_id')
