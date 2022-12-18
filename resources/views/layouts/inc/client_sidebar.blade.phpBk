@@ -1,0 +1,323 @@
+<div class="sidebar-wrapper sidebar-theme">
+
+    <nav id="sidebar">
+
+        <div class="navbar-nav theme-brand flex-row  text-center">
+            <div class="nav-logo">
+                <div class="nav-item theme-logo">
+                    <a href="./index.html">
+                        <img src="{{ asset('templete') }}/src/assets/img/logo.png" class="navbar-logo" alt="logo">
+                    </a>
+                </div>
+                <div class="nav-item theme-text">
+                    <a href="./index.html" class="nav-link"> ZEROPLUS </a>
+                </div>
+            </div>
+            <div class="nav-item sidebar-toggle">
+                <div class="btn-toggle sidebarCollapse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-chevrons-left">
+                        <polyline points="11 17 6 12 11 7"></polyline>
+                        <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-unstyled menu-categories">
+
+            <li class="menu active">
+                <a href="{{ route('dashboard') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+
+            <!-- update by Bashir services-->
+            <li class="menu">
+                <a href="#service" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Services</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="service" data-bs-parent="#accordionExample">
+                    <li>
+                        <a href="{{ route('client.purchased.services') }}"> Purchased Services </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('client.services.cancelled') }}"> Cancelled Services </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('client.services.cancel.requests') }}"> Service Cancel Requests </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Update by Bashir services-->
+
+            <!-- update by Bashir project-->
+            {{-- <li class="menu">
+                <a href="#project" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="project" data-bs-parent="#accordionExample">
+                    <li>
+                        <a href="{{ route('projects.index') }}"> All Projects </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.my_open_project') }}"> Open Projects </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.my_running_project') }}"> Running </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.my_completed_project') }}"> Completed </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.my_cancelled_project') }}"> Cancelled </a>
+                    </li>
+                </ul>
+            </li> --}}
+            <!-- End Update by Bashir project-->
+
+            <!-- update by Bashir following_client-->
+            {{-- @if (Auth::user()->userPackage != null && Auth::user()->userPackage->following_status)
+                <li class="menu">
+                    <a href="{{ route('bookmarked-freelancers.index') }}" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            <span>Bookmark Experts</span>
+                        </div>
+                    </a>
+                </li>
+            @endif --}}
+            <!-- End Update by Bashir following_client-->
+
+            <!-- update by Bashir following_client-->
+            @php
+                $total_mile_request = count(
+                    \App\Models\MilestonePayment::where('client_user_id', Auth::user()->id)
+                        ->where('client_seen', 0)
+                        ->get(),
+                );
+            @endphp
+            {{-- <li class="menu">
+                <a href="{{ route('bookmarked-clients.index') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Milestone Request</span>
+                        @if ($total_mile_request > 0)
+                            <span class="badge badge-primary badge-circle">{{ $total_mile_request }}</span>
+                        @endif
+                    </div>
+                </a>
+            </li> --}}
+            <!-- End Update by Bashir following_client-->
+
+            <!-- update by Bashir following_client-->
+            {{-- @php
+                $unseen_chat_threads = chat_threads();
+                $unseen_chat_thread_count = count($unseen_chat_threads);
+            @endphp
+            <li class="menu">
+                <a href="{{ route('all.messages') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Message</span>
+                        <span class="badge badge-primary badge-circle">{{ $unseen_chat_thread_count }}</span>
+                    </div>
+                </a>
+            </li> --}}
+            <!-- End Update by Bashir following_client-->
+
+            <!-- update by Bashir following_client-->
+            <li class="menu">
+                <a href="{{ route('user_review', 'client') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Reviews</span>
+                    </div>
+                </a>
+            </li>
+            <!-- End Update by Bashir following_client-->
+
+
+            <!-- update by Bashir package-->
+            <li class="menu">
+                <a href="#package" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Package</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="package" data-bs-parent="#accordionExample">
+                    <li>
+                        <a href="{{ route('select_package') }}"> Upgrade/Downgrade </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('client.packages.history') }}"> Packages History </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Update by Bashir package-->
+
+            <!-- update by Bashir support_tickets-->
+            {{-- @if (\App\Addon::where('unique_identifier', 'support_tickets')->first() != null && \App\Addon::where('unique_identifier', 'support_tickets')->first()->activated == 1)
+                <li class="menu">
+                    <a href="{{ route('support-tickets.user_index') }}" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            <span>Support Tickets</span>
+                        </div>
+                    </a>
+                </li>
+            @endif --}}
+            <!-- End Update by Bashir support_tickets-->
+            <!-- update by Bashir Wallet-->
+            {{-- <li class="menu">
+                <a href="#wallet" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Wallet</span>
+                    </div>
+                </a>
+            </li> --}}
+            <!-- End Update by Bashir Wallet-->
+
+            <!-- update by Bashir setting-->
+            <li class="menu">
+                <a href="{{ route('user.profile') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Profile Setting</span>
+                    </div>
+                </a>
+            </li>
+            <!-- End Update by Bashir setting-->
+        </ul>
+
+    </nav>
+
+</div>
