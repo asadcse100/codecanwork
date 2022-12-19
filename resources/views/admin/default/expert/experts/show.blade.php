@@ -9,7 +9,7 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
+        <div class="middle-content container-xxl p-0">
 
 
             <div class="row layout-top-spacing">
@@ -274,8 +274,8 @@
 
     <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
-        function sort_experts(el) {
-            $('#sort_experts').submit();
+        function sort_freelancers(el) {
+            $('#sort_freelancers').submit();
         }
     </script>
 @endsection

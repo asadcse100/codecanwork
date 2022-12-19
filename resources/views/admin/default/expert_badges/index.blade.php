@@ -20,41 +20,64 @@
                             <th class="text-right">{{translate('Options')}}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach($badges as $key => $badge)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$badge->name}}</td>
-                                <td class="text-capitalize">{{str_replace('_', ' ', $badge->type)}}</td>
-                                <td>
-                                    @if($badge->type == 'project_badge')
-                                        {{$badge->value}} {{translate('Projects')}}
-                                    @elseif($badge->type == 'earning_badge')
-                                        {{single_price($badge->value)}} {{translate('Earnings')}}
-                                    @else
-                                        {{$badge->value}} {{translate('Days')}}
-                                    @endif
-                                </td>
-                                <td>
-                                    <span class="avatar avatar-square avatar-xs">
-                                        <img src="{{ my_asset($badge->icon) }}">
-                                    </span>
-                                </td>
-                                <td class="text-right">
-                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('badges.edit', encrypt($badge->id)) }}" title="{{ translate('Edit') }}">
-                                            <i class="las la-edit"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('badges.destroy', $badge->id)}}" title="{{ translate('Delete') }}">
-                                        <i class="las la-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
                 </table>
-                <div class="aiz-pagination aiz-pagination-center">
-                    {{ $badges->links() }}
+
+                <div class="modal fade bd-example-modal-lg" id="bd-edit-modal-lg" aria-hidden="true"
+                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="">
+                            <!-- Start now   -->
+                            <div class="row">
+                                <div
+                                    class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0">
+                                    <div class="widget-content widget-content-area blog-create-section">
+                                        <form class="form-horizontal" action="{{ route('badges.update', $badge->id) }}" method="POST" enctype="multipart/form-data">
+                                            <input name="_method" type="hidden" value="PATCH">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <label for="name">{{translate('Name')}}</label>
+                                                <input type="text" id="name" name="name" required placeholder="{{ translate('Eg. Completed 100+ projects') }}" value="{{ $badge->name }}" class="form-control" required>
+                                            </div>
+                                            <input type="hidden" name="role_id" value="{{ $badge->role->id }}">
+                                            <div class="form-group mb-3">
+                                                <label for="type">{{translate('Badge Type')}}</label>
+                                                <select class="select2 form-control aiz-selectpicker" name="type" id="type" data-show="selectShow" data-target=".min-num-type" data-placeholder="Choose ...">
+                                                    <option value="project_badge" @if ($badge->type == "project_badge") selected @endif>{{translate('Project Badge')}}</option>
+                                                    <option value="earning_badge" @if ($badge->type == "earning_badge") selected @endif>{{translate('Earning Badge')}}</option>
+                                                    <option value="membership_badge" @if ($badge->type == "membership_badge") selected @endif>{{translate('Membership Badge')}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="min_value" class="min-num-type">{{translate('Min number of ')}}
+                                                    <span class="project_badge">{{translate('project')}}</span>
+                                                    <span class="earning_badge d-none">{{translate('earnings')}}</span>
+                                                    <span class="membership_badge d-none">{{translate('account age - in days')}}</span>
+                                                </label>
+                                                <input type="number" id="value" name="value" min="0" step="0.01" placeholder="{{ translate('Eg. 100') }}" value="{{ $badge->value }}" class="form-control" required>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label>{{translate('Badge Icon')}}</label>
+                                                <div class="custom-file">
+                                                    <label class="custom-file-label">
+                                                        <input type="file" class="custom-file-input" name="icon" >
+                                                        <span class="custom-file-name">{{translate('Choose Badge Icon')}}</span>
+                                                    </label>
+                                                </div>
+                                                <small class="form-text text-muted">.svg {{ translate('file recommended') }}</small>
+                                            </div>
+                                            <div class="form-group mb-0 text-right">
+                                                <button type="submit" class="btn btn-primary">{{translate('Update Badge')}}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End new Blog  -->
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -70,7 +93,7 @@
                             <label for="name">{{translate('Title')}}</label>
                             <input type="text" id="name" name="name" required placeholder="{{ translate('Eg. Completed 100+ projects') }}" class="form-control" required>
                         </div>
-                        <input type="hidden" name="role_id" value="expert">
+                        <input type="hidden" name="role_id" value="freelancer">
                         <div class="form-group mb-3">
                             <label for="type">{{translate('Badge Type')}}</label>
                             <select class="select2 form-control aiz-selectpicker" name="type" id="type" data-show="selectShow" data-target=".min-num-type" data-placeholder="Choose ...">

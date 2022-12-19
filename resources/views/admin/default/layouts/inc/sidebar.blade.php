@@ -5,13 +5,12 @@
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
-                    <a href="{{Route('admin.dashboard')}}">
-                        <img src="{{ asset('templete') }}/src/assets/img/logo.png" class="navbar-logo" alt="logo">
-                    </a>
+                    <img src="{{ asset('templete') }}/src/assets/img/zerop.png" class="navbar-logo" alt="logo"
+                            style="height: 100px; width:auto; margin-left: 40px">
                 </div>
-                <div class="nav-item theme-text">
-                    <a href="{{Route('admin.dashboard')}}" class="nav-link"> APP </a>
-                </div>
+                {{-- <div class="nav-item theme-text">
+                    <a href="{{Route('admin.dashboard')}}" class="nav-link"> ZEROPLUS </a>
+                </div> --}}
             </div>
             <div class="nav-item sidebar-toggle">
                 <div class="btn-toggle sidebarCollapse">
@@ -26,7 +25,7 @@
         </div>
 
         <ul class="list-unstyled menu-categories" id="accordionExample">
-
+            @can('show dashboard')
             <li class="menu active">
                 <a href="{{ route('admin.dashboard') }}"  aria-expanded="true"
                     class="dropdown-toggle">
@@ -41,21 +40,108 @@
                     </div>
                 </a>
             </li>
-
+            @endcan
+<!-- Lawyer-->
+<li class="menu">
+    <a href="#LawChamber" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <div class="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-list">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            <span>Law Chamber</span>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </div>
+    </a>
+    <ul class="collapse submenu list-unstyled" id="LawChamber" data-bs-parent="#accordionExample">
+        <li>
+            <a href="{{Route('lawyer-act.index')}}">Acts</a>
+        </li>
+        <li>
+            <a href="{{ Route('admin-case_stage.index') }}">Case Stage Setup</a>
+        </li>
+        <li>
+            <a href="{{ Route('admin-case_category.index') }}"> Case Category</a>
+        </li>
+        <li>
+            <a href="{{ Route('admin-lawyer-court.index') }}"> Court </a>
+        </li>
+        <li>
+            <a href="{{ Route('admin-court_category.index') }}"> Court Category </a>
+        </li>
+    </ul>
+</li>
+<!-- End Lawyer-->
+<!-- Doctor-->
+{{-- <li class="menu">
+    <a href="#DoctorChamber" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <div class="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-list">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            <span>Doctor Chamber</span>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </div>
+    </a>
+    <ul class="collapse submenu list-unstyled" id="DoctorChamber" data-bs-parent="#accordionExample">
+        <li>
+            <a href="{{ Route('admin_doctor_appointment.index') }}">Appointments</a>
+        </li>
+        <li>
+            <a href="{{ Route('admin_doctor_Specialities.index') }}">Specialities</a>
+        </li>
+        <li>
+            <a href="{{ Route('admin_doctor.index') }}">Doctor</a>
+        </li>
+    </ul>
+</li> --}}
+<!-- End doctor-->
             <!-- update by Asad package-->
             <li class="menu">
                 <a href="#Employee" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-users"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
                         <span>Employee</span>
                     </div>
                     <div>
@@ -67,20 +153,24 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="Employee" data-bs-parent="#accordionExample">
+                    @can('Show all staffs')
                     <li>
                         <a href="{{ route('staffs.index') }}"
                             class="{{ areActiveRoutes(['roles.create', 'roles.edit']) }}"> All Staffs </a>
                     </li>
+                    @endcan
+                    @can('show employee roles')
                     <li>
                         <a href="{{ route('roles.index') }}"
                             class="{{ areActiveRoutes(['roles.create', 'roles.edit']) }}"> Employee Roles </a>
                     </li>
+                    @endcan
                 </ul>
             </li>
             <!-- End Update by Asad package-->
 
             <!-- update by Asad project-->
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="#project" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -126,23 +216,29 @@
                             Project Category </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!-- End Update by Asad project-->
 
             <!-- update by Asad services-->
             <li class="menu">
                 <a href="#service" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-layers"
+                  >
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
                         <span>Services</span>
                     </div>
                     <div>
@@ -167,7 +263,7 @@
             </li>
             <!-- End Update by Asad services-->
 
-           <!-- update by Asad bookmark_project-->
+            <!-- update by Asad bookmark_project-->
             <li class="menu">
                 <a href="{{ route('verification_requests') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -184,7 +280,7 @@
 
             <!-- update by Asad bookmark_project-->
 
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="{{ route('chat.admin.all') }}" aria-expanded="false"
                     class="dropdown-toggle {{ areActiveRoutes(['chat.admin.all', 'chat_details_for_admin']) }}">
                     <div class="">
@@ -196,24 +292,30 @@
                         <span>Users Chats</span>
                     </div>
                 </a>
-            </li>
+            </li> --}}
 
             <!-- End Update by Asad bookmark_project-->
 
             <!-- update by Asad package-->
             <li class="menu">
-                <a href="#experts" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#Freelancers" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-zap"
+                  >
+                    <polygon
+                      points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                    ></polygon>
+                  </svg>
                         <span>Experts</span>
                     </div>
                     <div>
@@ -224,15 +326,15 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="experts" data-bs-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled" id="Freelancers" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('all_experts') }}"
-                            class="{{ areActiveRoutes(['all_experts', 'expert_info_show']) }}"> All
+                        <a href="{{ route('all_freelancers') }}"
+                            class="{{ areActiveRoutes(['all_freelancers', 'freelancer_info_show']) }}"> All
                             Experts </a>
                     </li>
                     <li>
-                        <a href="{{ route('expert_package.index', 'expert') }}"
-                            class="{{ areActiveRoutes(['expert_package.index', 'expert_package.create', 'expert_package.edit']) }}">
+                        <a href="{{ route('freelancer_package.index', 'freelancer') }}"
+                            class="{{ areActiveRoutes(['freelancer_package.index', 'freelancer_package.create', 'freelancer_package.edit']) }}">
                             Expert Packages </a>
                     </li>
                     <li>
@@ -249,7 +351,7 @@
             <!-- End Update by Asad package-->
 
             <!-- update by Asad package-->
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="#Clients" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -284,27 +386,35 @@
                     </li>
                     <li>
                         <a href="{{ route('client_badges_index') }}"
-                            class="{{ areActiveRoutes(['client_badges_index', 'client_badges_edit']) }}"> expert
+                            class="{{ areActiveRoutes(['client_badges_index', 'client_badges_edit']) }}"> Freelancer
                             Badges </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!-- End Update by Asad package-->
 
             <!-- update by Asad package-->
             <li class="menu">
                 <a href="#Reviews" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-map"
+                  >
+                    <polygon
+                      points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
+                    ></polygon>
+                    <line x1="8" y1="2" x2="8" y2="18"></line>
+                    <line x1="16" y1="6" x2="16" y2="22"></line>
+                  </svg>
                         <span>Reviews</span>
                     </div>
                     <div>
@@ -317,9 +427,9 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="Reviews" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('reviews.expert') }}"
-                            class="{{ areActiveRoutes(['reviews.expert', 'expert_review_details']) }}">
-                            experts Reviews </a>
+                        <a href="{{ route('reviews.freelancer') }}"
+                            class="{{ areActiveRoutes(['reviews.freelancer', 'freelancer_review_details']) }}">
+                            Experts Reviews </a>
                     </li>
                     <li>
                         <a href="{{ route('reviews.client') }}"
@@ -335,16 +445,30 @@
             <li class="menu">
                 <a href="#Accountings" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-calendar"
+                  >
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
                         <span>Accountings</span>
                     </div>
                     <div>
@@ -356,10 +480,10 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="Accountings" data-bs-parent="#accordionExample">
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('payment_history_for_admin') }}">
                             Project Payments </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('package_payment_history_for_admin') }}"> Package Payments
                         </a>
@@ -369,11 +493,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('withdraw_request.index') }}"> expert Withdraw Requests
+                        <a href="{{ route('withdraw_request.index') }}"> Expert Withdraw Requests
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('expert_payment.index') }}"> expert Payouts
+                        <a href="{{ route('freelancer_payment.index') }}"> Expert Payouts
                         </a>
                     </li>
                 </ul>
@@ -383,37 +507,43 @@
 
             <!-- update by Asad package-->
             <li class="menu">
-                <a href="#Blog" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#resources" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
-                        <span>Blog System</span>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-map"
+                  >
+                    <polygon
+                      points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
+                    ></polygon>
+                    <line x1="8" y1="2" x2="8" y2="18"></line>
+                    <line x1="16" y1="6" x2="16" y2="22"></line>
+                  </svg>
+                        <span>Resources System</span>
                     </div>
-                    <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-chevron-right">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
-                    </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="Blog" data-bs-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled" id="resources" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('blog.index') }}"
-                            class="{{ areActiveRoutes(['blog.create', 'blog.edit']) }}">
-                            All Posts </a>
+                        <a href="{{ route('resources.index') }}"
+                            class="{{ areActiveRoutes(['resources.create', 'resources.edit']) }}">
+                            All Resources </a>
                     </li>
                     <li>
-                        <a href="{{ route('blog-category.index') }}"
-                            class="{{ areActiveRoutes(['blog-category.create', 'blog-category.edit']) }}"> Categories
+                        <a href="{{ route('resources-category.index') }}"
+                            class="{{ areActiveRoutes(['resources-category.create', 'resources-category.edit']) }}"> Categories
                         </a>
                     </li>
                 </ul>
@@ -424,16 +554,23 @@
             <li class="menu">
                 <a href="#Website" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-airplay"
+                  >
+                    <path
+                      d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"
+                    ></path>
+                    <polygon points="12 15 17 21 7 21 12 15"></polygon>
+                  </svg>
                         <span>Website</span>
                     </div>
                     <div>
@@ -466,16 +603,28 @@
             <li class="menu">
                 <a href="#setting" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"></line>
-                            <line x1="8" y1="12" x2="21" y2="12"></line>
-                            <line x1="8" y1="18" x2="21" y2="18"></line>
-                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                        </svg>
+                        <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-lock"
+                  >
+                    <rect
+                      x="3"
+                      y="11"
+                      width="18"
+                      height="11"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
                         <span>Setting</span>
                     </div>
                     <div>
@@ -496,10 +645,10 @@
                     <li>
                         <a href="{{ route('global.referral') }}"> Referrals </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('languages.index') }}"
                             class="{{ areActiveRoutes(['languages.edit', 'languages.show']) }}"> System Languages </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('currencies.index') }}"
                             class="{{ areActiveRoutes(['currencies.create', 'currencies.edit']) }}"> System Currency
@@ -515,7 +664,7 @@
                         <a href="{{ route('social-media-config.index') }}"> 3rd Party API </a>
                     </li>
                     <li>
-                        <a href="{{ route('expert_payment_settings') }}"> Expert Payment </a>
+                        <a href="{{ route('freelancer_payment_settings') }}"> Expert Payment </a>
                     </li>
                 </ul>
             </li>

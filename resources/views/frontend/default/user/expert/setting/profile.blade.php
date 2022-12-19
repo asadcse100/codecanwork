@@ -4,41 +4,26 @@
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/filepond.min.css">
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.css">
-    <link href="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/sweetalerts2/sweetalerts2.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/light/components/tabs.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/elements/alert.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/light/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/light/notification/snackbar/custom-snackbar.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/sweetalerts2/custom-sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/notification/snackbar/custom-snackbar.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/forms/switches.css">
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('templete') }}/src/assets/css/light/users/account-setting.css" rel="stylesheet" type="text/css" />
-
-
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/tabs.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/elements/alert.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/notification/snackbar/custom-snackbar.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/notification/snackbar/custom-snackbar.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/forms/switches.css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/users/account-setting.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/plugins/css/dark/tagify/custom-tagify.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/plugins/src/tagify/tagify.css" rel="stylesheet" type="text/css" />
-
     {{-- Box icon --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 @endsection
@@ -124,18 +109,6 @@
                                             </svg> Portfolio</a>
                                     </li>
 
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" id="animated-underline-preferences-tab" data-bs-toggle="tab"
-                                            href="#animated-underline-preferences" role="tab"
-                                            aria-controls="animated-underline-preferences" aria-selected="false"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-user">
-                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                                <circle cx="12" cy="7" r="4"></circle>
-                                            </svg> Preferences</a>
-                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -212,6 +185,7 @@
                                         action="{{ route('user_profile.user_update') }}" method="POST"
                                         enctype="multipart/form-data">
                                         <input name="_method" type="hidden" value="PATCH">
+                                        <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="1000000">
                                         @csrf
                                         <div class="info">
                                             <h6>General Information</h6>
@@ -257,7 +231,7 @@
 
                                                                 <p class="text-center">change photo</p>
                                                                 <div class="img-uploader-content">
-                                                                    <input type="file" name="photo"
+                                                                    <input type="file" onchange="upload_check()" id="file_id" name="photo"
                                                                         placeholder="change photo"
                                                                         @if (!empty($user_profile->user->photo)) value="{{ $user_profile->user->photo }}" @endif />
                                                                 </div>
@@ -813,7 +787,6 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-4">
-
                                                 <div class="col-md-4">
                                                     <label>Joining date</label>
                                                     <div class="form-group">
@@ -1133,9 +1106,6 @@
                                                                 name="portfolio_img" aria-label="Sizing example input"
                                                                 aria-describedby="inputGroup">
                                                         </div>
-
-
-
 
                                                         <div class="col-md-12 mt-1 mb-3">
                                                             <div class="form-group text-end">
@@ -1463,5 +1433,17 @@
             }
 
         });
+        function upload_check()
+{
+    var upl = document.getElementById("file_id");
+    var max = document.getElementById("max_id").value;
+
+    if(upl.files[0].size > max)
+    {
+       alert("please upload file must be less than 1 mb!");
+       upl.value = "";
+    }
+
+};
     </script>
 @endsection

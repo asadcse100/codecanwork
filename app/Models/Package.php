@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Package extends Model
 {
     use SoftDeletes;
-    public function scopeFreelancer($query)
+    public function scopeExpert($query)
     {
-        return $query->where('type', 'freelancer');
+        return $query->where('type', 'expert');
     }
 
     public function scopeClient($query)

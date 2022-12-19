@@ -19,7 +19,7 @@ class HireInvitation extends Model
         return $this->belongsTo(User::class, 'sent_by_user_id');
     }
 
-    public function freelancer()
+    public function expert()
     {
         return $this->belongsTo(User::class, 'sent_to_user_id');
     }

@@ -60,7 +60,7 @@ class ProfileController extends Controller
             return view('frontend.default.user.expert.setting.profile', compact('user_profile','verification'));
         }
         else {
-            flash(translate('Sorry! Something went wrong.'))->error();
+            // flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
     }
@@ -74,7 +74,7 @@ class ProfileController extends Controller
     public function basic_info_update(Request $request)
     {
         if(env("DEMO_MODE") == "On"){
-            flash(translate('This action is blocked in demo version!'))->error();
+            // flash(translate('This action is blocked in demo version!'))->error();
             return back();
         }
 
@@ -99,21 +99,21 @@ class ProfileController extends Controller
                 $user_address->postal_code = $request->postal_code;
                 $user_address->phone = $request->phone;
                 if ($user->address()->save($user_address)) {
-                    flash(translate('Your Info has been updated successfully'))->success();
+                    // flash(translate('Your Info has been updated successfully'))->success();
                     return redirect()->route('user.profile');
                 }
                 else {
-                    flash(translate('Sorry! Something went wrong.'))->error();
+                    // flash(translate('Sorry! Something went wrong.'))->error();
                     return back();
                 }
             }
             else {
-                flash(translate('Sorry! Something went wrong.'))->error();
+                // flash(translate('Sorry! Something went wrong.'))->error();
                 return back();
             }
         }
         else {
-            flash(translate('Sorry! Something went wrong.'))->error();
+            // flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
     }
@@ -124,18 +124,18 @@ class ProfileController extends Controller
         $user->photo = $request->profile_photo;
         $user->cover_photo = $request->cover_photo;
         if ($user->save()) {
-            flash(translate('Your Picture has been updated successfully'))->success();
+            // flash(translate('Your Picture has been updated successfully'))->success();
             return redirect()->route('user.profile');
         }
         else {
-            flash(translate('Sorry! Something went wrong.'))->error();
+            // flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
     }
     public function bio_update(Request $request)
     {
         if(env("DEMO_MODE") == "On"){
-            flash(translate('This action is blocked in demo version!'))->error();
+            // flash(translate('This action is blocked in demo version!'))->error();
             return back();
         }
 
@@ -153,7 +153,7 @@ class ProfileController extends Controller
                     $user_profile->skills = json_encode($request->skills);
                 }
                 $user_profile->save();
-                flash(translate('Your info has been updated successfully'))->success();
+                // flash(translate('Your info has been updated successfully'))->success();
                 return redirect()->route('user.profile');
             }
         }
@@ -168,7 +168,7 @@ class ProfileController extends Controller
                 $user_profile->skills = json_encode(array_slice($request->skills, 0, $user->userPackage->skill_add_limit));
             }
             $user_profile->save();
-            flash(translate('Your info has been updated successfully'))->success();
+            // flash(translate('Your info has been updated successfully'))->success();
             return redirect()->route('user.profile');
         }
     }

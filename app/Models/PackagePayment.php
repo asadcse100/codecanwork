@@ -18,9 +18,9 @@ class PackagePayment extends Model
         return $this->belongsTo(Package::class)->withTrashed();
     }
 
-    public function scopeFreelancer($query)
+    public function scopeExpert($query)
     {
-        return $query->where('package_type', 'freelancer');
+        return $query->where('package_type', 'expert');
     }
 
     public function scopeClient($query)

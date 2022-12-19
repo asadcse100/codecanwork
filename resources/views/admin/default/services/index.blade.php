@@ -9,17 +9,29 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="col-md-3   layout-top-spacing">
-                <h5 class="mb-md-0 h6">{{ translate('Service Payments') }}</h5>
-            </div>
+        <div class="middle-content container-xxl p-0">
 
+            <!-- BREADCRUMB -->
+<div class="page-meta">
+    <nav class="breadcrumb-style-one" aria-label="breadcrumb">
+        <div class="row">
+            <div class="col-md-9">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Services</li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+  </div>
+  <!-- /BREADCRUMB -->
+  <div class="row layout-spacing">
             <div class="col-lg-12">
                 <div class="widget-content widget-content-area layout-top-spacing">
                     <form class="" id="sort_projects" action="" method="GET">
                         <div class="card-header row gutters-5" style="justify-content:center">
                             <div class="col-md-3 ml-auto">
-                                <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
+                                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
                                     data-live-search="true" onchange="sort_projects()">
                                     <option value="">{{ translate('Filter by Client') }}</option>
                                     @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
@@ -33,7 +45,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 ml-auto">
-                                <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
+                                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
                                     onchange="sort_projects()">
                                     <option value="">{{ translate('Sort by') }}</option>
                                     <option value="created_at,asc"
@@ -75,7 +87,7 @@
                             href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a>
                     </td>
                     <td><a target="_blank"
-                            href="{{ route('expert.details', $service->user->user_name) }}">{{ $service->user->name }}</a>
+                            href="{{ route('freelancer.details', $service->user->user_name) }}">{{ $service->user->name }}</a>
                     </td>
                     <td> </td>
                     <td>{{ $service->created_at }}</td>

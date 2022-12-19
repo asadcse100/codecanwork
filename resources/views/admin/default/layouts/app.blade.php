@@ -4,7 +4,7 @@
 @include('admin.default.layouts.inc.head')
 @yield('css')
 
-<body class="layout">
+<body class="layout-boxed">
     <!-- BEGIN Dark and Light -->
     <div id="load_screen"></div>
     <!--  END Dark and Light -->

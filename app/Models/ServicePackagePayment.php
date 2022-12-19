@@ -19,7 +19,7 @@ class ServicePackagePayment extends Model
         return $this->belongsTo(ServicePackage::class)->withTrashed();
     }
 
-    public function freelancer() {
+    public function expert() {
         return $this->belongsTo(User::class, 'service_owner_id');
     }
 

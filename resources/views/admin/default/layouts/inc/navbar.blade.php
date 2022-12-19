@@ -1,6 +1,5 @@
 <!--  BEGIN NAVBAR  -->
-<div class="header-container">
-
+<div class="header-container container-xxl">
     <header class="header navbar navbar-expand-sm expand-header">
 
         <a href="javascript:void(0);" class="sidebarCollapse">
@@ -13,15 +12,17 @@
             </svg>
         </a>
 
-        <button class="btn btn-outline-dark btn-icon mb-2 me-4 btn-rounded">
+        {{-- <button class="btn btn-outline-dark btn-icon mb-2 me-4 btn-rounded">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-flag">
                 <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
                 <line x1="4" y1="22" x2="4" y2="15"></line>
             </svg>
-        </button>
-        <button class="btn btn-outline-danger mb-2 me-4">Clear Cache</button>
+        </button> --}}
+        {{-- <button class="btn btn-outline-danger mb-2 me-4">Clear Cache</button>
+        <button class="btn btn-outline-success mb-2 me-4">Digital Office</button>
+        <button class="btn btn-outline-success mb-2 me-4">Report</button> --}}
 
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
@@ -145,8 +146,6 @@
                         </div>
                     </div>
                 </a>
-
-
 
                 <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                     <div class="user-profile-section">

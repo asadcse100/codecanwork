@@ -43,7 +43,7 @@
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
 
-        <div class="">
+        <div class="middle-content container-xxl p-0">
 
             <!-- BREADCRUMB -->
             <div class="page-meta">

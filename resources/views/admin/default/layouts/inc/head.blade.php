@@ -1,5 +1,4 @@
 <head>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ env('APP_URL') }}">
 
@@ -25,4 +24,5 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/css/light/table/datatable/custom_dt_miscellaneous.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/css/dark/table/datatable/dt-global_style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/css/dark/table/datatable/custom_dt_miscellaneous.css">
+    <link href="{{ asset('templete') }}/src/assets/css/dark/custom.css" rel="stylesheet" type="text/css" />
 </head>

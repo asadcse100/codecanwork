@@ -8,27 +8,32 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="col-md-3   layout-top-spacing">
-                <h5 class="mb-md-0 h6">{{ translate('Freelnacer Packages') }}</h5>
+        <div class="middle-content container-xxl p-0">
+                        <!-- BREADCRUMB -->
+<div class="page-meta">
+    <nav class="breadcrumb-style-one" aria-label="breadcrumb">
+        <div class="row">
+            <div class="col-md-10">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Package</li>
+                </ol>
             </div>
-
-
+            <div class="col-md-2">
+                <button style="float: right;" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" class="btn btn-outline-info">Create Package</button>
+            </div>
+        </div>
+    </nav>
+  </div>
+  <!-- /BREADCRUMB -->
             <div class="row layout-spacing">
                 <div class="col-lg-12">
                     <div class="widget-content widget-content-area layout-top-spacing">
                         <form class="" id="sort_projects" action="" method="GET">
                             <div class="card-header row gutters-5" style="justify-content:center">
+
                                 <div class="col-md-3 ml-auto">
-                                    @can('create new expert package')
-                                        <a href="{{ route('expert_package.create', 'expert') }}"
-                                            class="btn btn-outline-primary mb-2 me-4">
-                                            <span>{{ translate('Create New Package') }}</span>
-                                        </a>
-                                    @endcan
-                                </div>
-                                <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
                                         data-live-search="true" onchange="sort_projects()">
                                         <option value="">{{ translate('Filter by Client') }}</option>
                                         @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
@@ -42,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
                                         onchange="sort_projects()">
                                         <option value="">{{ translate('Sort by') }}</option>
                                         <option value="created_at,asc"
@@ -83,101 +88,234 @@
                                     <th>Options</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($packages as $key => $package)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $package->name }}</td>
-                                        <td class="text-capitalize">{{ str_replace('_', ' ', $package->type) }}</td>
-                                        <td>{{ count(\App\Models\PackagePayment::where('package_id', $package->id)->get()) }}
-                                            {{ translate('times') }}</td>
-                                        <td>
-                                            @if ($package->badge != null)
-                                                <img class="img-md" src="{{ asset('profile/badge/' . $package->badge) }}"
-                                                    height="40px" alt="{{ translate('badge') }}">
-                                            @else
-                                                <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}"
-                                                    height="40px" alt="{{ translate('badge') }}">
-                                            @endif
-                                        </td>
+
+                            <div class="modal fade bd-example-modal-lg" id="bd-edit-modal-lg" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+
+                                    <div class="">
+                                        <!-- Start now   -->
+                                        <div class="row">
+
+                                            <div
+                                                class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0">
+
+                                                <div
+                                                    class="widget-content widget-content-area blog-create-section">
+                                                    <div class="col-md-3   layout-top-spacing">
+                                                        <h5 class="mb-md-0 h6">{{ translate('Create New Package') }}</h5>
+                                                    </div>
+                                                    <form class="form-horizontal" action="{{ route('package.store') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="row layout-spacing">
+                                                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0">
+                                                            <div class="widget-content widget-content-area blog-create-section">
+                                                                <div class="row layout-top-spacing p-4">
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Package Name</span>
+                                                                            <input type="text" id="name" name="name" required
+                                                                                placeholder="{{ translate('Eg. Bronze Package') }}"
+                                                                                class="form-control">
+                                                                            <div class="invalid-feedback">
+                                                                                Please fill the Package Name.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <input type="hidden" id="type" name="type" value="freelancer"
+                                                                        class="form-control">
+
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Price</span>
+                                                                            <input type="number" min="0" step="0.01" id="price"
+                                                                                name="price" required placeholder="{{ translate('Eg. 25') }}"
+                                                                                class="form-control">
+                                                                            {{-- <small
+                                                                                class="form-text text-muted">{{ translate('Use 0 for free package') }}</small> --}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Badge</span>
+                                                                            <input class="form-control file-upload-input" name="badge"
+                                                                                type="file" id="formFile">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Icon</span>
+                                                                            <input class="form-control file-upload-input" name="photo"
+                                                                                type="file" id="formFile">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Validate For</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="number_of_days" name="number_of_days" required
+                                                                                placeholder="{{ translate('Eg. 30') }}" class="form-control">
+                                                                            {{-- <small
+                                                                                class="form-text text-muted">{{ translate('Number in days. Use 0 for life time') }}</small> --}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Commision</span>
+                                                                            <input type="number" min="1" step="1" id="commission"
+                                                                                name="commission" required
+                                                                                placeholder="{{ translate('Eg. 5') }}" class="form-control">
+                                                                            {{-- <small
+                                                                                class="form-text text-muted">{{ translate('Amount will be deducted from project payment. Use 0 for no deduction') }}</small> --}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Commision Type</span>
+                                                                            <select class="select2 form-select aiz-selectpicker"
+                                                                                name="commission_type" id="commission_type"
+                                                                                data-toggle="select2" data-placeholder="Choose ...">
+                                                                                <option value="percent">{{ translate('Percent') }}</option>
+                                                                                <option value="amount">{{ translate('Flat Rate') }}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Fixed Projects</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="fixed_limit" name="fixed_limit" required
+                                                                                placeholder="Bid Limitation for Fixed Projects"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Long Term Projects</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="long_term_limit" name="long_term_limit" required
+                                                                                placeholder="Bid Limitation for Long Term Projects"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Skill Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="skill_add_limit" name="skill_add_limit" required
+                                                                                placeholder="Skill Adding Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Portfolio Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="portfolio_add_limit" name="portfolio_add_limit" required
+                                                                                placeholder="Portfolio Adding Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Bio Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="bio_text_limit" name="bio_text_limit" required
+                                                                                placeholder="Bio Word Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Project Bookmark Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="project_bookmark_limit" name="project_bookmark_limit"
+                                                                                placeholder="Project Bookmark Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Job Experience Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="job_experience_limit" name="job_experience_limit" required
+                                                                                placeholder="Job Experience Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6 mb-4">
+                                                                        <div class="input-group mb-3 required">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                                                for="validationCustom01">Service Limit</span>
+                                                                            <input type="number" min="0" step="1"
+                                                                                id="service_limit" name="service_limit" required
+                                                                                placeholder="Service Limit" class="form-control">
+                                                                        </div>
+                                                                    </div>
 
 
+                                                                    <div class="form-group mb-3">
+                                                                        <label>{{ translate('Enable Client Following ?') }}</label>
+                                                                        <div>
+                                                                            <label class="aiz-switch aiz-switch-success mb-0">
+                                                                                <input type="checkbox" checked="checked"
+                                                                                    name="following_status">
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label>{{ translate('Recommended ?') }}</label>
+                                                                        <div>
+                                                                            <label class="aiz-switch aiz-switch-success mb-0">
+                                                                                <input type="checkbox" checked="checked" name="recommended">
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label>{{ translate('Publish Package?') }}</label>
+                                                                        <div>
+                                                                            <label class="aiz-switch aiz-switch-success mb-0">
+                                                                                <input type="checkbox" checked="checked" name="active">
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group mb-0 text-right">
+                                                                        <button type="submit"
+                                                                            class="btn btn-outline-success mb-2 me-4">{{ translate('Create New Package') }}</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
 
-                                        <td>{{ single_price($package->price) }}</td>
-                                        <td>
-                                            {{ $package->commission }} @if ($package->commission_type == 'amount')
-                                                - Flat Rate
-                                            @else
-                                                Percent
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($package->recommended == '1')
-                                                <span
-                                                    class="badge badge-inline badge-success">{{ translate('Recommended') }}</span>
-                                            @elseif($package->recommended == '0')
-                                                <span
-                                                    class="badge badge-inline badge-secondary">{{ translate('Not Recommended') }}</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($package->photo != null)
-                                                <img class="img-md" src="{{ asset('profile/badge/' . $package->photo) }}"
-                                                    height="40px" alt="{{ translate('icon') }}">
-                                            @else
-                                                <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}"
-                                                    height="40px" alt="{{ translate('icon') }}">
-                                            @endif
-                                        </td>
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <!-- End new Blog  -->
+                            </div>
+                        </div>
 
-                                        <td>
-                                            @if ($package->active == '1')
-                                                <span
-                                                    class="badge badge-inline badge-success">{{ translate('Active') }}</span>
-                                            @elseif($package->active == '0')
-                                                <span
-                                                    class="badge badge-inline badge-secondary">{{ translate('Deactive') }}</span>
-                                            @endif
-                                        </td>
-
-                                        <td class="text-right">
-                                            <a href="{{ route($package->type . '_package.edit', encrypt($package->id)) }}"
-                                                class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip"
-                                                data-placement="top" title="Edit">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-edit-2">
-                                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                                    </path>
-                                                </svg>
-                                            </a>
-
-                                            <a href="javascript:void(0);"
-                                                data-href="{{ route('package.destroy', $package->id) }}"
-                                                class="action-btn btn-delete bs-tooltip" data-toggle="tooltip"
-                                                data-placement="top" title="Delete">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-trash-2">
-                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                    </path>
-                                                    <line x1="10" y1="11" x2="10" y2="17">
-                                                    </line>
-                                                    <line x1="14" y1="11" x2="14" y2="17">
-                                                    </line>
-                                                </svg>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            </tbody>
                         </table>
                     </div>
                 </div>

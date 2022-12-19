@@ -15,9 +15,9 @@ class MilestonePayment extends Model
         return $this->belongsTo(User::class, 'client_user_id');
     }
 
-    public function freelancer()
+    public function expert()
     {
-        return $this->belongsTo(User::class, 'freelancer_user_id');
+        return $this->belongsTo(User::class, 'expert_user_id');
     }
 
     public function project()

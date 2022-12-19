@@ -1,15 +1,9 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
+        <div class="middle-content container-xxl p-0">
             <div class="layout-top-spacing">
             </div>
             <div class="row">
@@ -19,7 +13,7 @@
                             <h1 class="mb-0 h6">{{ translate('Skill list') }}</h1>
                         </div>
                         <div class="card-body">
-                            <table class="table aiz-table mb-0">
+                            <table id="skills_data" class="table dt-table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -27,48 +21,13 @@
                                         <th class="text-right">{{ translate('Options') }}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($skills as $key => $skill)
-                                        <tr>
-                                            <td>{{ $key + 1 + ($skills->currentPage() - 1) * $skills->perPage() }}</td>
-                                            <td>{{ $skill->name }}</td>
-
-                                            <td class="text-right">
-                                                <a href="{{ route('skills.edit', encrypt($skill->id)) }}"
-                                                    class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip"
-                                                    data-placement="top" title="Edit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-edit-2">
-                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                                        </path>
-                                                    </svg>
-                                                </a>
-
-                                                <a href="javascript:void(0);"
-                                                    data-href="{{ route('skills.destroy', $skill->id) }}"
-                                                    class="action-btn btn-delete bs-tooltip" data-toggle="tooltip"
-                                                    data-placement="top" title="Delete">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-trash-2">
-                                                        <polyline points="3 6 5 6 21 6"></polyline>
-                                                        <path
-                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                        </path>
-                                                        <line x1="10" y1="11" x2="10" y2="17">
-                                                        </line>
-                                                        <line x1="14" y1="11" x2="14" y2="17">
-                                                        </line>
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
                             </table>
+
+                            <div class="modal fade bd-example-modal-lg" id="bd-edit-modal-lg" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            
+                        </div>
+
                             {{-- <div class="aiz-pagination aiz-pagination-center">
                                 {{ $skills->links() }}
                             </div> --}}
@@ -83,13 +42,14 @@
                         <div class="card-body">
                             <form class="form-horizontal" action="{{ route('skills.store') }}" method="POST"
                                 enctype="multipart/form-data">
+                                <input type="hidden" name="id" id="id">
                                 @csrf
 
                                 <div class="col-sm-12 mb-4">
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Professional Types</span>
 
-                                        <select name="profe_id" class="from-select">
+                                        <select name="profe_id" id="profe_id" class="from-select">
                                             @foreach ($category as $profe_id)
                                                 <option value="{{ $profe_id->id }}">{{ $profe_id->name }}</option>
                                             @endforeach
@@ -123,9 +83,78 @@
     @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+   <script>
+    var editor;
+    function editId(vid) {
+         // A reference to the editor editable element in the DOM.
+         const domEditableElement = document.querySelector( '.ck-editor__editable' );
+        // Get the editor instance from the editable element.
+        const editorInstance = domEditableElement.ckeditorInstance;
+            $("#id").val(vid);
+            $.ajax({
+                    method: "GET",
+                    url: "{{ route('getSkills_details') }}",
+                    data: {
+                        id: vid
+                    }
+                })
+                .done(function(msg) {
+                    $('#name').val(msg.name);
+                    // $('#profe_id').val(msg.profe_id);
+                    // Use the editor instance API. for the ckeditor
+                    editorInstance.setData(msg.short_description );
+                    console.log(msg);
+                });
 
-    <!-- END PAGE LEVEL SCRIPTS -->
+        }
+    $(document).ready(function () {
+        $('#skills_data').DataTable({
+            "processing": true,
+            "responsive": true,
+            "serverSide": true,
+            "ajax":{
+                     "url": "{{ route('getSkills') }}",
+                     "dataType": "json",
+                     "type": "POST",
+                     "data":{ _token: "{{csrf_token()}}"}
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "name" },
+                // { "data": "profe_id" },
+                {
+                    'className': 'text-center',
+                    "data": "options"
+                }
+            ],
+
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+        "<'table-responsive'tr>" +
+        "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+        "oLanguage": {
+            "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+            "sInfo": "Showing page _PAGE_ of _PAGES_",
+            "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+            "sSearchPlaceholder": "Search...",
+           "sLengthMenu": "Results :  _MENU_",
+        },
+        "stripeClasses": [],
+        "lengthMenu": [10, 20, 50],
+        "pageLength": 10
+
+        });
+    });
+
+
+    $('#skills_data tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" class="form-control" placeholder="Search '+title+'" />' );
+    } );
+
+        function sort_freelancers(el) {
+            $('#sort_freelancers').submit();
+        }
+   </script>
     <script type="text/javascript">
         function detailsInfo(e) {
             $('#info-modal-content').html(

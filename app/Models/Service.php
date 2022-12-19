@@ -10,7 +10,7 @@ class Service extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
-    protected $table = 'freelancer_services';
+    protected $table = 'expert_services';
 
     public function user()
     {
