@@ -6,9 +6,6 @@
         font-size: 18px !important;
     }
 
-
-
-
     /* torab start*/
     .my-drpdown-menu {
         width: 200px;
@@ -27,7 +24,6 @@
     .service-drpdown:hover .my-drpdown-menu {
         display: block;
     }
-
 
     .service-drpdown {
 
@@ -92,7 +88,6 @@
         /* padding: 0px 13px !important; */
     }
 
-
     .my-drpdown-item:hover .sub-menu {
         display: inline-block !important;
     }
@@ -135,15 +130,11 @@
             padding: 10px 0px;
         }
 
-
         .sub-menu {
             left: 200px !important;
             width: 170px;
             margin-left: -70px !important;
-
         }
-
-
     }
 
     .flex-grows {
@@ -151,8 +142,6 @@
     }
 
     /* torab end*/
-
-
 
     /* torab */
 </style>

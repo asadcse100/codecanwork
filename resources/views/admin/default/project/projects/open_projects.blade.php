@@ -10,7 +10,7 @@
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
         <div class="">
-            <div class="col-md-3   layout-top-spacing">
+            <div class="col-md-3 layout-top-spacing">
                 <h5 class="mb-md-0 h6">{{ translate('Open Projects') }}</h5>
             </div>
 
@@ -21,7 +21,7 @@
                         <form class="" id="sort_projects" action="" method="GET">
                             <div class="card-header row gutters-5" style="justify-content:center">
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
                                         data-live-search="true" onchange="sort_projects()">
                                         <option value="">{{ translate('Filter by Client') }}</option>
                                         @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
@@ -35,7 +35,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
                                         onchange="sort_projects()">
                                         <option value="">{{ translate('Sort by') }}</option>
                                         <option value="created_at,asc"
@@ -63,78 +63,41 @@
         <table id="individual-col-search" class="table dt-table-hover">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
-                    <th>Title</th>
-                    <th>Project Category</th>
-                    <th>Type</th>
-                    <th>Client</th>
-                    <th>Budget</th>
-                    @if (\App\Models\SystemConfiguration::where('type', 'project_approval')->first()->value == 1)
-                        <th data-breakpoints="md">{{ translate('Approval') }}</th>
-                    @endif
-                    <th>Posted at</th>
-                    <th class="text-center dt-no-sorting">Options</th>
+                    <th>#</th>
+                    <th width="20%">{{translate('Title')}}</th>
+                    <th data-breakpoints="md">{{translate('Project Category')}}</th>
+                    <th data-breakpoints="md">{{translate('Type')}}</th>
+                    <th data-breakpoints="md">{{translate('Client Name')}}</th>
+                    <th>{{translate('Price')}}</th>
+                    <th>{{translate('Posted at')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $key => $project)
                     <tr>
-                        <td class="text-center">
-                            {{ $key + 1 + ($projects->currentPage() - 1) * $projects->perPage() }}
-                        </td>
-                        <td><a href="{{ route('project.details', $project->slug) }}" target="_blank"
-                                class="text-reset">{{ $project->name }}</a></td>
-
+                        <td>{{ ($key+1) + ($projects->currentPage() - 1)*$projects->perPage() }}</td>
+                        <td><a href="{{ route('project.details', $project->slug) }}" target="_blank" class="text-reset">{{ $project->name }}</a></td>
                         <td>
-                            @if ($project->project_category != null)
-                                {{ $project->project_category->name }}
-                            @endif
+                          @if($project->project_category != null)
+                            {{$project->project_category->name}}
+                          @endif
                         </td>
-                        <td>{{ $project->type }}</td>
-
+                        <td>{{ translate($project->type) }}</td>
                         <td>
                             @if ($project->client != null)
-                                {{ $project->client->name }}
+                                {{$project->client->name}}
                             @endif
                         </td>
-                        <td>{{ single_price($project->price) }}</td>
-                        @if (\App\Models\SystemConfiguration::where('type', 'project_approval')->first()->value == 1)
-                            <td>
-                                <label class="aiz-switch aiz-switch-success mb-0">
-                                    <input type="checkbox" id="project_approval.{{ $key }}"
-                                        onchange="project_approval(this)" value="{{ $project->id }}"
-                                        @if ($project->project_approval == 1) checked @endif>
-                                    <span></span>
-                                </label>
-                            </td>
-                        @endif
-                        <td>{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</td>
-
-                            <td>
-                        <a href="#"
-                            data-href="{{ route('delete_project_by_admin', encrypt($project->id)) }}"
-                            title="Delete">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="feather feather-trash-2 table-cancel">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                                <line x1="10" y1="11" x2="10" y2="17">
-                                </line>
-                                <line x1="14" y1="11" x2="14" y2="17">
-                                </line>
-                            </svg>
-                        </a>
-
-                        </td>
+                        <td>{{single_price($project->price)}}</td>
+                        <td>{{Carbon\Carbon::parse($project->created_at)->diffForHumans()}}</td>
                     </tr>
                 @endforeach
 
             </tbody>
         </table>
+        <div class="aiz-pagination aiz-pagination-center">
+            {{ $projects->appends(request()->input())->links() }}
+        </div>
     </div>
 </div>
 </div>

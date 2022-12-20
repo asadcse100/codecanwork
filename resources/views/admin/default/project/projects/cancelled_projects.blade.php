@@ -21,7 +21,7 @@
                         <form class="" id="sort_projects" action="" method="GET">
                             <div class="card-header row gutters-5" style="justify-content:center">
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
                                         data-live-search="true" onchange="sort_projects()">
                                         <option value="">{{ translate('Filter by Client') }}</option>
                                         @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
@@ -35,7 +35,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
                                         onchange="sort_projects()">
                                         <option value="">{{ translate('Sort by') }}</option>
                                         <option value="created_at,asc"
@@ -62,29 +62,27 @@
         <table id="individual-col-search" class="table dt-table-hover">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
-                    <th>Title</th>
-                    <th>Project Category</th>
-                    <th>Type</th>
-                    <th>Client</th>
-                    <th>Price</th>
-                    <th>Posted at</th>
+                    <th>#</th>
+                    <th width="20%">{{translate('Title')}}</th>
+                    <th>{{translate('Project Category')}}</th>
+                    <th>{{translate('Type')}}</th>
+                    <th>{{translate('Client Name')}}</th>
+                    <th>{{translate('Price')}}</th>
+                    <th>{{translate('Refund Amount')}}</th>
+                    <th>{{translate('Posted at')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $key => $project)
                     <tr>
-                        <td class="text-center">
-                            {{ $key + 1 + ($projects->currentPage() - 1) * $projects->perPage() }}</td>
-                        <td>{{ $key + 1 + ($projects->currentPage() - 1) * $projects->perPage() }}</td>
-                        <td><a href="{{ route('project.details', $project->slug) }}" target="_blank"
-                                class="text-reset">{{ $project->name }}</a></td>
+                        <td>{{ ($key+1) + ($projects->currentPage() - 1)*$projects->perPage() }}</td>
+                        <td><a href="{{ route('project.details', $project->slug) }}" target="_blank" class="text-reset">{{ $project->name }}</a></td>
                         <td>
-                            @if ($project->project_category != null)
-                                {{ $project->project_category->name }}
+                            @if($project->project_category != null)
+                            {{$project->project_category->name}}
                             @endif
                         </td>
-                        <td>{{ $project->type }}</td>
+                        <td>{{ translate($project->type) }}</td>
                         <td>
                             @if ($project->client != null)
                                 {{ $project->client->name }}
@@ -95,7 +93,8 @@
                                 {{ single_price($project->project_user->hired_at) }}
                             @endif
                         </td>
-                        <td>{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</td>
+                        <td>{{ $project->cancel_project != null ? $project->cancel_project->refund_percentage : 0 }}%</td>
+                        <td>{{Carbon\Carbon::parse($project->created_at)->diffForHumans()}}</td>
                     </tr>
                 @endforeach
 
@@ -106,9 +105,7 @@
 </div>
 </div>
 
-
 </div>
-
 </div>
 <!--  END CONTENT AREA  -->
 @endsection
@@ -116,11 +113,8 @@
 @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-<!-- END PAGE LEVEL SCRIPTS -->
 <script type="text/javascript">
-    function sort_projects(el) {
+    function sort_projects(el){
         $('#sort_projects').submit();
     }
 </script>

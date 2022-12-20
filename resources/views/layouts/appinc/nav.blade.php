@@ -62,7 +62,6 @@
         display: none;
     }
 
-
     /* torab start*/
     .my-drpdown-menu {
         width: 200px;
@@ -82,7 +81,6 @@
         display: block;
     }
 
-
     .service-drpdown {
         color: aliceblue;
         font-size: 20px;
@@ -94,7 +92,6 @@
     .service-drpdown:hover {
         cursor: pointer;
         font-size: "20px";
-
     }
 
     .my-drpdown-item {
@@ -102,14 +99,12 @@
         color: black !important;
         /* padding: 0px 13px !important; */
         font-size: 20px;
-
     }
 
     .my-drpdown-item-a {
         display: inline-block !important;
         width: 100%;
         padding: 2px 13px;
-
     }
 
     .my-drpdown-item-a:hover {
@@ -125,7 +120,6 @@
         overflow: unset;
         font-family: "El Messiri SemiBold";
         font-size: "20px";
-
     }
 
     .sub-menu {
@@ -157,8 +151,6 @@
         display: inline-block !important;
         color: aliceblue;
         padding: 2px 13px;
-
-
     }
 
     .sub-menu a:hover {

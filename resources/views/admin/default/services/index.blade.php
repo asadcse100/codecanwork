@@ -9,7 +9,7 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
+        <div class="">
 
             <!-- BREADCRUMB -->
 <div class="page-meta">
@@ -87,7 +87,7 @@
                             href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a>
                     </td>
                     <td><a target="_blank"
-                            href="{{ route('freelancer.details', $service->user->user_name) }}">{{ $service->user->name }}</a>
+                            href="{{ route('expert.details', $service->user->user_name) }}">{{ $service->user->name }}</a>
                     </td>
                     <td> </td>
                     <td>{{ $service->created_at }}</td>

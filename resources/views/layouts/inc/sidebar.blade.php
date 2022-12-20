@@ -244,7 +244,7 @@
             <!-- End Update by Bashir following_client-->
 
             <!-- update by Bashir following_client-->
-            <li class="menu">
+<li class="menu">
     <a href="{{ route('user_review', 'expert') }}" class="dropdown-toggle">
         <div class="">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

@@ -1,16 +1,9 @@
 @extends('admin.default.layouts.app')
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
 
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
+    <div class="layout-px-spacing layout-top-spacing">
         <div class="">
-            <div class="layout-top-spacing">
-            </div>
 
             <div class="row layout-spacing">
                 <div class="col-lg-12">

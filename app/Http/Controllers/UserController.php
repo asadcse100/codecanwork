@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserProfile;
 use App\Models\ExpertAccount;
+use App\Models\Package;
+use App\Models\UserPackage;
 use Cache;
 
 class UserController extends Controller
@@ -55,9 +57,8 @@ class UserController extends Controller
         else {
             $experts = $experts->orderBy('created_at', 'desc')->paginate(10);
         }
-
-        return view('admin.default.expert.experts.index', compact('experts', 'sort_search', 'col_name', 'query'));
-
+        $packages = Package::where('active', 1)->get();
+        return view('admin.default.expert.experts.index', compact('experts', 'sort_search', 'col_name', 'query', 'packages'));
     }
 
      public function login($id)

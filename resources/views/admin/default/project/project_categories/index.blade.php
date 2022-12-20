@@ -149,7 +149,7 @@
                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                             for="validationCustom01">Name</span>
                                         <input type="text" id="name" name="name"
-                                            placeholder="{{ translate('Category Name') }}" class="form-control" required>
+                                            placeholder="{{ translate('Category Name') }}" class="form-control form-control-sm" required>
                                         <div class="invalid-feedback">
                                             Please fill the Category Name.
                                         </div>
@@ -159,7 +159,7 @@
                                     <div class="input-group mb-3 required">
                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                             for="validationCustom01">Parent</span>
-                                        <select class="form-select aiz-selectpicker" name="parent_id" data-toggle="select2"
+                                        <select class="form-select form-control-sm aiz-selectpicker" name="parent_id" data-toggle="select2"
                                             data-placeholder="Choose ..." data-live-search="true">
                                             <option value="0">{{ translate('No Parent') }}</option>
                                             @foreach (\App\Models\ProjectCategory::all() as $project_cat)
@@ -170,14 +170,13 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="image">{{ translate('Icon') }}</label>
                                     <input class="form-control file-upload-input" type="file" name="photo"
                                         id="formFile">
                                 </div>
                                 @can('project cat create')
                                     <div class="form-group mb-3 text-right">
                                         <button type="submit"
-                                            class="btn btn-outline-success btn-sm">{{ translate('Save New Category') }}</button>
+                                            class="btn btn-outline-success p-1">{{ translate('Save New Category') }}</button>
                                     </div>
                                 @endcan
                             </form>
