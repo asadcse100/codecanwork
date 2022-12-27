@@ -88,7 +88,7 @@ class PackageController extends Controller
             $package->recommended = 0;
         }
         if ($package->save()) {
-            flash(translate('New Package has been inserted successfully'))->success();
+            // flash(translate('New Package has been inserted successfully'))->success();
             return redirect()->route($request->type.'_package.index',$request->type);
         }
     }
@@ -143,7 +143,7 @@ class PackageController extends Controller
             $package->recommended = 0;
         }
         if ($package->save()) {
-            flash(translate('New Package has been updated successfully'))->success();
+            // flash(translate('New Package has been updated successfully'))->success();
             return redirect()->route($request->type.'_package.index',$request->type);
         }
         else {
@@ -157,7 +157,7 @@ class PackageController extends Controller
         $package = Package::findOrFail($id);
 
         if(Package::destroy($id)){
-            flash(translate('Package Info has been deleted successfully'))->success();
+            // flash(translate('Package Info has been deleted successfully'))->success();
             return redirect()->back();
         }
         return back();
@@ -197,7 +197,7 @@ class PackageController extends Controller
             $userPackage->user_id = Auth::user()->id;
         }
         elseif ($userPackage->package_id == $package->id) {
-            flash(translate('You are using this package already.'))->warning();
+            // flash(translate('You are using this package already.'))->warning();
             return back();
         }
         $userPackage->package_id = $package->id;
@@ -229,7 +229,7 @@ class PackageController extends Controller
 
         $userPackage->save();
 
-        flash(translate('New Package has been purchased successfully'))->success();
+        // flash(translate('New Package has been purchased successfully'))->success();
         return redirect()->route('dashboard');
     }
 }

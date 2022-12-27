@@ -29,8 +29,9 @@ class BlogController extends Controller
         }
 
         $blogs = $blogs->paginate(15);
+        $blog_categories = BlogCategory::all();
 
-        return view('admin.default.blog_system.blog.index', compact('blogs','sort_search'));
+        return view('admin.default.blog.index', compact('blogs','sort_search','blog_categories'));
     }
 
     /**
@@ -41,7 +42,7 @@ class BlogController extends Controller
     public function create()
     {
         $blog_categories = BlogCategory::all();
-        return view('admin.default.blog_system.blog.create', compact('blog_categories'));
+        return view('admin.default.blog.create', compact('blog_categories'));
     }
 
     /**
@@ -74,7 +75,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        flash(translate('Blog post has been created successfully'))->success();
+        // flash(translate('Blog post has been created successfully'))->success();
         return redirect()->route('blog.index');
     }
 
@@ -100,7 +101,7 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         $blog_categories = BlogCategory::all();
 
-        return view('admin.default.blog_system.blog.edit', compact('blog','blog_categories'));
+        return view('admin.default.blog.edit', compact('blog','blog_categories'));
     }
 
     /**
@@ -133,7 +134,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        flash(translate('Blog post has been updated successfully'))->success();
+        // flash(translate('Blog post has been updated successfully'))->success();
         return redirect()->route('blog.index');
     }
 

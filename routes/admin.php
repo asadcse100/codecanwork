@@ -10,15 +10,21 @@ Route::get('/update/step1', 'UpdateController@step1')->name('update.step1');
 Route::get('/update/step2', 'UpdateController@step2')->name('update.step2');
 
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
-    Route::get('/admin', 'HomeController@admin_dashboard')->name('admin.dashboard');
+    Route::get('/', 'HomeController@admin_dashboard')->name('admin.dashboard');
 	Route::get('profile', 'ProfileController@admin_profile')->name('admin.profile');
 	Route::post('profile-update/{id}', 'ProfileController@update_admin_profile')->name('admin_profile.update');
     Route::get('global/referral', 'ReferralController@referrals')->name('global.referral');
     Route::post('update/referral', 'ReferralController@update')->name('update.referral');
 	Route::resource('/project-categories', 'ProjectCategoryController');
 	Route::get('project-categories/destroy/{id}', 'ProjectCategoryController@destroy')->name('project-categories.destroy');
-	Route::resource('skills','SkillController');
-	Route::get('/skills/destroy/{id}', 'SkillController@destroy')->name('skills.destroy');
+
+
+	Route::resource('/skills', 'SkillController');
+	Route::post('skills/getSkills', 'SkillController@getSkills')->name('getSkills');
+	Route::get('getSkills_details', 'SkillController@getSkills_details')->name('getSkills_details');
+	Route::get('skills/destroy/{id}', 'SkillController@destroy')->name('skills.destroy');
+
+
 	Route::resource('badges','BadgeController');
 	Route::get('/badges/destroy/{id}', 'BadgeController@destroy')->name('badges.destroy');
 	Route::get('/client-badge', 'BadgeController@client_badges_create')->name('client_badges_create');

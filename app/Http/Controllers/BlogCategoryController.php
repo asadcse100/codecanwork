@@ -28,7 +28,7 @@ class BlogCategoryController extends Controller
         }
 
         $categories = $categories->paginate(15);
-        return view('admin.default.blog_system.category.index', compact('categories', 'sort_search'));
+        return view('admin.default.category.index', compact('categories', 'sort_search'));
     }
 
     /**
@@ -62,20 +62,10 @@ class BlogCategoryController extends Controller
         $category->save();
 
 
-        flash(translate('Blog category has been created successfully'))->success();
+        // flash(translate('Blog category has been created successfully'))->success();
         return redirect()->route('blog-category.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
