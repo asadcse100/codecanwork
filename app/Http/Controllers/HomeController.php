@@ -63,7 +63,6 @@ class HomeController extends Controller
     public function dashboard()
     {
         $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
-
         if(isExpert()){
             return view('frontend.default.user.expert.dashboard');
         }

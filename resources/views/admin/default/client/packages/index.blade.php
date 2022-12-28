@@ -1,10 +1,5 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
@@ -27,8 +22,8 @@
                                     @endcan
                                 </div>
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
-                                        data-live-search="true" onchange="sort_projects()">
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0"
+                                        name="user_id" id="user_id" data-live-search="true" onchange="sort_projects()">
                                         <option value="">{{ translate('Filter by Client') }}</option>
                                         @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
                                             @if ($client->user != null)
@@ -41,8 +36,8 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
-                                        onchange="sort_projects()">
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0"
+                                        name="type" id="type" onchange="sort_projects()">
                                         <option value="">{{ translate('Sort by') }}</option>
                                         <option value="created_at,asc"
                                             @isset($col_name, $query) @if ($col_name == 'created_at' && $query == 'asc') selected @endif
@@ -169,10 +164,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
     </div>
     <!--  END CONTENT AREA  -->
 @endsection
@@ -180,9 +172,6 @@
     @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
         function sort_clients(el) {
             $('#sort_clients').submit();

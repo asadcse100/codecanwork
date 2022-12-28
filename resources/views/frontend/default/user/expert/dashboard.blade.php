@@ -5,27 +5,41 @@
     <link href="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-
-
     <link href="{{ asset('templete') }}/src/assets/css/light/users/user-profile.css" rel="stylesheet" type="text/css" />
-
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/users/user-profile.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
     <link rel="stylesheet" type="text/css"
     href="{{ asset('templete') }}/src/plugins/css/dark/clipboard/custom-clipboard.css">
-
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('templete') }}/src/plugins/css/light/clipboard/custom-clipboard.css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
     <div class="layout-px-spacing">
 
         <div class="">
+
+
+            <div class="col-sm-7 mb-3">
+                <div class="input-group clipboard-input" style="font-size:20px">
+                    <span class="input-group-text text-primary">Refer Url</span>
+                    <input type="text" class="form-control" id="copy-basic-input"
+                        value="{{ route('auth.invite', ['ref' => get_ref_code(Auth::user()->id)]) }}">
+                    <div class="copy-icon jsclipboard cbBasic" data-bs-trigger="click" title="Copied"
+                        data-clipboard-target="#copy-basic-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+                            <rect x="9" y="9" width="13" height="13" rx="2"
+                                ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
 
             <div class="row layout-top-spacing">
                 <div class="col-md-12">
@@ -55,42 +69,6 @@
                     @endif
                 </div>
 
-                <div class="nk-refwg-invite layout-spacing">
-                    <div class="nk-refwg-head g-3">
-                        <div class="nk-refwg-title">
-                            <h5 class="title ">{{ __(sys_settings('referral_invite_title', 'Refer Us & Earn')) }}</h5>
-                            @if (sys_settings('referral_invite_text'))
-                                <div class="title-sub">
-                                    {{ __(sys_settings('referral_invite_text', 'Use the below link to invite your friends.')) }}
-                                </div><br>
-                            @endif
-                        </div>
-                        {{-- <div class="nk-refwg-action">
-                            <a href="#" class="btn btn-primary">{{__('Invite')}}</a>
-                        </div> --}}
-                    </div>
-                    <div class="clipboard">
-                        <form class="form-horizontal">
-                            <div class="clipboard-input">
-                                <input type="text" class="form-control" id="copy-basic-input"
-                                    value="{{ route('auth.invite', ['ref' => get_ref_code(Auth::user()->id)]) }}">
-                                <div class="copy-icon jsclipboard cbBasic" data-bs-trigger="click" title="Copied"
-                                    data-clipboard-target="#copy-basic-input"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-copy">
-                                        <rect x="9" y="9" width="13" height="13" rx="2"
-                                            ry="2"></rect>
-                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-
-
 
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-four">
@@ -99,11 +77,9 @@
                                 <div class="w-info">
                                     <h6 class="value">Total Completed Projects</h6>
                                 </div>
-
                             </div>
 
                             <div class="w-content">
-
                                 <div class="w-info">
                                     <p class="value">@php
                                         $completedProjects = 0;
@@ -115,7 +91,6 @@
                                     @endphp
                                     <div class="h3 fw-700">{{ $completedProjects }}</div>
                                 </div>
-
                             </div>
 
                             <div class="w-progress-stats">
@@ -142,7 +117,6 @@
                                 <div class="w-info">
                                     <h6 class="value">Running Projects</h6>
                                 </div>
-
                             </div>
 
                             <div class="w-content">

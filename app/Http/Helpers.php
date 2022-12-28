@@ -6,7 +6,10 @@ use App\Models\Role;
 use App\Mail\EmailManager;
 use App\Models\ChatThread;
 use App\Models\Translation;
+use App\Models\ReferralCode;
 use App\Models\User;
+use App\Models\Setting;
+use Illuminate\Support\Str;
 
 if (!function_exists('areActiveRoutes')) {
     function areActiveRoutes(array $routes, $output = "active")
@@ -148,6 +151,60 @@ if (!function_exists('getUserRole')) {
         }
     }
 }
+
+if (!function_exists('get_ref_code')) {
+    /**
+     * @param $user
+     * @return string
+     * @version 1.0.0
+     * @since 1.0
+     */
+    function get_ref_code($user)
+    {
+        if (!empty($user->referral_code)) {
+            return $user->referral_code;
+        } else {
+            $userId = is_object($user) ? $user->id : $user;
+            $refer = ReferralCode::where('user_id', $userId)->first();
+            $refer_id = ReferralCode::all()->max('id');
+            $zero_prefix = sprintf("%06d", $refer_id);
+            $check_digit = ean13_check_digit($zero_prefix);
+// dd($check_digit);
+            // if (blank($refer)) {
+            //     $refer = ReferralCode::create([
+            //                 'user_id' => $userId,
+            //                 'code' => hash_id($userId),
+            //                 'type' => 0,
+            //             ]);
+            // }
+            if (blank($refer)) {
+                $refer = ReferralCode::create([
+                            'user_id' => $userId,
+                            'code' => $check_digit,
+                            'type' => 0,
+                        ]);
+            }
+            return $refer->code;
+        }
+    }
+}
+
+function ean13_check_digit($digits){
+    //first change digits to a string so that we can access individual numbers
+    $digits =(string)$digits;
+    // 1. Add the values of the digits in the even-numbered positions: 2, 4, 6, etc.
+    $even_sum = $digits[1] + $digits[3] + $digits[5];
+    // 2. Multiply this result by 3.
+    $even_sum_three = $even_sum * 3;
+    // 3. Add the values of the digits in the odd-numbered positions: 1, 3, 5, etc.
+    $odd_sum = $digits[0] + $digits[2] + $digits[4];
+    // 4. Sum the results of steps 2 and 3.
+    $total_sum = $even_sum_three + $odd_sum;
+    // 5. The check character is the smallest number which, when added to the result in step 4,  produces a multiple of 10.
+    $next_ten = (ceil($total_sum/10))*10;
+    $check_digit = $next_ten - $total_sum;
+    return $digits . $check_digit;
+    }
 
 if (!function_exists('isAdmin')) {
     function isAdmin()

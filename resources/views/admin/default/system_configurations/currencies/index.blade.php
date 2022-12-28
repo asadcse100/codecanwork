@@ -1,17 +1,9 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
+        <div class="layout-top-spacing">
 
             <div class="aiz-titlebar mt-2 mb-3">
                 <div class="row align-items-center">

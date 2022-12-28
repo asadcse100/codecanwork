@@ -1,16 +1,10 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
+        <div class="layout-top-spacing">
+
             <div class="row">
                 <div class="col-lg-7">
                     <div class="card">
@@ -54,7 +48,6 @@
                                                 @endif
                                             </td>
 
-
                                             <td class="text-center">
                                                 <div class="dropdown">
                                                     <a class="dropdown-toggle" href="#" role="button"
@@ -70,22 +63,14 @@
                                                         </svg>
                                                     </a>
                                                     <div class="dropdown-menu my-5" aria-labelledby="dropdownMenuLink20">
-
-
                                                         <a href="{{ route('client_badges_edit', encrypt($badge->id)) }}"
                                                             class="dropdown-item">Edit</a>
-
-
-
                                                         <a class="dropdown-item"
                                                             href="{{ route('badges.destroy', $badge->id) }}"
                                                             onclick="deleteFn()">Delete</a>
-
                                                     </div>
                                                 </div>
                                             </td>
-
-
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -103,25 +88,24 @@
                             <form class="form-horizontal" action="{{ route('badges.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="row layout-spacing">
+                                <div class="row">
                                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0">
-                                        <div class="card">
-                                            <div class="row layout-top-spacing p-4">
-                                                <div class="col-sm-12 mb-4">
+                                            <div class="row p-4">
+                                                <div class="col-sm-12 mb-2">
                                                     <div class="input-group mb-3 required">
                                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                                             for="validationCustom01">Title</span>
                                                         <input type="text" id="name" name="name" required
                                                             placeholder="{{ translate('Eg. Completed 100+ projects') }}"
-                                                            class="form-control" required>
+                                                            class="form-control form-control-sm" required>
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="role_id" value="client">
-                                                <div class="col-sm-12 mb-4">
+                                                <div class="col-sm-12 mb-2">
                                                     <div class="input-group mb-3 required">
                                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                                             for="validationCustom01">Badge Type</span>
-                                                        <select class="form-select aiz-selectpicker" name="type"
+                                                        <select class="form-select form-control-sm aiz-selectpicker" name="type"
                                                             id="type" data-show="selectShow"
                                                             data-target=".min-num-type" data-placeholder="Choose ...">
                                                             <option value="project_badge">{{ translate('Project Badge') }}
@@ -134,21 +118,21 @@
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="role_id" value="client">
-                                                <div class="col-sm-12 mb-4">
+                                                <div class="col-sm-12 mb-2">
                                                     <div class="input-group mb-3 required">
                                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                                             for="validationCustom01">Min number of</span>
                                                         <input type="number" id="value" name="value"
                                                             min="0" step="0.01"
-                                                            placeholder="{{ translate('Eg. 100') }}" class="form-control"
+                                                            placeholder="{{ translate('Eg. 100') }}" class="form-control form-control-sm"
                                                             required>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 mb-4">
+                                                <div class="col-sm-12 mb-2">
                                                     <div class="input-group mb-3 required">
                                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                                             for="validationCustom01">Badge Icon</span>
-                                                        <input class="form-control file-upload-input" type="file"
+                                                        <input class="form-control form-control-sm" type="file"
                                                             name="icon" id="formFile">
                                                     </div>
                                                 </div>
@@ -160,7 +144,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </form>
 
                         </div> <!-- end card-body -->
@@ -175,9 +158,4 @@
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
-@endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
 @endsection

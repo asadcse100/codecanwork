@@ -3,9 +3,7 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
-            <div class="layout-top-spacing">
-            </div>
+        <div class="layout-top-spacing">
             <div class="row">
                 <div class="col-lg-7">
                     <div class="card">
@@ -24,13 +22,9 @@
                             </table>
 
                             <div class="modal fade bd-example-modal-lg" id="bd-edit-modal-lg" aria-hidden="true"
-                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                            
-                        </div>
+                                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 
-                            {{-- <div class="aiz-pagination aiz-pagination-center">
-                                {{ $skills->links() }}
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,13 +77,14 @@
     @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-   <script>
-    var editor;
-    function editId(vid) {
-         // A reference to the editor editable element in the DOM.
-         const domEditableElement = document.querySelector( '.ck-editor__editable' );
-        // Get the editor instance from the editable element.
-        const editorInstance = domEditableElement.ckeditorInstance;
+    <script>
+        var editor;
+
+        function editId(vid) {
+            // A reference to the editor editable element in the DOM.
+            const domEditableElement = document.querySelector('.ck-editor__editable');
+            // Get the editor instance from the editable element.
+            const editorInstance = domEditableElement.ckeditorInstance;
             $("#id").val(vid);
             $.ajax({
                     method: "GET",
@@ -102,59 +97,67 @@
                     $('#name').val(msg.name);
                     // $('#profe_id').val(msg.profe_id);
                     // Use the editor instance API. for the ckeditor
-                    editorInstance.setData(msg.short_description );
+                    editorInstance.setData(msg.short_description);
                     console.log(msg);
                 });
 
         }
-    $(document).ready(function () {
-        $('#skills_data').DataTable({
-            "processing": true,
-            "responsive": true,
-            "serverSide": true,
-            "ajax":{
-                     "url": "{{ route('getSkills') }}",
-                     "dataType": "json",
-                     "type": "POST",
-                     "data":{ _token: "{{csrf_token()}}"}
-            },
-            "columns": [
-                { "data": "id" },
-                { "data": "name" },
-                // { "data": "profe_id" },
-                {
-                    'className': 'text-center',
-                    "data": "options"
-                }
-            ],
+        $(document).ready(function() {
+            $('#skills_data').DataTable({
+                "processing": true,
+                "responsive": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "{{ route('getSkills') }}",
+                    "dataType": "json",
+                    "type": "POST",
+                    "data": {
+                        _token: "{{ csrf_token() }}"
+                    }
+                },
+                "columns": [{
+                        "data": "id"
+                    },
+                    {
+                        "data": "name"
+                    },
+                    // { "data": "profe_id" },
+                    {
+                        'className': 'text-center',
+                        "data": "options"
+                    }
+                ],
 
-            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
-        "<'table-responsive'tr>" +
-        "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
-        "oLanguage": {
-            "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-            "sInfo": "Showing page _PAGE_ of _PAGES_",
-            "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-            "sSearchPlaceholder": "Search...",
-           "sLengthMenu": "Results :  _MENU_",
-        },
-        "stripeClasses": [],
-        "lengthMenu": [10, 20, 50],
-        "pageLength": 10
+                "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                    "<'table-responsive'tr>" +
+                    "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+                "oLanguage": {
+                    "oPaginate": {
+                        "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                        "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                    },
+                    "sInfo": "Showing page _PAGE_ of _PAGES_",
+                    "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                    "sSearchPlaceholder": "Search...",
+                    "sLengthMenu": "Results :  _MENU_",
+                },
+                "stripeClasses": [],
+                "lengthMenu": [20, 50, 100],
+                "pageLength": 20
 
+            });
         });
-    });
 
 
-    $('#skills_data tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" class="form-control" placeholder="Search '+title+'" />' );
-    } );
+        $('#skills_data tfoot th').each(function() {
+            var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Search ' + title + '" />');
+        });
 
         function sort_freelancers(el) {
             $('#sort_freelancers').submit();
         }
-   </script>
+    </script>
     <script type="text/javascript">
         function detailsInfo(e) {
             $('#info-modal-content').html(

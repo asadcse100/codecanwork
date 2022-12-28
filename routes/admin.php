@@ -106,7 +106,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/all-clients', 'UserController@all_clients')->name('all_clients');
 	Route::get('/client-info/{user_name}', 'UserController@client_details')->name('client_info_show');
 	Route::get('user/ban/{id}', 'UserController@destroy')->name('user.ban');
-	Route::get('/verification-requests', 'VerificationController@index')->name('verification_requests');
+	Route::get('/user/login/{id}', 'UserController@login')->name('experts_clients.login');
+    Route::get('/verification-requests', 'VerificationController@index')->name('verification_requests');
 	Route::get('/verification-request/details/{username}', 'VerificationController@show')->name('verification_request_details');
 	Route::get('/verification-request/destroy/{id}', 'VerificationController@destroy')->name('verification_request_delete');
 	Route::post('/verification-accept', 'VerificationController@verification_accept')->name('verififaction_accept');

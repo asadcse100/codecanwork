@@ -624,10 +624,12 @@
                                                     <div class="form-group">
                                                         <label for="country">Skill</label>
                                                         <input name='skills'
-                                                            value='@if (!empty($user_profile->skills)) @foreach (json_decode($user_profile->skills) as $sk){{ $sk->name . ',' }}@endforeach @endif'>
+                                                            value=''>
+                                                        {{-- <input name='skills'
+                                                            value='@if (!empty($user_profile->skills)) @foreach (json_decode($user_profile->skills) as $sk){{ $sk->name . ',' }}@endforeach @endif'> --}}
                                                         @php
                                                             $to_json = \App\Models\Skill::select('id as value', 'name')
-                                                                ->where('category_id', $user_profile->professional_type_id)
+                                                                // ->where('category_id', $user_profile->professional_type_id)
                                                                 ->get()
                                                                 ->toJson();
                                                         @endphp
