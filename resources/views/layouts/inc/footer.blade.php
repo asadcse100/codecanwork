@@ -3,7 +3,7 @@
     <div class="container">
         <p class="text-center text-md-left mt-0">
 
-            <a href="{{ Route('home') }}" class="text-primary"> ZEROPLUS </a> &copy; {{ date('Y') }} All Right
+            <a href="{{ Route('home') }}" class="text-primary"> App </a> &copy; {{ date('Y') }} All Right
             Reserved
 
         </p>

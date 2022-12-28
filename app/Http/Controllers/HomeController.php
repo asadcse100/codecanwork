@@ -58,7 +58,6 @@ class HomeController extends Controller
         return view('admin.default.dashboard');
     }
 
-
     //Redirect user-based dashboard
     public function dashboard()
     {

@@ -65,7 +65,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-md-6">
                             <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                <img src="{{ get_setting('how_it_works_banner_1') ? custom_asset(get_setting('how_it_works_banner_1')) : my_asset('assets/placeholder.jpg') }}" class="img-fluid mx-auto">
+                                <img src="{{ get_setting('how_it_works_banner_1') ? custom_asset(get_setting('how_it_works_banner_1')) : asset('assets/placeholder.jpg') }}" class="img-fluid mx-auto">
                                 <div class="p-4">
                                     @php
                                         echo get_setting('how_it_works_description_1');
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                <img src="{{ get_setting('how_it_works_banner_2') ? custom_asset(get_setting('how_it_works_banner_2')) : my_asset('assets/placeholder.jpg') }}"
+                                <img src="{{ get_setting('how_it_works_banner_2') ? custom_asset(get_setting('how_it_works_banner_2')) : asset('assets/placeholder.jpg') }}"
                                     class="img-fluid mx-auto">
                                 <div class="p-4">
                                     @php
@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                <img src="{{ get_setting('how_it_works_banner_3') ? custom_asset(get_setting('how_it_works_banner_3')) : my_asset('assets/placeholder.jpg') }}"
+                                <img src="{{ get_setting('how_it_works_banner_3') ? custom_asset(get_setting('how_it_works_banner_3')) : asset('assets/placeholder.jpg') }}"
                                     class="img-fluid mx-auto">
                                 <div class="p-4">
                                     @php
@@ -259,7 +259,7 @@
                                         @if($service->image != null)
                                             <img src="{{ custom_asset($service->image) }}" class="card-img-top" alt="service_image" height="212">
                                         @else
-                                            <img src="{{ my_asset('assets/frontend/default/img/placeholder-service.jpg') }}" class="card-img-top" alt="{{ translate('Service Image') }}" height="212">
+                                            <img src="{{ asset('assets/frontend/default/img/placeholder-service.jpg') }}" class="card-img-top" alt="{{ translate('Service Image') }}" height="212">
                                         @endif
                                     </a>
                                     <div class="card-body hov-box-body">
@@ -268,7 +268,7 @@
                                                 @if ($service->user->photo != null)
                                                     <img src="{{ custom_asset($service->user->photo) }}" alt="{{ translate('image') }}" height="35" width="35" class="rounded-circle">
                                                 @else
-                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}" alt="{{ translate('image') }}" height="35" width="35" class="rounded-circle">
+                                                    <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}" alt="{{ translate('image') }}" height="35" width="35" class="rounded-circle">
                                                 @endif
                                             </span>
                                             <span class="d-flex flex-column justify-content-center">
@@ -309,7 +309,7 @@
                 <div class="bg-white">
                     <div class="row mx-0 sm-no-gutters rounded-2 overflow-hidden">
                         <div class="col-lg-6 px-0">
-                            <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : my_asset('assets/placeholder.jpg') }}" alt="" class="w-100 h-100">
+                            <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : asset('assets/placeholder.jpg') }}" alt="" class="w-100 h-100">
                         </div>
                         <div class="col-lg-6 px-0">
                             <div class="bg-primary py-6 px-4 h-100">

@@ -1,19 +1,19 @@
 @extends('admin.default.layouts.app')
 
-@section('content')
+@section('css')
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/widgets/modules-widgets.css">
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/widgets/modules-widgets.css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <!--  BEGIN CONTENT AREA  -->
+@endsection
+@section('content')
 
+    <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="p-0">
+        <div class="">
             <div class="row layout-top-spacing">
                 <!-- Analytics -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -239,7 +239,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="transactions-list">
                                 <div class="t-item">
                                     <div class="t-company-name">
@@ -259,7 +258,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="transactions-list t-secondary">
                                 <div class="t-item">
                                     <div class="t-company-name">
@@ -284,8 +282,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="transactions-list t-info">
                                 <div class="t-item">
                                     <div class="t-company-name">
@@ -304,7 +300,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="transactions-list">
                                 <div class="t-item">
                                     <div class="t-company-name">
@@ -317,7 +312,6 @@
                                             <h4>Oscar Garner</h4>
                                             <p class="meta-date">20 Feb 1:00PM</p>
                                         </div>
-
                                     </div>
                                     <div class="t-rate rate-dec">
                                         <p><span>-$22.00</span></p>
@@ -327,26 +321,12 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
         </div>
     </div>
-
     </div>
-
-
-
-
-
-
     </div>
-
     </div>
-
     </div>
 
     <!--  END CONTENT AREA  -->

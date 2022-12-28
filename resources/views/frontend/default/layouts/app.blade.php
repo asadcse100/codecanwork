@@ -59,14 +59,14 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="{{ my_asset('assets/common/css/vendors.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/vendors.css') }}">
     @if($lang != null && $lang->rtl == 1)
-    <link rel="stylesheet" href="{{ my_asset('assets/common/css/bootstrap-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/bootstrap-rtl.min.css') }}">
     @endif
-    <link rel="stylesheet" href="{{ my_asset('assets/common/css/aiz-core.css') }}">
-    <link rel="stylesheet" href="{{ my_asset('assets/frontend/default/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials.css') }}">
-    <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/aiz-core.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/jssocials.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/jssocials-theme-flat.css') }}">
 
     <script>
     	var AIZ = AIZ || {};
@@ -159,7 +159,7 @@
 
     </div>
 
-    
+
     @if (get_setting('show_website_popup') == 'on')
         <div class="modal website-popup removable-session d-none" data-key="website-popup" data-value="removed">
             <div class="absolute-full bg-black opacity-60"></div>
@@ -190,7 +190,7 @@
     @endif
 
     @yield('modal')
-    
+
 
     @if (get_setting('facebook_chat_activation_checkbox') == 1)
         <script type="text/javascript">
@@ -217,9 +217,9 @@
         </div>
     @endif
 
-    <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
-    <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
-    <script src="{{ my_asset('assets/common/js/aiz-core.js') }}"></script>
+    <script src="{{ asset('assets/common/js/vendors.js') }}"></script>
+    <script src="{{ asset('assets/common/js/jssocials.min.js') }}" ></script>
+    <script src="{{ asset('assets/common/js/aiz-core.js') }}"></script>
 
     <script type="text/javascript">
         @foreach (session('flash_notification', collect())->toArray() as $message)

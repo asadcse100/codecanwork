@@ -1,7 +1,13 @@
 <!--  BEGIN NAVBAR  -->
-<div class="header-container container-xxl">
-    <header class="header navbar navbar-expand-sm expand-header">
+<style>
+    .header-container{
+        max-width: 100% !important;
+        margin-top: 0% !important;
+    }
 
+</style>
+<nav class="header navbar navbar-expand-sm expand-header">
+    <div class="header-container">
         <a href="javascript:void(0);" class="sidebarCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -11,18 +17,6 @@
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </a>
-
-        {{-- <button class="btn btn-outline-dark btn-icon mb-2 me-4 btn-rounded">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-flag">
-                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                <line x1="4" y1="22" x2="4" y2="15"></line>
-            </svg>
-        </button> --}}
-        {{-- <button class="btn btn-outline-danger mb-2 me-4">Clear Cache</button>
-        <button class="btn btn-outline-success mb-2 me-4">Digital Office</button>
-        <button class="btn btn-outline-success mb-2 me-4">Report</button> --}}
 
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
@@ -182,7 +176,6 @@
 
             </li>
         </ul>
-    </header>
-</div>
-</div>
+    </div>
+</nav>
 <!--  END NAVBAR  -->
