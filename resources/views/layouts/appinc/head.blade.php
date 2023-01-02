@@ -39,11 +39,7 @@
     @endif
 
     <link rel="icon" href="{{ custom_asset(get_setting('site_icon')) }}">
-    {{-- <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet"
-        type="text/css" />
-    <script src="{{ asset('templete') }}/layouts/vertical-dark-menu/loader.js"></script> --}}
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <!--font-awesome-->

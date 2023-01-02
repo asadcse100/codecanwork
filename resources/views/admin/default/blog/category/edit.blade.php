@@ -1,11 +1,5 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-top-spacing">
@@ -46,9 +40,4 @@
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
-@endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    
-    <!-- END PAGE LEVEL SCRIPTS -->
 @endsection

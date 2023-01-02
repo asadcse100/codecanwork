@@ -29,206 +29,96 @@
                                     <input type="text" class="form-control" placeholder="Search User" />
                                 </div>
                                 <div class="people">
+                                    @if (isClient())
+                                        <span class="p-2 m-1">{{translate('Expert')}}</span>
+                                    @else
+                                        <span class="p-2 m-1">{{translate('Clients')}}</span>
+                                    @endif
 
-                                    <div class="person" data-chat="person6">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-4.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Nia Hillyer">Nia Hillyer</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">How do you do?</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @forelse ($chat_threads as $key => $single_chat_thread)
+                                            @php
+                                                $num_of_message = $single_chat_thread->chats->where('seen', 0)->count();
+                                            @endphp
+                                            @if ($single_chat_thread->receiver != null && $single_chat_thread->sender != null)
+                                                @if (isClient())
+                                                <a href="javascript:void(0)" class="chat-user-item p-3 d-block text-inherit" data-url="{{ route('chat_view', $single_chat_thread->id) }}" data-refresh="{{ route('chat_refresh', $single_chat_thread->id) }}" onclick="loadChats(this)">
+                                                    <div class="person" data-chat="person6">
+                                                        <div class="user-info">
+                                                            <div class="f-head">
+                                                                @if ($single_chat_thread->sender->photo != null)
+                                                                <img src="{{ asset('templete/'.$single_chat_thread->receiver->photo) }}">
+                                                                @else
+                                                                <img src="{{ asset('templete') }}/src/assets/img/profile-4.jpeg"
+                                                                    alt="avatar">
+                                                                @endif
+                                                                @if(Cache::has('user-is-online-' . $single_chat_thread->receiver->id))
+                                                                    <span class="badge badge-dot badge-circle badge-success badge-status badge-md"></span>
+                                                                @else
+                                                                    <span class="badge badge-dot badge-circle badge-secondary badge-status badge-md"></span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="f-body">
+                                                                <div class="meta-info">
+                                                                    <span class="user-name" data-name="Nia Hillyer">{{ $single_chat_thread->receiver->name }}</span>
 
-                                    <div class="person" data-chat="person1">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-3.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Sean Freeman">Sean Freeman</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">I was wondering...</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                    @if ($single_chat_thread->chats->last() != null)
+                                                                        @if ($single_chat_thread->chats->last()->message != null)
+                                                                            <span class="user-meta-time">{{ $single_chat_thread->chats->last()->message }}</span>
+                                                                        @else
+                                                                            <span class="user-meta-time">{{ translate('Attachments')}}</span>
+                                                                        @endif
+                                                                    @endif
+                                                                </div>
+                                                                <div class="ml-2 text-right">
+                                                                    @if ($single_chat_thread->chats->last() != null)
+                                                                        <div class="opacity-60 fs-10 mb-1">{{ Carbon\Carbon::parse($single_chat_thread->chats->last()->created_at)->diffForHumans() }}</div>
+                                                                    @endif
+                                                                    <span class="badge badge-primary badge-circle flex-shrink-0 ml-4">{{ count($single_chat_thread->chats->where('sender_user_id', '!=', Auth::user()->id)->where('seen', 0)) }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                @else
+                                                <a href="javascript:void(0)" class="chat-user-item p-3 d-block text-inherit" data-url="{{ route('chat_view', $single_chat_thread->id) }}" data-refresh="{{ route('chat_refresh', $single_chat_thread->id) }}" onclick="loadChats(this)">
+                                                    <div class="media">
+                                                        <span class="avatar avatar-sm mr-3 flex-shrink-0">
+                                                            @if ($single_chat_thread->sender->photo != null)
+                                                            <img src="{{ custom_asset($single_chat_thread->sender->photo) }}">
+                                                            @else
+                                                            <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                            @endif
 
-                                    <div class="person" data-chat="person2">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-11.jpeg"
-                                                    alt="avatar">
+                                                            @if(Cache::has('user-is-online-' . $single_chat_thread->sender->id))
+                                                                <span class="badge badge-dot badge-circle badge-success badge-status badge-md"></span>
+                                                            @else
+                                                                <span class="badge badge-dot badge-circle badge-secondary badge-status badge-md"></span>
+                                                            @endif
+                                                        </span>
+                                                        <div class="media-body minw-0">
+                                                            <h6 class="mt-0 mb-1 fs-14 text-truncate">{{ $single_chat_thread->sender->name }}</h6>
+                                                            @if ($single_chat_thread->chats->last() != null)
+                                                                <div class="fs-12 text-truncate opacity-60">{{ $single_chat_thread->chats->last()->message }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="ml-2 text-right">
+                                                            @if ($single_chat_thread->chats->last() != null)
+                                                                <div class="opacity-60 fs-10 mb-1">{{ Carbon\Carbon::parse($single_chat_thread->chats->last()->created_at)->diffForHumans() }}</div>
+                                                            @endif
+                                                            <span class="badge badge-primary badge-circle flex-shrink-0 ml-4">{{ count($single_chat_thread->chats->where('sender_user_id', '!=', Auth::user()->id)->where('seen', 0)) }}</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                    @endif
+                                            @endif
+                                        @empty
+                                            <div class=" text-center">
+                                                <i class="las la-frown la-4x mb-4 opacity-40"></i>
+                                                <h4>{{ translate('Nothing Found')}}</h4>
                                             </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Alma Clarke">Alma Clarke</span>
-                                                    <span class="user-meta-time">1:44 PM</span>
-                                                </div>
-                                                <span class="preview">I've forgotten how it felt before</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endforelse
 
-                                    <div class="person" data-chat="person3">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-23.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Alan Green">Alan Green</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">But we’re probably gonna need a new carpet.</span>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="person" data-chat="person4">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-7.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Shaun Park">Shaun Park</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">It’s not that bad...</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person5">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-15.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Roxanne">Roxanne</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person7">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-32.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Ernest Reeves">Ernest Reeves</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person8">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-33.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Laurie Fox">Laurie Fox</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person9">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-21.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Xavier">Xavier</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person10">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-12.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Susan Phillips">Susan
-                                                        Phillips</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person" data-chat="person11">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-26.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Dale Butler">Dale Butler</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="person border-none" data-chat="person12">
-                                        <div class="user-info">
-                                            <div class="f-head">
-                                                <img src="{{ asset('templete') }}/src/assets/img/profile-20.jpeg"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="f-body">
-                                                <div class="meta-info">
-                                                    <span class="user-name" data-name="Grace Roberts">Grace Roberts</span>
-                                                    <span class="user-meta-time">2:09 PM</span>
-                                                </div>
-                                                <span class="preview">Wasup for the third time like is you bling
-                                                    bitch</span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="chat-box">

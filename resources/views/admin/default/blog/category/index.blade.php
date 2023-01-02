@@ -84,7 +84,7 @@
                             </table>
                             <div class="aiz-pagination">
                                 {{ $categories->links() }}
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,9 +123,4 @@
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
-@endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    
-    <!-- END PAGE LEVEL SCRIPTS -->
 @endsection

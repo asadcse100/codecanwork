@@ -1,11 +1,5 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
@@ -185,15 +179,9 @@
             </div>
         </div>
 
-
     </div>
 
     </div>
     <!--  END CONTENT AREA  -->
 @endsection
 
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
-@endsection

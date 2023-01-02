@@ -1,4 +1,4 @@
-@extends('frontend.default.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     @if (get_setting('slider_section_show') == 'on')
