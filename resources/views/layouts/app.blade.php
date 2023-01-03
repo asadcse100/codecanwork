@@ -16,15 +16,15 @@
 @include('layouts.inc.head')
 @yield('css')
 
-<body class="layout-boxed">
+<body>
     <!-- BEGIN Dark and Light -->
-    <div id="load_screen"></div>
+    {{-- <div id="load_screen"></div> --}}
     <!--  END Dark and Light -->
     @include('layouts.inc.navbar')
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container " id="container">
-        <div class="overlay show"></div>
-        <div class="search-overlay"></div>
+        {{-- <div class="overlay show"></div>
+        <div class="search-overlay"></div> --}}
         <!--  BEGIN SIDEBAR  -->
         @if(Auth::check())
             @include('layouts.inc.sidebar')

@@ -399,9 +399,6 @@
     @endif
 @endsection
 
-
-
-
 @section('modal')
     @if ((Session::has('new_user') && Session::get('new_user') == true) || (auth()->check() && auth()->user()->user_type == null))
         <div class="modal fade" id="show_new_user_modal">

@@ -1,208 +1,65 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=El%20Messiri">
 
 <style>
-    .header-container {
-        font-family: "El Messiri Bold";
-        font-size: 18px !important;
+    .header-container{
+        max-width: 100% !important;
+        margin-top: 0% !important;
     }
-
-    /* torab start*/
-    .my-drpdown-menu {
-        width: 200px;
-
-        position: absolute;
-        right: 150px;
-        background-color: aliceblue;
-
-        display: none;
-        z-index: 9999;
-        border-radius: 3px;
-        padding: 10px 0px;
-
+    .new-header{
+        max-width: 100% !important;
+        margin-top: 0% !important;
     }
-
-    .service-drpdown:hover .my-drpdown-menu {
-        display: block;
-    }
-
-    .service-drpdown {
-
-        font-size: 18px;
-        padding-top: 7px;
-        padding-left: 18px;
-        border-radius: 3px;
-
-    }
-
-    .service-drpdown:hover {
-        cursor: pointer;
-        font-size: 18px;
-
-    }
-
-    .my-drpdown-item {
-        display: block;
-        color: black !important;
-        /* padding: 0px 13px !important; */
-        font-size: 18px;
-
-    }
-
-    .my-drpdown-item-a {
-        display: inline-block !important;
-        width: 100%;
-        padding: 2px 13px;
-
-    }
-
-    .my-drpdown-item-a:hover {
-        background-color: #142938;
-        color: rgb(250, 250, 250) !important;
-    }
-
-    .my-drpdown-item a {
-        color: black !important;
-    }
-
-    #navbars {
-        overflow: unset;
-        font-family: "El Messiri SemiBold";
-        font-size: "18px";
-
-    }
-
-    .sub-menu {
-        position: absolute !important;
-        left: 150px;
-        width: 250px;
-        height: 300px;
-        background-color: #193549 !important;
-        /* background-color: aliceblue; */
-        overflow: scroll;
-        display: none;
-        z-index: 9999;
-        border-radius: 3px;
-        padding: 10px 0px;
-
-        /* margin-right:0px !important; */
-        /* padding: 0px 13px !important; */
-    }
-
-    .my-drpdown-item:hover .sub-menu {
-        display: inline-block !important;
-    }
-
-    .sub-menu a {
-        color: white !important;
-        font-size: 16px !important;
-
-        display: inline-block !important;
-        color: aliceblue;
-        padding: 2px 13px;
-
-
-    }
-
-    .sub-menu a:hover {
-        background-color: white !important;
-        color: black !important;
-    }
-
-    .sub-menu-li {
-        display: block;
-        width: 100%;
-        text-align: left;
-    }
-
-    /* .sub-menu-li a {
-
-    } */
-
-    @media (max-width: 490px) {
-        .my-drpdown-menu {
-            width: 130px;
-            position: absolute;
-            right: 155px;
-            background-color: aliceblue;
-            display: none;
-            z-index: 9999;
-            border-radius: 3px;
-            padding: 10px 0px;
-        }
-
-        .sub-menu {
-            left: 200px !important;
-            width: 170px;
-            margin-left: -70px !important;
-        }
-    }
-
-    .flex-grows {
-        width: 940px !important;
-    }
-
-    /* torab end*/
-
-    /* torab */
 </style>
-<div class="header-container container-xxl" style="box-sizing: border-box !important">
+<div class="new-header container-xxl @if(Auth::check()) header-container @endif" style="background-color: #ffffff;">
     <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing" style="padding-bottom: 4px">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 @if(!Auth::check()) layout-top-spacing mb-3 @endif">
+            <div class="row">
             <header class="header navbar navbar-expand-sm expand-header">
 
-                <a href="javascript:void(0);" class="sidebarCollapse">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-menu">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </a>
-
-                <form action="{{ route('search') }}" method="GET" class="flex-grows search-hide">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="I'm looking for" name="keyword">
-
-                        &#160;
-                        <select class="form-select" name="type">
-                            <option value="freelancer"
-                                @isset($type) @if ($type == 'freelancer')
-                            selected
-                        @endif @endisset>
-                                Experts</option>
-                            <option value="project"filter_category
-                                @isset($type) @if ($type == 'project')
-                            selected
-                        @endif @endisset>
-                                Project</option>
-
-                            <option value="service"
-                                @isset($type) @if ($type == 'service')
-                            selected
-                        @endif @endisset>
-                                Services</option>
-
-                        </select>
-                        {{-- <button type="submit" class="btn" style="background: #052440"> --}}
-                        <button type="submit" class="btn btn-bg">
-                            <span class="input-group">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="36"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </span>
-                        </button>
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                        @if(!Auth::check())<h1>LOGO</h1>@endif
                     </div>
-                </form>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <form action="{{ route('search') }}" method="GET" class="flex-grows ">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Search..." name="keyword">
+
+                                &#160;
+                                <select class="form-select form-control-sm" name="type">
+                                    <option value="freelancer"
+                                        @isset($type) @if ($type == 'freelancer')
+                                    selected
+                                @endif @endisset>
+                                        Experts</option>
+                                    <option value="project"filter_category
+                                        @isset($type) @if ($type == 'project')
+                                    selected
+                                @endif @endisset>
+                                        Project</option>
+
+                                    <option value="service"
+                                        @isset($type) @if ($type == 'service')
+                                    selected
+                                @endif @endisset>
+                                        Services</option>
+
+                                </select>
+                                {{-- <button type="submit" class="btn" style="background: #052440"> --}}
+                                <button type="submit" class="btn btn-bg">
+                                    <span class="input-group">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="36"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
 
                 <ul class="navbar-item flex-row ms-lg-auto ms-0" id="pills-tab" role="tablist">
 
-                    {{-- <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ Route('service') }}">Services</a>
-                        </li> --}}
                     @if (!Auth::check())
                         <li class="nav-item d-none d-lg-block">
                             <a class="nav-link" href="{{ route('login') }}">{{ translate('Log In') }}</a>
@@ -433,7 +290,7 @@
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
+                        <li class="nav-item dropdown user-profile-dropdown">
                             <a href="javascript:void(0);" class="nav-link dropdown-toggle user"
                                 id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -451,11 +308,7 @@
                                     </div>
 
                                     <span class="ml-2 text-left d-none d-xl-inline-block">
-                                        <span class="h6 d-block mb-0">
-                                            @if (!empty(Auth::user()->name))
-                                                {{ Auth::user()->name }}
-                                            @endif
-                                        </span>
+
                                         @if (Auth::check())
                                             <span class="small fw-500 text-muted">
                                                 @if (!empty(Auth::user()->profile->balance) && isset(Auth::user()->profile->balance))
@@ -528,11 +381,11 @@
                     @endif
                 </ul>
             </header>
-
+        </div>
         </div>
     </div>
 </div>
-</div>
+
 <script>
     const nav = document.querySelector('#navbars');
     let navTop = nav.offsetTop;

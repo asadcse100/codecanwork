@@ -18,7 +18,7 @@
         href="{{ asset('templete') }}/src/plugins/css/light/clipboard/custom-clipboard.css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-    <div class="layout-px-spacing">
+    <div class="layout-px-spacing layout-top-spacing">
 
         <div class="">
 
