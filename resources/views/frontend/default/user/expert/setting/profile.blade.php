@@ -4,21 +4,28 @@
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/filepond.min.css">
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.css">
-    <link href="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.css" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/sweetalerts2/sweetalerts2.css">
-    <link href="{{ asset('templete') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/light/components/tabs.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/elements/alert.css">
-    <link href="{{ asset('templete') }}/src/plugins/css/light/sweetalerts2/custom-sweetalert.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/light/notification/snackbar/custom-snackbar.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/light/notification/snackbar/custom-snackbar.css" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/forms/switches.css">
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/light/users/account-setting.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/tabs.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/elements/alert.css">
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/notification/snackbar/custom-snackbar.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('templete') }}/src/plugins/css/dark/notification/snackbar/custom-snackbar.css" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/forms/switches.css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/users/account-setting.css" rel="stylesheet" type="text/css" />
@@ -198,8 +205,8 @@
 
                                                             {{-- <div class="profile-image mt-4 pe-md-4"> --}}
                                                             <!-- // The classic file input element we'll enhance
-                                                                                                                                                                                                                                                                                              // to a file pond, we moved the configuration
-                                                                                                                                                                                                                                                                                              // properties to JavaScript -->
+                                                                                                                                                                                                                                                                                                  // to a file pond, we moved the configuration
+                                                                                                                                                                                                                                                                                                  // properties to JavaScript -->
                                                             {{-- <p class="text-center">Profile Photo</p>
                                                                 <div class="img-uploader-content">
                                                                 <input
@@ -231,7 +238,8 @@
 
                                                                 <p class="text-center">change photo</p>
                                                                 <div class="img-uploader-content">
-                                                                    <input type="file" onchange="upload_check()" id="file_id" name="photo"
+                                                                    <input type="file" onchange="upload_check()"
+                                                                        id="file_id" name="photo"
                                                                         placeholder="change photo"
                                                                         @if (!empty($user_profile->user->photo)) value="{{ $user_profile->user->photo }}" @endif />
                                                                 </div>
@@ -248,41 +256,34 @@
                                                             <div class="form">
                                                                 <div class="layout-top-spacing">
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label>Username</label>
-                                                                                <input type="text"
-                                                                                    class="form-control mb-3"
+
+                                                                        <div class="col-sm-6 mb-2">
+                                                                            <div class="input-group required">
+                                                                                <span
+                                                                                    class="input-group-text">Username</span>
+                                                                                <input type="text" class="form-control"
                                                                                     id="user_name" name="user_name"
                                                                                     @if ($user_profile->user->user_name != null) value="{{ $user_profile->user->user_name }}" @endif
                                                                                     placeholder="Username" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label>Full
-                                                                                    Name</label>
-                                                                                <input type="text"
-                                                                                    class="form-control mb-3"
-                                                                                    name="name"
+                                                                        <div class="col-sm-6 mb-2">
+                                                                            <div class="input-group required">
+                                                                                <span class="input-group-text">Full
+                                                                                    Name</span>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="name" name="name"
                                                                                     value="@if (!empty($user_profile->user->name)) {{ $user_profile->user->name }} @endif"
-                                                                                    placeholder="Enter your name"
-                                                                                    aria-label="Enter your name" required
-                                                                                    aria-describedby="nameLabel"
-                                                                                    data-msg="Please enter your name."
-                                                                                    data-error-class="u-has-error"
-                                                                                    data-success-class="u-has-success">
-                                                                                <small
-                                                                                    class="form-text text-muted">Displayed
-                                                                                    on your public profile.</small>
+                                                                                    placeholder="Username">
                                                                             </div>
+                                                                            <small class="form-text text-muted">Displayed
+                                                                                on your public profile.</small>
                                                                         </div>
 
-                                                                        <div class="col-md-6">
-
-                                                                            <label for="email">Email</label>
-                                                                            <div class="input-group mb-3">
+                                                                        <div class="col-sm-6 mb-2">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-text">Email</span>
                                                                                 <input type="email" class="form-control"
                                                                                     name="email"
                                                                                     @if ($user_profile->user->email != null) value="{{ $user_profile->user->email }}" @endif
@@ -300,9 +301,7 @@
                                                                                     <span
                                                                                         class="input-group-text">Verified</span>
                                                                                 @endif
-
                                                                             </div>
-
                                                                             @if ($user_profile->user->email_verified_at == null)
                                                                                 <span
                                                                                     class="alert alert-danger d-block py-1 mt-1">Verify
@@ -310,11 +309,10 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label>Phone</label>
-                                                                                <input type="text"
-                                                                                    class="form-control mb-3"
+                                                                        <div class="col-sm-6 mb-2">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-text">Phone</span>
+                                                                                <input type="text" class="form-control"
                                                                                     name="phone"
                                                                                     @if ($user_profile->user->phone != null) value="{{ $user_profile->user->phone }}" @endif
                                                                                     placeholder="Enter your contact number"
@@ -375,9 +373,9 @@
                                             <div class="row">
                                                 <div class="col-md-11 mx-auto">
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Address</label>
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Address</span>
                                                                 <input type="text" class="form-control" name="village"
                                                                     placeholder="Enter your street address" required
                                                                     aria-describedby="nameLabel"
@@ -388,10 +386,10 @@
                                                         <input type="hidden" name="user_id"
                                                             value="{{ Auth::user()->id }}">
 
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="country">Country</label>
-                                                                <select class="form-select mb-3" id="country_id"
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Country</span>
+                                                                <select class="form-select" id="country_id"
                                                                     name="country_id" data-live-search="true" required
                                                                     data-msg="Please select your country.">
                                                                     @foreach (\App\Models\Country::all() as $key => $country)
@@ -410,11 +408,11 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="city">City</label>
-                                                                <select class="form-select mb-3" name="city_id"
-                                                                    id="city_id" data-live-search="true" required>
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">City</span>
+                                                                <select class="form-select" name="city_id" id="city_id"
+                                                                    data-live-search="true" required>
                                                                     @foreach (\App\Models\City::all() as $key => $city)
                                                                         @if (!empty($address->city_id))
                                                                             <option value="{{ $city->id }}"
@@ -427,10 +425,9 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label>Postal
-                                                                    Code</label>
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Postal Code</span>
                                                                 <input type="number" id="postal_code" name="postal_code"
                                                                     @if (!empty($address->postal_code)) value="{{ $address->postal_code }}" @endif
                                                                     placeholder="('Eg. 1203')" class="form-control">
@@ -578,13 +575,6 @@
                                             <h6 class="">Professional Information</h6>
                                             <hr>
                                             <div class="row mt-4">
-                                                <div class="col-md-12 layout-spacing">
-                                                    <label>Bio</label><br>
-                                                    <small>Tell us about yourself in few sentences..</small>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" rows="10" name="bio" required>{{ $user_profile->bio }}</textarea>
-                                                    </div>
-                                                </div>
 
                                                 {{-- <div class="col-md-4">
                                                     <div class="form-group">
@@ -599,10 +589,10 @@
                                                     </div>
                                                 </div> --}}
 
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Gender</label>
-                                                        <select class="form-select mb-3" name="gender" required
+                                                <div class="col-sm-2 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Gender</span>
+                                                        <select class="form-select" name="gender" required
                                                             data-minimum-results-for-search="Infinity"
                                                             data-msg="Please select your gender."
                                                             data-error-class="u-has-error"
@@ -620,11 +610,10 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="country">Skill</label>
-                                                        <input name='skills'
-                                                            value=''>
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Skill</span>
+                                                        <input name='skills' value=''>
                                                         {{-- <input name='skills'
                                                             value='@if (!empty($user_profile->skills)) @foreach (json_decode($user_profile->skills) as $sk){{ $sk->name . ',' }}@endforeach @endif'> --}}
                                                         @php
@@ -656,22 +645,29 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label class="form-label">Hourly Rate</label>
-                                                    <div class="input-group mb-3">
+                                                <div class="col-sm-3 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Hourly Rate</span>
                                                         <input type="number" class="form-control" name="hourly_rate"
                                                             value="{{ $user_profile->hourly_rate }}" placeholder="100"
                                                             required>
                                                         <span class="input-group-text">&#2547;</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label class="form-label">Consultant Fee</label>
-                                                    <div class="input-group mb-3">
+                                                <div class="col-sm-3 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Consultant Fee</span>
                                                         <input type="number" class="form-control" name="consultant_fee"
                                                             value="{{ $user_profile->consultant_fee }}"
                                                             placeholder="100">
                                                         <span class="input-group-text">&#2547;</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 layout-spacing">
+                                                    <label>Bio Details</label><br>
+                                                    <small>Tell us about yourself in few sentences..</small>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" rows="10" name="bio" required>{{ $user_profile->bio }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -779,59 +775,59 @@
                                         @csrf
 
                                         <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-6 mt-3">
-                                                    <label>Company Name</label>
-                                                    <div class="form-group">
+                                            <div class="row mt-4">
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Company Name</span>
                                                         <input type="text" class="form-control" name="company_name"
                                                             placeholder="Company Name" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mt-4">
-                                                <div class="col-md-4">
-                                                    <label>Joining date</label>
-                                                    <div class="form-group">
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Joining date</span>
                                                         <input type="date" class="aiz-date-range form-control"
                                                             name="start_date" placeholder="Select Date"
                                                             data-single="true" data-show-dropdown="true"
                                                             autocomplete="off" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label> Curnetly working here</label>
+                                                <div class="col-sm-4 mb-2">
+                                                    <label class="form-label">Curnetly working here</label>
                                                     <div class="form-check form-switch form-check-inline form-switch-info">
                                                         <input class="form-check-input" type="checkbox" role="switch"
                                                             name="present" id="current_working">
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Leaving Date</label>
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Leaving date</span>
                                                         <input type="date" class="aiz-date-range form-control"
                                                             id="leaving_date" name="end_date" placeholder="Select Date"
                                                             data-single="true" data-show-dropdown="true"
                                                             autocomplete="off" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Designation</label>
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Designation</span>
                                                         <input type="text" class="form-control" name="designation"
                                                             placeholder="Designation" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Company Website</label>
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Company Website</span>
                                                         <input type="text" class="form-control" name="company_website"
                                                             placeholder="Company Website">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Company Location</label>
+                                                <div class="col-sm-4 mb-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Company Location</span>
                                                         <input type="text" class="form-control" name="location"
                                                             placeholder="Company Location" required>
                                                     </div>
@@ -863,8 +859,8 @@
                                     <h6 class="">Educational Information</h6>
                                     <hr>
                                     {{-- @if (count($user_profile->user->education_details) > 0) --}}
-                                    <div class="my-3">
-                                        <div class="row gutters-10">
+                                    <div class="">
+                                        <div class="row">
                                             @foreach ($user_profile->user->education_details as $key => $education)
                                                 <div class="col-md-6 p-2">
                                                     <div class="widget-content widget-content-area br-8">
@@ -944,44 +940,46 @@
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
 
-                                                    <div class="row gutters-10">
-                                                        <div class="col-md-6 mt-3">
-                                                            <label>Institute/School Name</label>
-                                                            <div class="form-group">
+                                                    <div class="row gutters-10 mt-4">
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Institute/School Name</span>
                                                                 <input type="text" class="form-control"
                                                                     name="school_name" placeholder="School Name" required>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 mt-3">
-                                                            <label>Degree</label>
-                                                            <div class="form-group">
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Degree</span>
                                                                 <input type="text" class="form-control" name="degree"
                                                                     placeholder="Ex. Bachelor of Science" required>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 mt-3">
-                                                            <label class="form-label">Passing Year</label>
-                                                            <input type="number" class="form-control"
-                                                                name="passing_year" placeholder="Ex. 2008" required>
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Passing Year</span>
+                                                                <input type="number" class="form-control"
+                                                                    name="passing_year" placeholder="Ex. 2008" required>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6 mt-3">
-                                                            <label class="form-label">Country</label>
-                                                            <select class="form-select mb-3" id="school_country_id"
-                                                                name="country_id" required data-live-search="true">
-                                                                @foreach (\App\Models\Country::all() as $country)
-                                                                    <option value="{{ $country->id }}">
-                                                                        {{ $country->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Country</span>
+                                                                <select class="form-select" id="school_country_id"
+                                                                    name="country_id" required data-live-search="true">
+                                                                    @foreach (\App\Models\Country::all() as $country)
+                                                                        <option value="{{ $country->id }}">
+                                                                            {{ $country->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                         </div>
 
                                                         <div class="col-md-12 mt-1 mb-3">
                                                             <div class="form-group text-end">
-                                                                <button class="btn btn-secondary">Add
-                                                                    Education
-                                                                    Information</button>
+                                                                <button class="btn btn-secondary">Save</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1081,38 +1079,38 @@
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
 
-                                                    <div class="row gutters-10">
-                                                        <div class="col-md-6 mt-3">
-                                                            <label>Title</label>
-                                                            <div class="form-group">
+                                                    <div class="row mt-4">
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Title</span>
                                                                 <input type="text" class="form-control"
                                                                     name="portfolio_name" placeholder="Portfolio title">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 mt-3">
-                                                            <label>Category</label>
-                                                            <div class="form-group">
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Category</span>
                                                                 <input type="text" class="form-control"
                                                                     name="portfolio_category"
                                                                     placeholder="Portfolio category">
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-6 mt-3">
+                                                        <div class="col-sm-4 mb-2">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Portfolio Image</span>
+                                                                <input type="file" class="form-control" type="file"
+                                                                    name="portfolio_img" aria-label="Sizing example input"
+                                                                    aria-describedby="inputGroup">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 mb-2">
                                                             <label class="form-label">Details</label>
                                                             <textarea class="form-control" rows="3" name="portfolio_details" required></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mt-3">
-                                                            <label class="form-label">Portfolio Image</label>
-                                                            <input type="file" class="form-control" type="file"
-                                                                name="portfolio_img" aria-label="Sizing example input"
-                                                                aria-describedby="inputGroup">
                                                         </div>
 
                                                         <div class="col-md-12 mt-1 mb-3">
                                                             <div class="form-group text-end">
-                                                                <button class="btn btn-secondary">Add
-                                                                    Portfolio</button>
+                                                                <button class="btn btn-secondary">Save</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1435,17 +1433,16 @@
             }
 
         });
-        function upload_check()
-{
-    var upl = document.getElementById("file_id");
-    var max = document.getElementById("max_id").value;
 
-    if(upl.files[0].size > max)
-    {
-       alert("please upload file must be less than 1 mb!");
-       upl.value = "";
-    }
+        function upload_check() {
+            var upl = document.getElementById("file_id");
+            var max = document.getElementById("max_id").value;
 
-};
+            if (upl.files[0].size > max) {
+                alert("please upload file must be less than 1 mb!");
+                upl.value = "";
+            }
+
+        };
     </script>
 @endsection

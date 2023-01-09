@@ -19,22 +19,9 @@
                     <div class="widget-content widget-content-area layout-top-spacing">
                         <form class="" id="sort_projects" action="" method="GET">
                             <div class="card-header row gutters-5" style="justify-content:center">
+
                                 <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
-                                        data-live-search="true" onchange="sort_projects()">
-                                        <option value="">{{ translate('Filter by Client') }}</option>
-                                        @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
-                                            @if ($client->user != null)
-                                                <option value="{{ $client->id }}"
-                                                    @if ($client->id == $client_id) selected @endif>
-                                                    {{ $client->name }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
+                                    <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
                                         onchange="sort_projects()">
                                         <option value="">{{ translate('Sort by') }}</option>
                                         <option value="created_at,asc"

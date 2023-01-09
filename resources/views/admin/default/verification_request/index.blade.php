@@ -111,10 +111,7 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-
     </div>
     <!--  END CONTENT AREA  -->
 @endsection

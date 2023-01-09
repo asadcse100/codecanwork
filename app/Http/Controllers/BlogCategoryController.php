@@ -28,17 +28,7 @@ class BlogCategoryController extends Controller
         }
 
         $categories = $categories->paginate(15);
-        return view('admin.default.category.index', compact('categories', 'sort_search'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
+        return view('admin.default.blog.category.index', compact('categories', 'sort_search'));
     }
 
     /**
@@ -49,7 +39,6 @@ class BlogCategoryController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'category_name' => 'required|max:255',
         ]);
@@ -60,7 +49,6 @@ class BlogCategoryController extends Controller
         $category->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->category_name));
 
         $category->save();
-
 
         // flash(translate('Blog category has been created successfully'))->success();
         return redirect()->route('blog-category.index');

@@ -17,18 +17,16 @@ class VerificationController extends Controller
 
     public function index(Request $request)
     {
+        $sort_search = null;
+        $users = User::where('user_type', 'expert')->orWhere('user_type', 'client')->orderBy('created_at', 'desc');
 
-            $sort_search = null;
-            $users = User::where('user_type', 'expert')->orWhere('user_type', 'client')->orderBy('created_at', 'desc');
+        if ($request->has('search')){
+            $sort_search = $request->search;
+            $users = $users->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
+        }
 
-            if ($request->has('search')){
-                $sort_search = $request->search;
-                $users = $users->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
-            }
-
-            $users = $users->paginate(10);
-            return view('admin.default.verification_request.index', compact('users', 'sort_search'));
-
+        $users = $users->paginate(10);
+        return view('admin.default.verification_request.index', compact('users', 'sort_search'));
     }
 
     //Verification Info sent to admin

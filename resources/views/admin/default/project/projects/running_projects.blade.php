@@ -26,29 +26,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3 ml-auto">
-                                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type"
-                                    id="type" onchange="sort_projects()">
-                                    <option value="">{{ translate('Sort by') }}</option>
-                                    <option value="created_at,asc"
-                                        @isset($col_name, $query) @if ($col_name == 'created_at' && $query == 'asc') selected @endif
-                                    @endisset>
-                                        {{ translate('Time (Old > New)') }}</option>
-                                    <option value="created_at,desc"
-                                        @isset($col_name, $query) @if ($col_name == 'created_at' && $query == 'desc') selected @endif
-                                @endisset>
-                                        {{ translate('Time (New > Old)') }}</option>
-                                    <option value="price,desc"
-                                        @isset($col_name, $query) @if ($col_name == 'price' && $query == 'desc') selected @endif
-                            @endisset>
-                                        {{ translate('Price (High > Low)') }}</option>
-                                    <option value="price,asc"
-                                        @isset($col_name, $query) @if ($col_name == 'price' && $query == 'asc') selected @endif
-                        @endisset>
-                                        {{ translate('Price (Low > High)') }}</option>
-                                </select>
-                            </div>
-
                         </div>
                     </form>
                     <div class="widget-content widget-content-area">

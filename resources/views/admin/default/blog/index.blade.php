@@ -4,60 +4,31 @@
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
         <div class="">
-            <div class="col-md-3 layout-top-spacing">
-                <h5 class="mb-md-0 h6">{{ translate('All blog posts') }}</h5>
+
+            <!-- BREADCRUMB -->
+            <div class="page-meta">
+                <nav class="breadcrumb-style-one" aria-label="breadcrumb">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ translate('All blog posts') }}</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-2">
+                            <button style="float:right" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg"
+                                class="btn btn-outline-info">{{ translate('Add New Post') }}</button>
+                        </div>
+                    </div>
+                </nav>
             </div>
+            <!-- /BREADCRUMB -->
 
             <div class="row layout-spacing">
+
                 <div class="col-lg-12">
                     <div class="widget-content widget-content-area layout-top-spacing">
-                        <form class="" id="sort_projects" action="" method="GET">
-                            <div class="card-header row gutters-5" style="justify-content:center">
 
-                                <div class="col-md-2">
-                                    <button style="float: right;" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg"
-                                        class="btn btn-outline-info mb-2 me-4">{{ translate('Add New Post') }}</button>
-                                </div>
-
-                                <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id"
-                                        data-live-search="true" onchange="sort_projects()">
-                                        <option value="">{{ translate('Filter by Client') }}</option>
-                                        @foreach (App\Models\User::where('user_type', 'client')->get() as $key => $client)
-                                            @if ($client->user != null)
-                                                <option value="{{ $client->id }}"
-                                                    @if ($client->id == $client_id) selected @endif>
-                                                    {{ $client->name }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3 ml-auto">
-                                    <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type"
-                                        onchange="sort_projects()">
-                                        <option value="">{{ translate('Sort by') }}</option>
-                                        <option value="created_at,asc"
-                                            @isset($col_name, $query) @if ($col_name == 'created_at' && $query == 'asc') selected @endif
-                                        @endisset>
-                                            {{ translate('Time (Old > New)') }}</option>
-                                        <option value="created_at,desc"
-                                            @isset($col_name, $query) @if ($col_name == 'created_at' && $query == 'desc') selected @endif
-                                    @endisset>
-                                            {{ translate('Time (New > Old)') }}</option>
-                                        <option value="price,desc"
-                                            @isset($col_name, $query) @if ($col_name == 'price' && $query == 'desc') selected @endif
-                                @endisset>
-                                            {{ translate('Price (High > Low)') }}</option>
-                                        <option value="price,asc"
-                                            @isset($col_name, $query) @if ($col_name == 'price' && $query == 'asc') selected @endif
-                            @endisset>
-                                            {{ translate('Price (Low > High)') }}</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </form>
                         <table id="individual-col-search" class="table dt-table-hover">
                             <thead>
                                 <tr>
