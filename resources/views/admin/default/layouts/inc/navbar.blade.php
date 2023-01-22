@@ -146,8 +146,8 @@
                     <div class="user-profile-section">
                         <div class="media mx-auto">
                             <div class="media-body">
-                                <h5>BRIT ROBIN</h5>
-                                <p>President of ZeroPlus</p>
+                                <h5>Asad</h5>
+                                <p>Sr. Software</p>
                             </div>
                         </div>
                     </div>

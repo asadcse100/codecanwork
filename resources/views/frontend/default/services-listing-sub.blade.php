@@ -1,4 +1,4 @@
-@extends(Auth::guest() ? 'layouts.appindex' : 'layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <section class="py-5 py-lg-5">

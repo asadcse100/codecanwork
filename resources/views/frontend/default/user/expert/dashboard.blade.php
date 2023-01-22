@@ -98,13 +98,6 @@
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 0%"
                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-
-                                <div class="">
-                                    <div class="w-icon">
-                                        <p>0%</p>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -139,12 +132,6 @@
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 0%"
                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-
-                                <div class="">
-                                    <div class="w-icon">
-                                        <p>0%</p>
-                                    </div>
                                 </div>
 
                             </div>

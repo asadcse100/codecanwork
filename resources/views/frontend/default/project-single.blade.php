@@ -1,4 +1,4 @@
-@extends(Auth::guest() ? 'layouts.appindex' : 'layouts.app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,9 +7,7 @@
             ->where('user_role_id', 3)
             ->first();
     @endphp
-
-    <section class="py-4 py-lg-5">
-        <div class="container">
+<div class="layout-px-spacing layout-top-spacing">
             <div class="row mb-5">
                 <div class="col-xxl-9 col-xl-8 col-lg-7">
                     <div class="card project-card">
@@ -399,7 +397,6 @@
                 </div>
             </div>
         </div>
-    </section>
 
 @endsection
 @section('script')

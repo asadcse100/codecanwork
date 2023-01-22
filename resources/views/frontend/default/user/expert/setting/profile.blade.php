@@ -39,23 +39,23 @@
 
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
+        <div class="">
             <!-- BREADCRUMB -->
-            <div class="page-meta">
+            {{-- <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Users</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
                     </ol>
                 </nav>
-            </div>
+            </div> --}}
             <!-- /BREADCRUMB -->
 
             <div class="account-settings-container layout-top-spacing">
                 <div class="account-content">
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <h4>Profile Settings</h4>
+                            <h5 class="mb-md-0 h6">{{ translate('Profile Settings') }}</h5>
 
                             <div class="animated-underline-content">
                                 <ul class="nav nav-tabs" id="animateLine" role="tablist">
@@ -188,7 +188,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    <form class="section general-info layout-top-spacing"
+                                    <form class="section general-info"
                                         action="{{ route('user_profile.user_update') }}" method="POST"
                                         enctype="multipart/form-data">
                                         <input name="_method" type="hidden" value="PATCH">
@@ -196,7 +196,6 @@
                                         @csrf
                                         <div class="info">
                                             <h6>General Information</h6>
-                                            <hr>
                                             <div class="row ">
                                                 <div class="col-lg-11 mx-auto">
                                                     <div class="row">
@@ -205,8 +204,8 @@
 
                                                             {{-- <div class="profile-image mt-4 pe-md-4"> --}}
                                                             <!-- // The classic file input element we'll enhance
-                                                                                                                                                                                                                                                                                                  // to a file pond, we moved the configuration
-                                                                                                                                                                                                                                                                                                  // properties to JavaScript -->
+                                                                                                                                                                                                                                                                                                          // to a file pond, we moved the configuration
+                                                                                                                                                                                                                                                                                                          // properties to JavaScript -->
                                                             {{-- <p class="text-center">Profile Photo</p>
                                                                 <div class="img-uploader-content">
                                                                 <input
@@ -257,7 +256,7 @@
                                                                 <div class="layout-top-spacing">
                                                                     <div class="row">
 
-                                                                        <div class="col-sm-6 mb-2">
+                                                                        <div class="col-sm-6 mb-3">
                                                                             <div class="input-group required">
                                                                                 <span
                                                                                     class="input-group-text">Username</span>
@@ -268,7 +267,7 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="col-sm-6 mb-2">
+                                                                        <div class="col-sm-6 mb-3">
                                                                             <div class="input-group required">
                                                                                 <span class="input-group-text">Full
                                                                                     Name</span>
@@ -281,7 +280,7 @@
                                                                                 on your public profile.</small>
                                                                         </div>
 
-                                                                        <div class="col-sm-6 mb-2">
+                                                                        <div class="col-sm-6 mb-3">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-text">Email</span>
                                                                                 <input type="email" class="form-control"
@@ -309,7 +308,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <div class="col-sm-6 mb-2">
+                                                                        <div class="col-sm-6 mb-3">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-text">Phone</span>
                                                                                 <input type="text" class="form-control"
@@ -369,11 +368,11 @@
                                         <input name="_method" type="hidden" value="PATCH">
                                         @csrf
                                         <div class="info">
-                                            <h5 class="">Address</h5>
+                                            <h6>Address</h6>
                                             <div class="row">
                                                 <div class="col-md-11 mx-auto">
                                                     <div class="row">
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Address</span>
                                                                 <input type="text" class="form-control" name="village"
@@ -386,7 +385,7 @@
                                                         <input type="hidden" name="user_id"
                                                             value="{{ Auth::user()->id }}">
 
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Country</span>
                                                                 <select class="form-select" id="country_id"
@@ -408,7 +407,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">City</span>
                                                                 <select class="form-select" name="city_id" id="city_id"
@@ -425,7 +424,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Postal Code</span>
                                                                 <input type="number" id="postal_code" name="postal_code"
@@ -455,7 +454,7 @@
                                         <input name="_method" type="hidden" value="PATCH">
                                         @csrf
                                         <div class="info">
-                                            <h5 class="">Social</h5>
+                                            <h6>Social</h6>
                                             <div class="row">
                                                 <div class="col-md-11 mx-auto">
                                                     <div class="row">
@@ -573,7 +572,6 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                         <div class="info">
                                             <h6 class="">Professional Information</h6>
-                                            <hr>
                                             <div class="row mt-4">
 
                                                 {{-- <div class="col-md-4">
@@ -683,264 +681,186 @@
                     </div>
 
                     <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience">
-                        <div class="row">
 
-                            <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                                <div class="info">
-                                    <h6 class="">Work Experience</h6>
-                                    <hr>
-                                    {{-- @if (count($user_profile->user->workExperiences) > 0) --}}
-                                    <div class="my-3">
-                                        <div class="row gutters-10">
-                                            @foreach ($user_profile->user->workExperiences as $key => $work_experience)
-                                                <div class="col-md-6 p-2">
-                                                    <div class="widget-content widget-content-area br-8">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-md-9">
-                                                                    <h4 class="h6 mb-1">
-                                                                        {{ $work_experience->designation }}</h4>
-                                                                    <ul class="list-unstyled text-secondary mb-0">
-                                                                        <li class="text-primary">
-                                                                            {{ $work_experience->company_name }}
-                                                                        </li>
-                                                                        @if ($work_experience->present == '1')
-                                                                            <li>{{ Carbon\Carbon::parse($work_experience->start)->toFormattedDateString() }}
-                                                                                - {{ translate('Present') }}</li>
-                                                                        @else
-                                                                            <li>{{ Carbon\Carbon::parse($work_experience->start)->toFormattedDateString() }}
-                                                                                -
-                                                                                {{ Carbon\Carbon::parse($work_experience->end)->toFormattedDateString() }}
-                                                                            </li>
-                                                                        @endif
-                                                                        <li>{{ $work_experience->location }}</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="absolute-top-right">
-                                                                        <a href="{{ route('user_profile.work_experience_edit', encrypt($work_experience->id)) }}"
-                                                                            class="mt-2 edit-profile btn btn-sm btn-icon btn-outline-success rounded-circle"
-                                                                            title="Edit">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24" height="24"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="currentColor" stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-edit-3">
-                                                                                <path d="M12 20h9"></path>
-                                                                                <path
-                                                                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
-                                                                                </path>
-                                                                            </svg></a>
-                                                                        <a href="{{ route('user_profile.work_experience_destroy', encrypt($work_experience->id)) }}"
-                                                                            class="btn btn-sm btn-icon btn-outline-danger rounded-circle"
-                                                                            data-toggle="tooltip" data-placement="top"
-                                                                            title="Delete">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="16" height="16"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="currentColor" stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-trash-2">
-                                                                                <polyline points="3 6 5 6 21 6">
-                                                                                </polyline>
-                                                                                <path
-                                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                                                </path>
-                                                                                <line x1="10" y1="11"
-                                                                                    x2="10" y2="17">
-                                                                                </line>
-                                                                                <line x1="14" y1="11"
-                                                                                    x2="14" y2="17">
-                                                                                </line>
-                                                                            </svg>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
+                        <div class="row">
+                            @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences))
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                        <form class="section general-info"
+                                    action="{{ route('user_profile.work_experience_add') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                        <div class="info">
+                                            <h6>Work Experience</h6>
+                                                <div class="row mt-4">
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Company Name</span>
+                                                            <input type="text" class="form-control"
+                                                                name="company_name" placeholder="Company Name" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Joining date</span>
+                                                            <input type="date" class="aiz-date-range form-control"
+                                                                name="start_date" placeholder="Select Date"
+                                                                data-single="true" data-show-dropdown="true"
+                                                                autocomplete="off" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-3">
+                                                        <label class="form-label">Curnetly working here</label>
+                                                        <div
+                                                            class="form-check form-switch form-check-inline form-switch-info">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                role="switch" name="present" id="current_working">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Leaving date</span>
+                                                            <input type="date" class="aiz-date-range form-control"
+                                                                id="leaving_date" name="end_date"
+                                                                placeholder="Select Date" data-single="true"
+                                                                data-show-dropdown="true" autocomplete="off" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Designation</span>
+                                                            <input type="text" class="form-control" name="designation"
+                                                                placeholder="Designation" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Company Website</span>
+                                                            <input type="text" class="form-control"
+                                                                name="company_website" placeholder="Company Website">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Company Location</span>
+                                                            <input type="text" class="form-control" name="location"
+                                                                placeholder="Company Location" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mt-1 mb-3">
+                                                    <div class="form-group text-end">
+                                                        <button class="btn btn-secondary">Add Work
+                                                            Experience</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                </form>
+                                @if (count($user_profile->user->workExperiences) > 0)
+
+                                <div class="row gutters-10">
+                                    @foreach ($user_profile->user->workExperiences as $key => $work_experience)
+                                        <div class="col-md-6 mt-3">
+                                            <div class="widget-content widget-content-area">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <h4 class="h6 mb-1">
+                                                                {{ $work_experience->designation }}</h4>
+                                                            <ul class="list-unstyled text-secondary mb-0">
+                                                                <li class="text-primary">
+                                                                    {{ $work_experience->company_name }}
+                                                                </li>
+                                                                @if ($work_experience->present == '1')
+                                                                    <li>{{ Carbon\Carbon::parse($work_experience->start)->toFormattedDateString() }}
+                                                                        - {{ translate('Present') }}</li>
+                                                                @else
+                                                                    <li>{{ Carbon\Carbon::parse($work_experience->start)->toFormattedDateString() }}
+                                                                        -
+                                                                        {{ Carbon\Carbon::parse($work_experience->end)->toFormattedDateString() }}
+                                                                    </li>
+                                                                @endif
+                                                                <li>{{ $work_experience->location }}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="absolute-top-right">
+                                                                <a href="{{ route('user_profile.work_experience_edit', encrypt($work_experience->id)) }}"
+                                                                    class="mt-2 edit-profile btn btn-sm btn-icon btn-outline-success rounded-circle"
+                                                                    title="Edit">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-edit-3">
+                                                                        <path d="M12 20h9"></path>
+                                                                        <path
+                                                                            d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
+                                                                        </path>
+                                                                    </svg></a>
+                                                                <a href="{{ route('user_profile.work_experience_destroy', encrypt($work_experience->id)) }}"
+                                                                    class="btn btn-sm btn-icon btn-outline-danger rounded-circle"
+                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    title="Delete">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="16" height="16"
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-trash-2">
+                                                                        <polyline points="3 6 5 6 21 6">
+                                                                        </polyline>
+                                                                        <path
+                                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                        </path>
+                                                                        <line x1="10" y1="11"
+                                                                            x2="10" y2="17">
+                                                                        </line>
+                                                                        <line x1="14" y1="11"
+                                                                            x2="14" y2="17">
+                                                                        </line>
+                                                                    </svg>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences)) --}}
-                                    <form class="section general-info"
-                                        action="{{ route('user_profile.work_experience_add') }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-
-                                        <div class="container">
-                                            <div class="row mt-4">
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Company Name</span>
-                                                        <input type="text" class="form-control" name="company_name"
-                                                            placeholder="Company Name" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-4">
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Joining date</span>
-                                                        <input type="date" class="aiz-date-range form-control"
-                                                            name="start_date" placeholder="Select Date"
-                                                            data-single="true" data-show-dropdown="true"
-                                                            autocomplete="off" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 mb-2">
-                                                    <label class="form-label">Curnetly working here</label>
-                                                    <div class="form-check form-switch form-check-inline form-switch-info">
-                                                        <input class="form-check-input" type="checkbox" role="switch"
-                                                            name="present" id="current_working">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Leaving date</span>
-                                                        <input type="date" class="aiz-date-range form-control"
-                                                            id="leaving_date" name="end_date" placeholder="Select Date"
-                                                            data-single="true" data-show-dropdown="true"
-                                                            autocomplete="off" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Designation</span>
-                                                        <input type="text" class="form-control" name="designation"
-                                                            placeholder="Designation" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Company Website</span>
-                                                        <input type="text" class="form-control" name="company_website"
-                                                            placeholder="Company Website">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 mb-2">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">Company Location</span>
-                                                        <input type="text" class="form-control" name="location"
-                                                            placeholder="Company Location" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 mt-1 mb-3">
-                                                <div class="form-group text-end">
-                                                    <button class="btn btn-secondary">Add Work
-                                                        Experience</button>
-                                                </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    {{-- @else
-                                            <div class="alert alert-info" role="alert">
-                                                You have added maximum number of work experience according to your package.
-                                            </div>
-                                        @endif --}}
+                                    @endforeach
                                 </div>
-                            </div>
+
+                        @endif
+                                    </div>
+                            @else
+                                <div class="alert alert-info" role="alert">
+                                    You have added maximum number of work experience according to your package.
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                     <div class="tab-pane fade" id="educational" role="tabpanel" aria-labelledby="educational">
                         <div class="row">
 
                             <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+                                <form class="section general-info"
+                                action="{{ route('user_profile.education_info_add') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="info">
                                     <h6 class="">Educational Information</h6>
-                                    <hr>
-                                    {{-- @if (count($user_profile->user->education_details) > 0) --}}
-                                    <div class="">
-                                        <div class="row">
-                                            @foreach ($user_profile->user->education_details as $key => $education)
-                                                <div class="col-md-6 p-2">
-                                                    <div class="widget-content widget-content-area br-8">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-md-9">
-                                                                    <h4 class="h6 mb-1">
-                                                                        {{ $education->degree }}</h4>
-                                                                    <ul class="list-unstyled text-secondary mb-0">
-                                                                        <li>{{ translate('School Name') }}:
-                                                                            {{ $education->school_name }}</li>
-                                                                        <li>{{ translate('Pasing Year') }}:
-                                                                            {{ $education->passing_year }}</li>
-                                                                        <li>{{ translate('Country') }}:
-                                                                            {{ $education->country->name }}
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="absolute-top-right">
-                                                                        <a href="{{ route('user_profile.education_info_edit', encrypt($education->id)) }}"
-                                                                            class="mt-2 edit-profile btn btn-sm btn-icon btn-outline-success rounded-circle"
-                                                                            title="Edit">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24" height="24"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="currentColor" stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-edit-3">
-                                                                                <path d="M12 20h9"></path>
-                                                                                <path
-                                                                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
-                                                                                </path>
-                                                                            </svg></a>
-                                                                        <a href="{{ route('user_profile.education_info_destroy', encrypt($education->id)) }}"
-                                                                            class="btn btn-sm btn-icon btn-outline-danger rounded-circle"
-                                                                            data-toggle="tooltip" data-placement="top"
-                                                                            title="Delete">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="16" height="16"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="currentColor" stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-trash-2">
-                                                                                <polyline points="3 6 5 6 21 6">
-                                                                                </polyline>
-                                                                                <path
-                                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                                                </path>
-                                                                                <line x1="10" y1="11"
-                                                                                    x2="10" y2="17">
-                                                                                </line>
-                                                                                <line x1="14" y1="11"
-                                                                                    x2="14" y2="17">
-                                                                                </line>
-                                                                            </svg>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    {{-- @endif --}}
-
-                                    <form class="section general-info"
-                                        action="{{ route('user_profile.education_info_add') }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-
-                                        <div class="container">
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
 
-                                                    <div class="row gutters-10 mt-4">
+                                                    <div class="row gutters-10">
                                                         <div class="col-sm-4 mb-2">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Institute/School Name</span>
@@ -948,7 +868,7 @@
                                                                     name="school_name" placeholder="School Name" required>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Degree</span>
                                                                 <input type="text" class="form-control" name="degree"
@@ -956,14 +876,14 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Passing Year</span>
                                                                 <input type="number" class="form-control"
                                                                     name="passing_year" placeholder="Ex. 2008" required>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4 mb-2">
+                                                        <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Country</span>
                                                                 <select class="form-select" id="school_country_id"
@@ -977,7 +897,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-12 mt-1 mb-3">
+                                                        <div class="col-md-12 mt-1">
                                                             <div class="form-group text-end">
                                                                 <button class="btn btn-secondary">Save</button>
                                                             </div>
@@ -985,21 +905,144 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </form>
-
                                 </div>
+
+                                @if (count($user_profile->user->education_details) > 0)
+
+                                    <div class="row">
+                                        @foreach ($user_profile->user->education_details as $key => $education)
+                                            <div class="col-md-6 mt-3">
+                                                <div class="widget-content widget-content-area br-8">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <h4 class="h6 mb-1">
+                                                                    {{ $education->degree }}</h4>
+                                                                <ul class="list-unstyled text-secondary mb-0">
+                                                                    <li>{{ translate('School Name') }}:
+                                                                        {{ $education->school_name }}</li>
+                                                                    <li>{{ translate('Pasing Year') }}:
+                                                                        {{ $education->passing_year }}</li>
+                                                                    <li>{{ translate('Country') }}:
+                                                                        {{ $education->country->name }}
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="absolute-top-right">
+                                                                    <a href="{{ route('user_profile.education_info_edit', encrypt($education->id)) }}"
+                                                                        class="mt-2 edit-profile btn btn-sm btn-icon btn-outline-success rounded-circle"
+                                                                        title="Edit">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24"
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" stroke-width="2"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="feather feather-edit-3">
+                                                                            <path d="M12 20h9"></path>
+                                                                            <path
+                                                                                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
+                                                                            </path>
+                                                                        </svg></a>
+                                                                    <a href="{{ route('user_profile.education_info_destroy', encrypt($education->id)) }}"
+                                                                        class="btn btn-sm btn-icon btn-outline-danger rounded-circle"
+                                                                        data-toggle="tooltip" data-placement="top"
+                                                                        title="Delete">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="16" height="16"
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" stroke-width="2"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="feather feather-trash-2">
+                                                                            <polyline points="3 6 5 6 21 6">
+                                                                            </polyline>
+                                                                            <path
+                                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                            </path>
+                                                                            <line x1="10" y1="11"
+                                                                                x2="10" y2="17">
+                                                                            </line>
+                                                                            <line x1="14" y1="11"
+                                                                                x2="14" y2="17">
+                                                                            </line>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                             </div>
                         </div>
-                    </div>
+
                     <div class="tab-pane fade" id="portfolio" role="tabpanel" aria-labelledby="portfolio">
                         <div class="row">
 
                             <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios))
+                                    <form class="section general-info" action="{{ route('user_profile.portfolio_add') }}"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
                                 <div class="info">
-                                    <h6 class="">Portfolio Information</h6>
-                                    <hr>
-                                    {{-- @if (count($user_profile->user->userPortfolios) > 0) --}}
+                                    <h6>Portfolio Information</h6>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+                                                <div class="row">
+                                                    <div class="col-sm-4 mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Title</span>
+                                                            <input type="text" class="form-control"
+                                                                name="portfolio_name" placeholder="Portfolio title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Category</span>
+                                                            <input type="text" class="form-control"
+                                                                name="portfolio_category"
+                                                                placeholder="Portfolio category">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Portfolio Image</span>
+                                                            <input type="file" class="form-control" type="file"
+                                                                name="portfolio_img" aria-label="Sizing example input"
+                                                                aria-describedby="inputGroup">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 mb-2">
+                                                        <label class="form-label">Details</label>
+                                                        <textarea class="form-control" rows="3" name="portfolio_details" required></textarea>
+                                                    </div>
+
+                                                    <div class="col-md-12 mt-1 mb-3">
+                                                        <div class="form-group text-end">
+                                                            <button class="btn btn-secondary">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    @else
+                                        <div class="alert alert-info" role="alert">
+                                            You have added maximum number of portfolio according to your package.
+                                        </div>
+                                    @endif
+
+                                </div>
+                            </div>
+                            @if (count($user_profile->user->userPortfolios) > 0)
                                     <div class="my-3">
                                         <div class="row gutters-10">
                                             @foreach ($user_profile->user->userPortfolios as $key => $portfolio)
@@ -1068,63 +1111,7 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios)) --}}
-                                    <form class="section general-info" action="{{ route('user_profile.portfolio_add') }}"
-                                        method="POST" enctype="multipart/form-data">
-                                        @csrf
-
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-
-                                                    <div class="row mt-4">
-                                                        <div class="col-sm-4 mb-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text">Title</span>
-                                                                <input type="text" class="form-control"
-                                                                    name="portfolio_name" placeholder="Portfolio title">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4 mb-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text">Category</span>
-                                                                <input type="text" class="form-control"
-                                                                    name="portfolio_category"
-                                                                    placeholder="Portfolio category">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4 mb-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text">Portfolio Image</span>
-                                                                <input type="file" class="form-control" type="file"
-                                                                    name="portfolio_img" aria-label="Sizing example input"
-                                                                    aria-describedby="inputGroup">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 mb-2">
-                                                            <label class="form-label">Details</label>
-                                                            <textarea class="form-control" rows="3" name="portfolio_details" required></textarea>
-                                                        </div>
-
-                                                        <div class="col-md-12 mt-1 mb-3">
-                                                            <div class="form-group text-end">
-                                                                <button class="btn btn-secondary">Save</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    {{-- @else
-                                            <div class="alert alert-info" role="alert">
-                                                You have added maximum number of portfolio according to your package.
-                                            </div>
-                                        @endif --}}
-                                </div>
-                            </div>
+                                    @endif
                         </div>
                     </div>
 

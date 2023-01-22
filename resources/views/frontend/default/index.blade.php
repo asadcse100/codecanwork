@@ -7,7 +7,7 @@
                 <div class="aiz-carousel aiz-carousel-full h-100" data-fade='true' data-infinite='true' data-autoplay='true'>
                     @if (get_setting('sliders') != null)
                         @foreach (explode(',', get_setting('sliders')) as $key => $value)
-                            <img class="img-fit" src="{{ custom_asset($value) }}">
+                            <img class="img-fit" src="{{ asset($value) }}">
                         @endforeach
                     @endif
                 </div>

@@ -1,4 +1,4 @@
-@extends(Auth::guest() ? 'layouts.appindex' : 'layouts.app')
+@extends('layouts.app')
 
 @section('css')
     <style>

@@ -587,14 +587,18 @@
     @endif
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ get_setting('site_icon') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('templete') }}/src/assets/img/favicon.ico" />
+    <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet"type="text/css" />
+    <script src="{{ asset('templete') }}/layouts/vertical-dark-menu/loader.js"></script>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="{{ asset('templete') }}/src/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @if(Auth::check())
     <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/layouts/vertical-dark-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
-
+    @endif
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/src/table/datatable/datatables.css">

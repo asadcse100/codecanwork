@@ -1,8 +1,7 @@
-@extends(Auth::guest() ? 'layouts.appindex' : 'layouts.app')
+@extends('layouts.app')
 
 @section('content')
-    <section class="py-4 py-lg-5">
-        <div class="container">
+<div class="layout-px-spacing layout-top-spacing">
             @if ($keyword != null)
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 text-center">
@@ -25,7 +24,7 @@
                                     </button>
                                 </div>
                                 <div class="card-body">
-                                    <div class="mb-5">
+                                    {{-- <div class="mb-5">
                                         <h6 class="separator text-left mb-3 fs-12 text-uppercase text-secondary">
                                             <span class="pr-3">{{ translate('Categories') }}</span>
                                         </h6>
@@ -56,6 +55,22 @@
                                                     @endforeach
                                                 @endif
                                             </ul>
+                                        </div>
+                                    </div> --}}
+                                    <!-- Categories -->
+                                    <div class="mb-5">
+                                        <h6 class="text-left mb-3 fs-14 fw-700">
+                                            <span class="bg-white pr-3">{{ translate('Categories') }}</span>
+                                        </h6>
+                                        <div class="">
+                                            <select class="select2 form-control aiz-selectpicker rounded-1" name="category_id" onchange="applyFilter()" data-toggle="select2" data-live-search="true">
+                                                <option value="">{{ translate('All Categories') }}</option>
+                                                @foreach(\App\Models\ProjectCategory::all() as $category)
+                                                    <option value="{{ $category->slug }}" @if (isset($_GET['category_id'])&& $_GET['category_id'] == $category->slug ) selected @endif>
+                                                        {{$category->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-5">
@@ -292,7 +307,6 @@
                 </div>
             </form>
         </div>
-    </section>
 @endsection
 
 @section('script')

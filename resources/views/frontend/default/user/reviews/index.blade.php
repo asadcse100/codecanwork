@@ -19,7 +19,7 @@
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
         <div class="">
-            <div class="col-md-3   layout-top-spacing">
+            <div class="col-md-3 layout-top-spacing">
                 <h5 class="mb-md-0 h6">{{ translate('Reviews') }}</h5>
             </div>
             <div class="widget-content widget-content-area layout-top-spacing">

@@ -1,4 +1,4 @@
-@extends(Auth::guest() ? 'layouts.appindex' : 'layouts.app')
+@extends('layouts.app')
 
 @section('content')
     {{-- <div class="layout-top-spacing p-3">

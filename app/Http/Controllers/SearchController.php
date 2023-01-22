@@ -127,8 +127,7 @@ class SearchController extends Controller
             $total = $services->count();
             $services = $services->paginate(9)->appends($request->query());
             return view('frontend.default.services-listing', compact('services', 'total', 'keyword', 'type', 'rating'));
-        }
-        else {
+        }else {
             $type = 'project';
             $keyword = $request->keyword;
             $projectType = array('Fixed', 'Long Term');
@@ -195,8 +194,6 @@ class SearchController extends Controller
                     $projects = $projects->latest();
                     break;
             }
-
-
 
             $total = $projects->count();
             $projects = $projects->paginate(8)->appends($request->query());
