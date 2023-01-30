@@ -1,23 +1,8 @@
 @extends('layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/widgets/modules-widgets.css">
-
-    <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/widgets/modules-widgets.css">
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-@endsection
 @section('content')
-
     <div class="layout-px-spacing">
-        <div class="">
-
             <!-- Analytics -->
-
             <div class="layout-top-spacing ">
                 <h5 class="text-center">Bidded Projects</h5>
                 <hr>
@@ -39,7 +24,6 @@
                             <a href="#">
                                 <h6>I want a good banner design for my eCommerce.</h6>
                             </a>
-
                             <ul class="list-inline opacity-70 fs-12">
                                 <li class="list-inline-item">
                                     <i class="las la-clock opacity-40"></i>
@@ -99,7 +83,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')
@@ -108,7 +91,6 @@
     <script src="{{ asset('templete') }}/src/assets/js/widgets/modules-widgets.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 @endsection
-
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection

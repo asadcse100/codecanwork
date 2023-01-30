@@ -3,12 +3,12 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <div class="col-md-3 layout-top-spacing">
-                <h5 class="mb-md-0 h6">{{ translate('Running Projects') }}</h5>
+                <h6>{{ translate('Running Projects') }}</h6>
             </div>
 
             <div class="col-lg-12">
+                <div class="statbox widget box box-shadow">
                 <div class="widget-content widget-content-area layout-top-spacing">
                     <form class="" id="sort_projects" action="" method="GET">
                         <div class="card-header row gutters-5" style="justify-content:center">
@@ -28,67 +28,61 @@
                             </div>
                         </div>
                     </form>
-                    <div class="widget-content widget-content-area">
-
-                        <table id="individual-col-search" class="table dt-table-hover">
-                            <thead>
+                    <table id="individual-col-search" class="table dt-table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Title</th>
+                                <th>Project Category</th>
+                                <th>Type</th>
+                                <th>Client</th>
+                                <th>Expert</th>
+                                <th>Price</th>
+                                <th>Posted at</th>
+                                <th class="text-center dt-no-sorting">Hired at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($projects as $key => $project)
                                 <tr>
-                                    <th class="text-center">#</th>
-                                    <th>Title</th>
-                                    <th>Project Category</th>
-                                    <th>Type</th>
-                                    <th>Client</th>
-                                    <th>Expert</th>
-                                    <th>Price</th>
-                                    <th>Posted at</th>
-                                    <th class="text-center dt-no-sorting">Hired at</th>
+                                    <td class="text-center">
+                                        {{ $key + 1 + ($projects->currentPage() - 1) * $projects->perPage() }}
+                                    </td>
+                                    <td><a href="{{ route('project.details', $project->slug) }}" target="_blank"
+                                            class="text-reset">{{ $project->name }}</a></td>
+                                    @if ($project->project_category != null)
+                                        <td>
+                                            {{ $project->project_category->name }}
+                                        </td>
+                                    @endif
+                                    <td>{{ $project->type }}</td>
+                                    @if ($project->client != null)
+                                        <td>
+                                            {{ $project->client->name }}
+                                        </td>
+                                    @endif
+                                    @if ($project->project_user != null && $project->project_user->user != null)
+                                        <td>
+                                            {{ $project->project_user->user->name }}
+                                        </td>
+                                    @endif
+                                    @if ($project->project_user != null)
+                                        <td>
+                                            {{ single_price($project->project_user->hired_at) }}
+                                        </td>
+                                    @endif
+                                    @if ($project->project_user != null)
+                                        <td>
+                                            {{ Carbon\Carbon::parse($project->project_user->created_at)->diffForHumans() }}
+                                        </td>
+                                    @endif
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($projects as $key => $project)
-                                    <tr>
-                                        <td class="text-center">
-                                            {{ $key + 1 + ($projects->currentPage() - 1) * $projects->perPage() }}
-                                        </td>
-                                        <td><a href="{{ route('project.details', $project->slug) }}" target="_blank"
-                                                class="text-reset">{{ $project->name }}</a></td>
-
-                                        <td>
-                                            @if ($project->project_category != null)
-                                                {{ $project->project_category->name }}
-                                            @endif
-                                        </td>
-                                        <td>{{ $project->type }}</td>
-
-                                        <td>
-                                            @if ($project->client != null)
-                                                {{ $project->client->name }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($project->project_user != null && $project->project_user->user != null)
-                                                {{ $project->project_user->user->name }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($project->project_user != null)
-                                                {{ single_price($project->project_user->hired_at) }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($project->project_user != null)
-                                                {{ Carbon\Carbon::parse($project->project_user->created_at)->diffForHumans() }}
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!--  END CONTENT AREA  -->
 @endsection

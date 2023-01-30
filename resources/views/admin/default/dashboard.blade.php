@@ -1,20 +1,21 @@
 @extends('admin.default.layouts.app')
-
 @section('css')
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/widgets/modules-widgets.css">
+    <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/widgets/modules-widgets.css">
+    <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/assets/css/light/users/user-profile.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/assets/css/dark/users/user-profile.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 @endsection
 @section('content')
-
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="row layout-top-spacing">
+    <div class="layout-px-spacing layout-top-spacing">
+            <div class="row">
                 <!-- Analytics -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="row widget-statistic">
@@ -323,12 +324,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
     <!--  END CONTENT AREA  -->
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.min.js"></script>

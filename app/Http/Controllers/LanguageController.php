@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Symfony\Component\Console\Input\Input;
 use App\Rules\Lowercase;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -15,12 +14,6 @@ use File;
 
 class LanguageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     private $rules = array();
     private $messages = array();
 

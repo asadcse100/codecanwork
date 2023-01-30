@@ -8,8 +8,6 @@
             </div>
         </div>
     </div>
-    <div class="">
-
         <div class="card">
             <form action="{{ route('system_configuration.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -458,6 +456,4 @@
                 </div>
             </form>
         </div>
-
-    </div>
 @endsection

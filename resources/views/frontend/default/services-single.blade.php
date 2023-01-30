@@ -11,7 +11,6 @@
                                 <a href="" class="text-reset">{{ $service->product_category->name }}</a>
                             </div>
                             <h5 class="my-3 lh-1-5">{{ $service->title }}</h5>
-
                             <div class="row align-items-center no-gutters">
                                 <div class="media mt-4 mb-0 pt-1">
                                     @if (!empty($service->user->photo))
@@ -61,13 +60,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xxl-3 col-xl-4 col-lg-5 account-settings-container">
                     <div class=" z-3 " style="padding:10px">
                         <div class="card" style="padding:10px">
                             {{-- bashir --}}
                             <ul class="nav nav-tabs mb-3" id="animateLine" role="tablist">
-
                                 @foreach ($service_packages as $service_package)
                                     <li class="nav-item">
                                         <a class="nav-link @if ($loop->iteration == 1) active @endif"
@@ -78,16 +75,13 @@
                                             {{ ucfirst($service_package->service_type) }}</a>
                                     </li>
                                 @endforeach
-
                             </ul>
                             <div id="animateLineContent-4" class="tab-content">
-
                                 @foreach ($service_packages as $service_package)
                                     <div class="tab-pane fade show @if ($loop->iteration == 1) active @endif"
                                         id="{{ $service_package->service_type }}" role="tabpanel"
                                         aria-labelledby="{{ $service_package->service_type }}-tab">
                                         <div class="container">
-
                                             <span class="mb-4">
                                                 @if ($service_package->service_type == 'basic')
                                                     {{ translate('BASIC Package - Popular') }}
@@ -104,7 +98,6 @@
                                                     <i class="la la-clock"></i>
                                                     {{ $service_package->delivery_time }} {{ translate('Days Delivery') }}
                                                 </span>
-
                                                 <span>
                                                     <i class="las la-sync-alt"></i>
                                                     @if ($service_package->revision_limit < 0)
@@ -163,9 +156,7 @@
                                                 <a href="{{ route('register') }}"
                                                     class="btn btn-primary btn-block mt-4">{{ translate('Join to order this service') }}</a>
                                             @endif
-
                                         </div>
-
                                     </div>
                                 @endforeach
                             </div>
@@ -213,7 +204,6 @@
             </div>
         </div>
     </div>
-
     <!-- online Payment Modal -->
     <div class="modal fade" id="online_purchase_service_package_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -230,7 +220,6 @@
             </div>
         </div>
     </div>
-
     <!-- offline payment Modal -->
     <div class="modal fade" id="offline_service_purchase_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">

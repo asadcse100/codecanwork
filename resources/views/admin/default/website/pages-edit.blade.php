@@ -1,17 +1,8 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="aiz-titlebar mt-2 mb-3">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -112,17 +103,9 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-    <!-- END PAGE LEVEL SCRIPTS -->
-@endsection

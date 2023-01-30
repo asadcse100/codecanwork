@@ -8,7 +8,6 @@
         .profilediv {
             margin: 50px 20px 30px 20px;
         }
-
         @media (max-width: 952px) {
             .profilediv {
                 margin: 50px 20px 30px 20px;
@@ -19,7 +18,6 @@
 @section('content')
     <div class="profilediv">
         <div class="layout-px-spacing">
-            <div class="">
                 <div class="row layout-spacing">
                     <!-- Content -->
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 layout-top-spacing">
@@ -71,9 +69,7 @@
                                                 <line x1="3" y1="10" x2="21" y2="10">
                                                 </line>
                                             </svg>
-
-                                                @if (isset($user_profile->skills) )
-
+                                                @if (isset($user_profile->skills))
                                                     @foreach (json_decode($user_profile->skills, true) as $key => $skill_id)
                                                         {{--  @php
                                                             $skills = \App\Models\Skill::find($skill_id);
@@ -88,10 +84,8 @@
                                                                 </div>
                                                                 {{--  @endforeach  --}}
                                                             {{-- <span class="btn btn-outline btn-xs mb-1">{{ $skill->name }}</span> --}}
-                                                        {{--  @endif--}}
-                                                    @endforeach
+                                                        {{--  @endif --}} @endforeach
                                                 @endif
-
                                             </li>
 
     <li class="contacts-block__item">
@@ -131,7 +125,6 @@
 
     </li>
     </ul>
-
     <ul class="list-inline mt-4">
         <li class="list-inline-item mb-0">
             <a class="btn btn-info btn-icon btn-rounded" href="javascript:void(0);">
@@ -173,7 +166,6 @@
     </div>
     </div>
     </div>
-
     <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 layout-top-spacing">
         <div class="usr-tasks">
             <div class="widget-content widget-content-area" style="padding:20px">
@@ -185,7 +177,6 @@
         </div>
     </div>
     </div>
-
     <div class="row layout-spacing">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 layout-top-spacing">
             <div class="summary layout-spacing">
@@ -226,12 +217,10 @@
                                 @endforeach
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 layout-top-spacing">
             <div class="pro-plan layout-spacing">
                 <div class="widget">
@@ -267,12 +256,10 @@
                                 @endforeach
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 layout-top-spacing">
             <div class="widget-content widget-content-area" style="padding:20px">
                 <h3 class="">Portfolios</h3>
@@ -303,8 +290,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     </div>
 @endsection

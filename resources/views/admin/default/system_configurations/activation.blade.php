@@ -1,26 +1,11 @@
 @extends('admin.default.layouts.app')
-
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="aiz-titlebar mt-2 mb-3">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <div class="layout-top-spacing ">
-                            <h1 class="h3">{{ translate('General Activation') }}</h1>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-3 layout-top-spacing">
+                <h6>{{ translate('General Activation') }}</h6>
             </div>
-            <div class="row">
-
+            <div class="row layout-top-spacing">
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
@@ -69,17 +54,12 @@
             </div>
 
         </div>
-    </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
         function updateSettings(el, type) {
             if ($(el).is(':checked')) {

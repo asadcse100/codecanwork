@@ -8,7 +8,7 @@
                 <h3 class="h6 mb-0">{{ translate('Server information') }}</h3>
             </div>
             <div class="card-body">
-                <table class="table table-striped aiz-table">
+                <table id="individual-col-search" class="table dt-table-hover">
                     <thead>
                         <tr>
                             <th>{{ translate('Name') }}</th>

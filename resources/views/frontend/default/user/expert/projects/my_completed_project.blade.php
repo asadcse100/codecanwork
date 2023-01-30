@@ -1,20 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-content widget-content-area">
                     <div class="layout-top-spacing ">
                         <h5 class="text-center">Completed Projects</h5>
                         <hr>
                     </div>
-
-                    <div class="">
                         @forelse ($completed_projects as $key => $completed_project)
                             @php
                                 $project = \App\Models\Project::find($completed_project->id);
@@ -78,7 +72,6 @@
                                             <span class="avatar avatar-xs overflow-hidden">
                                                 <img class="img-fluid rounded-circle"
                                                     src="{{ asset('profile/photos/' . $project->client->photo) }}">
-
                                             </span>
                                             <div class="pl-2">
                                                 <h4 class="fs-14 mb-1">{{ $project->client->name }}</h4>
@@ -112,16 +105,8 @@
                             </div>
                         @endforelse
                     </div>
-
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
 

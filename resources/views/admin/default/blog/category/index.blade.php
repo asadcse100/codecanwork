@@ -3,18 +3,11 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
-            <div class="layout-top-spacing">
-            </div>
 
-            <div class="aiz-titlebar text-left mt-2 mb-3">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h1 class="h3">{{ translate('All Blog Categories') }}</h1>
-                    </div>
-                </div>
+            <div class="col-md-3 layout-top-spacing">
+                <h6>{{ translate('All Blog Categories') }}</h6>
             </div>
-            <div class="row">
+            <div class="row layout-top-spacing">
                 <div class="col-lg-7">
                     <div class="card">
                         <div class="card-header d-block d-md-flex">
@@ -32,7 +25,7 @@
                             </form>
                         </div>
                         <div class="card-body">
-                            <table class="table aiz-table mb-0">
+                            <table id="individual-col-search" class="table dt-table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -116,7 +109,6 @@
             </div>
 
         </div>
-    </div>
     </div>
     </div>
     <!--  END CONTENT AREA  -->

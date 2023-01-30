@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive-sm">
-                        <table class="table aiz-table mb-0">
+                        <table id="individual-col-search" class="table dt-table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>

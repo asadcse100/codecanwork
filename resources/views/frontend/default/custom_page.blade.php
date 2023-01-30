@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('meta_title'){{ $page->meta_title }}@stop
-
 @section('meta_description'){{ $page->meta_description }}@stop
-
 @section('meta_keywords'){{ $page->keywords }}@stop
 
 @section('meta')
@@ -11,8 +9,6 @@
     <meta itemprop="name" content="{{ $page->meta_title }}">
     <meta itemprop="description" content="{{ $page->meta_description }}">
     <meta itemprop="image" content="{{ asset('meta_img/' . $page->meta_img) }}">
-
-
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="product">
     <meta name="twitter:site" content="@publisher_handle">
@@ -20,7 +16,6 @@
     <meta name="twitter:description" content="{{ $page->meta_description }}">
     <meta name="twitter:creator" content="@author_handle">
     <meta name="twitter:image" content="{{ asset('meta_img/' . $page->meta_img) }}">
-
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ $page->meta_title }}" />
     <meta property="og:type" content="product" />

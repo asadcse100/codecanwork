@@ -51,21 +51,21 @@
                                             @endif
                                             <!-- @if ($chat_thread->active != 0)
     <td>
-                                            <span class="badge badge-primary badge-inline">{{ translate('Active') }}</span>
-                                        </td>
+                                                <span class="badge badge-primary badge-inline">{{ translate('Active') }}</span>
+                                            </td>
 @else
     <td>
-                                            <span class="badge badge-danger badge-inline">{{ translate('Blocked') }}</span>
-                                        </td>
+                                                <span class="badge badge-danger badge-inline">{{ translate('Blocked') }}</span>
+                                            </td>
     @endif -->
                                             <!-- @if ($chat_thread->blocked_by_user != null)
     <td>
-                                            {{ $chat_thread->blocked_by->name }}
-                                        </td>
+                                                {{ $chat_thread->blocked_by->name }}
+                                            </td>
 @else
     <td>
-                                            <span class="badge badge-secondary badge-inline">{{ translate('Running') }}</span>
-                                        </td>
+                                                <span class="badge badge-secondary badge-inline">{{ translate('Running') }}</span>
+                                            </td>
     @endif -->
                                             <td>
                                                 {{ $chat_thread->created_at }}

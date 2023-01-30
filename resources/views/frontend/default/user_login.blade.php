@@ -14,7 +14,6 @@
                                             alt="logo" style="height: 170px; width:auto;">
                                     </a>
                                 </div>
-
                                 <div class="col-md-12 mb-3">
                                     <h2>Sign In</h2>
                                     <p>Enter your email or phone and password to Sign In</p>
@@ -43,12 +42,10 @@
                                             @enderror --}}
                                         </div>
                                     </div>
-
                                     <div class="mb-3 text-right">
                                         <a class="link-muted text-capitalize font-weight-normal"
                                             href="{{ route('password.request') }}">{{ translate('Forgot Password?') }}</a>
                                     </div>
-
                                     <div class="col-12 text-center">
                                         <div class="mb-4">
                                             <button class="btn btn-outline-info">SIGN IN</button>
@@ -67,7 +64,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('google_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -79,8 +75,6 @@
                                             </div>
                                         </div>
                                     @endif
-
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('facebook_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -92,7 +86,6 @@
                                             </div>
                                         </div>
                                     @endif
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('twitter_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -104,7 +97,6 @@
                                             </div>
                                         </div>
                                     @endif
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('linkedin_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -117,7 +109,6 @@
                                         </div>
                                     @endif
                                 @endif
-
                                 <div class="col-12">
                                     <div class="text-center">
                                         <p class="mb-0">Don't have an account?<a href="{{ route('register') }}"

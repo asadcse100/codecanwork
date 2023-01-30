@@ -8,7 +8,7 @@
                 <h1 class="mb-0 h6">{{translate('Wallet Recharge History')}}</h1>
             </div>
             <div class="card-body p-0">
-                <table class="table aiz-table mb-0">
+                <table id="individual-col-search" class="table dt-table-hover">
                     <thead>
                         <tr>
                             <th>#</th>

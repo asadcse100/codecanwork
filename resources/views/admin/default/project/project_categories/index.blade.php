@@ -1,19 +1,10 @@
 @extends('admin.default.layouts.app')
-
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
-            <div class="row">
-                <div class="col-lg-7">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="statbox widget box box-shadow">
                     <div class="widget-content widget-content-area layout-top-spacing">
                         <div class="card-header">
                             <h5 class="mb-0 h6">{{ translate('All Categories') }}</h5>
@@ -149,7 +140,8 @@
                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                             for="validationCustom01">Name</span>
                                         <input type="text" id="name" name="name"
-                                            placeholder="{{ translate('Category Name') }}" class="form-control form-control-sm" required>
+                                            placeholder="{{ translate('Category Name') }}"
+                                            class="form-control form-control-sm" required>
                                         <div class="invalid-feedback">
                                             Please fill the Category Name.
                                         </div>
@@ -159,8 +151,8 @@
                                     <div class="input-group mb-3 required">
                                         <span class="input-group-text" id="inputGroup-sizing-sm"
                                             for="validationCustom01">Parent</span>
-                                        <select class="form-select form-control-sm aiz-selectpicker" name="parent_id" data-toggle="select2"
-                                            data-placeholder="Choose ..." data-live-search="true">
+                                        <select class="form-select form-control-sm aiz-selectpicker" name="parent_id"
+                                            data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
                                             <option value="0">{{ translate('No Parent') }}</option>
                                             @foreach (\App\Models\ProjectCategory::all() as $project_cat)
                                                 <option value="{{ $project_cat->id }}">{{ $project_cat->name }}</option>
@@ -187,14 +179,8 @@
 
         </div>
     </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
-@endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
 @endsection

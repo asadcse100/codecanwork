@@ -3,22 +3,9 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing layout-top-spacing">
-        <div class="">
-            <!-- BREADCRUMB -->
-            <div class="page-meta">
-                <nav class="breadcrumb-style-one" aria-label="breadcrumb">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">Home</li>
-                                <li class="breadcrumb-item active">General Config</li>
-                            </ol>
-                        </div>
-                    </div>
-                </nav>
+            <div class="col-md-3 layout-top-spacing">
+                <h6>{{ translate('General Config') }}</h6>
             </div>
-            <!-- /BREADCRUMB -->
-
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing">
                 <div class="card">
                     <div class="card-header">
@@ -32,37 +19,37 @@
                                 <div class="widget-content widget-content-area blog-create-section">
 
                                     <div class="row p-4">
-                                        <div class="col-sm-6 mb-2">
-                                            <div class="input-group  mb-2 required">
+                                        <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-12 mb-2">
+                                            <div class="input-group mb-2 required">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">System Name</span>
-                                                <input type="text" name="site_name" class="form-control form-control-sm"
+                                                <input type="text" name="site_name" class="form-control"
                                                     value="{{ get_setting('site_name') }}">
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6 mb-2">
-                                            <div class="input-group  mb-2 required">
+                                       <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-12 mb-2">
+                                            <div class="input-group mb-2 required">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">System
                                                     Logo-White</span>
-                                                <input class="form-control file-upload-input" type="file" id="formFile"
+                                                <input class="form-control" type="file" id="formFile"
                                                     name="system_logo_white" value="{{ get_setting('system_logo_white') }}">
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6 mb-2">
-                                            <div class="input-group  mb-2 required">
+                                       <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-12 mb-2">
+                                            <div class="input-group mb-2 required">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">System
                                                     Logo-Black</span>
-                                                <input class="form-control file-upload-input" type="file" id="formFile"
+                                                <input class="form-control" type="file" id="formFile"
                                                     name="system_logo_black" value="{{ get_setting('system_logo_black') }}">
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 mb-2">
+                                       <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-12 mb-2">
                                             <div class="input-group  mb-2 required">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">System
                                                     Timezone</span>
                                                 <select name="timezone"
-                                                    class="form-control aiz-selectpicker form-control-sm"
+                                                    class="form-control"
                                                     data-live-search="true">
                                                     @foreach (timezones() as $key => $value)
                                                         <option value="{{ $value }}"
@@ -72,19 +59,20 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 mb-2">
+                                       <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-12 mb-2">
                                             <div class="input-group  mb-2 required">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Admin login page
                                                     background</span>
-                                                <input class="form-control file-upload-input" type="file" id="formFile"
+                                                <input class="form-control" type="file" id="formFile"
                                                     value="{{ \App\Utility\SettingsUtility::get_settings_value('admin_login_background') }}"
                                                     class="selected-files">
                                             </div>
                                         </div>
-
-                                        <div class="form-group mb-2">
-                                            <button style="float: right;" type="submit"
-                                                class="btn btn-outline-info p-1">{{ translate('Update') }}</button>
+                                        <div class="col-sm-7 mt-2">
+                                            <div class="form-group mb-2">
+                                                <button style="float: right;" type="submit"
+                                                    class="btn btn-outline-info">{{ translate('Update') }}</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +82,6 @@
                 </div>
             </div>
         </div> <!-- end card-body -->
-    </div> <!-- end card-->
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')

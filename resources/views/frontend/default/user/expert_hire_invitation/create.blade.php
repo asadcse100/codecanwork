@@ -10,7 +10,6 @@
 </div> --}}
     <div class="mt-4">
         <div class="container">
-
             <div class="card">
                 <div class="card-body">
                     <div class="media align-items-center d-block d-md-flex">
@@ -33,7 +32,6 @@
                             <div class="mr-3 mb-4 mb-lg-0 text-center text-md-left">
                                 <h1 class="h5 mb-1 fw-700">{{ $expert->name }}</h1>
                                 <p class="opacity-60">{{ $expert->profile->specialist }}</p>
-
                                 <div
                                     class="d-flex justify-content-center justify-content-md-between text-secondary fs-12 mb-3">
                                     <div class="mr-2">
@@ -56,7 +54,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="text-lg-right d-flex justify-content-between align-items-end d-lg-block">
                                 <div class="mb-lg-4">
                                     <h4 class="mb-0">{{ single_price($expert->profile->hourly_rate) }}</h4>
@@ -67,18 +64,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
             <div class="card mt-4">
                 <div class="container">
-
-
                     <div class="card-body">
                         <h2 class="h5 mb-0">{{ translate('Send invitation for a private project') }}</h2>
                         <hr>
-
                         <form class="form-horizontal" action="{{ route('invition_for_hire_expert_sent') }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
@@ -126,7 +118,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                                 <div class="col-sm-6 mt-3">
                                     <div class="form-group">
                                         <label class="form-label">
@@ -162,7 +153,6 @@
                                         <textarea class="form-control" rows="3" name="excerpt" required></textarea>
                                     </div>
                                 </div>
-
                                 <div class="form-group u-summernote-editor mt-3">
                                     <label>
                                         Project Details
@@ -178,16 +168,13 @@
                                 </textarea>
                                 </div>
                                 <div class="col-sm-6 mt-3">
-
                                     <div class="form-group multiple-file-upload">
                                         <label class="form-label" for="signinSrEmail">File attachment</label>
                                         <input type="file" class="filepond file-upload-multiple" name="attachment"
                                             multiple data-allow-reorder="true" data-max-file-size="3MB"
                                             data-max-files="50">
                                     </div>
-
                                 </div>
-
                                 <div class="col-sm-8 mt-3">
                                     @if ($client_package->long_term_limit > 0 || $client_package->fixed_limit > 0)
                                         <button type="submit" class="btn btn-primary transition-3d-hover mr-1">Send
@@ -205,7 +192,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- End Content Section -->
 @endsection

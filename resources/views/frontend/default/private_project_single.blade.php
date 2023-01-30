@@ -30,7 +30,6 @@
                                     </li>
                                 </ul>
                             </div>
-
                             <div class="d-flex ml-auto">
                                 <!-- budget -->
                                 <div class="position-relative d-inline-block mr-2">
@@ -41,11 +40,8 @@
                                 <!-- End budget -->
                             </div>
                         </div>
-
                         <p class="mb-4">{{ $project->excerpt }}</p>
-
                         <div class="d-md-flex align-items-md-center">
-
                             <!-- Posted -->
                             <div class="u-ver-divider u-ver-divider--none-md pr-4 mb-3 mb-md-0 mr-4">
                                 <h4 class="small text-secondary mb-0">{{ translate('Bids') }}</h4>
@@ -57,7 +53,6 @@
                                 @endif
                             </div>
                             <!-- End Posted -->
-
                             <!-- Posted -->
                             <div class="mb-3 mb-md-0">
                                 <h4 class="small text-secondary mb-0">{{ translate('Project type') }}</h4>
@@ -71,7 +66,6 @@
                         <div class="mb-3">
                             <h2 class="h5">{{ translate('Job Description') }}</h2>
                         </div>
-
                         <div class="">
                             <p>@php echo $project->description; @endphp</p>
                         </div>
@@ -112,7 +106,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                     <div class="pl-lg-4">
                         @if ($project->client_user_id != Auth::user()->id)
@@ -136,7 +129,6 @@
                                 </div>
                             </header>
                             <!-- End Header -->
-
                             <!-- Content -->
                             <div class="card-body pt-1 px-5 pb-5">
                                 <a href="{{ route('client.details', $project->client->user_name) }}"
@@ -163,7 +155,6 @@
                                         </div>
                                     </div>
                                 </a>
-
                                 <!-- Icon Block -->
                                 <div class="media mb-3">
                                     <div class="min-width-4 text-center text-primary mt-1 mr-3">
@@ -182,7 +173,6 @@
                                     </div>
                                 </div>
                                 <!-- End Icon Block -->
-
                                 <!-- Icon Block -->
                                 <div class="media mb-3">
                                     <div class="min-width-4 text-center text-primary mt-1 mr-3">
@@ -196,7 +186,6 @@
                                     </div>
                                 </div>
                                 <!-- End Icon Block -->
-
                                 <!-- Icon Block -->
                                 <div class="media mb-3">
                                     <div class="min-width-4 text-center text-primary mt-1 mr-3">
@@ -208,7 +197,6 @@
                                     </div>
                                 </div>
                                 <!-- End Icon Block -->
-
                                 <!-- Icon Block -->
                                 <div class="media mb-3">
                                     <div class="min-width-4 text-center text-primary mt-1 mr-3">

@@ -1,7 +1,6 @@
 @extends('admin.default.layouts.app')
 
 @section('content')
-
 <div class="card">
   <div class="card-header row gutters-5">
    <div class="col text-center text-md-left">
@@ -19,7 +18,7 @@
       @csrf
       <input type="hidden" name="id" value="{{ $language->id }}">
       <div class="card-body">
-          <table class="table table-striped table-bordered demo-dt-basic" id="tranlation-table" cellspacing="0" width="100%">
+        <table id="individual-col-search" class="table dt-table-hover">
               <thead>
                   <tr>
                       <th>#</th>

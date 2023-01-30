@@ -47,11 +47,8 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
-
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection

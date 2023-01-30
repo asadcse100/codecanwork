@@ -9,9 +9,7 @@
 @endsection
 
 @section('content')
-
     <div class="layout-px-spacing">
-        <div class="">
             <!-- BREADCRUMB -->
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
@@ -30,7 +28,6 @@
             <div class="widget-content">
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-4 col-sm-6 mb-4">
                     <div class="row gutters-10">
-
                         <div class="row">
                             @forelse ($bookmarked_clients as $key => $bookmarked_client)
                                 @if ($bookmarked_client->client != null)
@@ -49,7 +46,6 @@
                                                     </svg>
                                                 </span>
                                             </div>
-
                                             <div class="card-body">
                                                 <a href="{{ route('client.details', $bookmarked_client->client->user_name) }}"
                                                     class="text-inherit">
@@ -125,7 +121,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +187,6 @@
                 </div>
             </div> --}}
         </div>
-    </div>
 @endsection
 <script>
     function myFunction() {

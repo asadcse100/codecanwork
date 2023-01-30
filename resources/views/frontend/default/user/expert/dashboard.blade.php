@@ -17,12 +17,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templete') }}/src/plugins/css/light/clipboard/custom-clipboard.css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
     <div class="layout-px-spacing layout-top-spacing">
-
-        <div class="">
-
-
             <div class="col-sm-7 mb-3">
                 <div class="input-group clipboard-input" style="font-size:20px">
                     <span class="input-group-text text-primary">Refer Url</span>
@@ -40,7 +35,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row layout-top-spacing">
                 <div class="col-md-12">
                     @php
@@ -68,8 +62,6 @@
                         </div>
                     @endif
                 </div>
-
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-four">
                         <div class="widget-content">
@@ -78,7 +70,6 @@
                                     <h6 class="value">Total Completed Projects</h6>
                                 </div>
                             </div>
-
                             <div class="w-content">
                                 <div class="w-info">
                                     <p class="value">@php
@@ -92,7 +83,6 @@
                                     <div class="h3 fw-700">{{ $completedProjects }}</div>
                                 </div>
                             </div>
-
                             <div class="w-progress-stats">
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 0%"
@@ -102,7 +92,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-four">
                         <div class="widget-content">
@@ -111,9 +100,7 @@
                                     <h6 class="value">Running Projects</h6>
                                 </div>
                             </div>
-
                             <div class="w-content">
-
                                 <div class="w-info">
                                     <p class="value">@php
                                         $onGoingProjects = 0;
@@ -125,15 +112,12 @@
                                     @endphp</p>
                                     <div class="h3 fw-700">{{ $onGoingProjects }}</div>
                                 </div>
-
                             </div>
-
                             <div class="w-progress-stats">
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 0%"
                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -155,7 +139,6 @@
                                     </div>
                                 </div>
                                 <div class="acc-action">
-
                                     <a href="javascript:void(0);" class="btn-add-balance">Withdraw Balance</a>
                                 </div>
                             </div>
@@ -189,13 +172,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="widget-content">
                             <div id="revenueMonthly"></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-two">
                         <div class="widget-heading">
@@ -206,9 +187,7 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- End Update by Bashir -->
-
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="row widget-statistic">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -251,7 +230,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -430,7 +408,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -464,7 +441,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -503,10 +479,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-one_hybrid widget-followers">
                         <div class="widget-heading">
@@ -548,19 +522,12 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
-
-        </div>
-
-    </div>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.min.js"></script>
     <script src="{{ asset('templete') }}/src/assets/js/dashboard/dash_1.js"></script>
-
     <script src="{{ asset('templete') }}/src/assets/js/dashboard/dash_2.js"></script>
     <script src="{{ asset('templete') }}/src/plugins/src/clipboard/clipboard.min.js"></script>
 <script src="{{ asset('templete') }}/src/plugins/src/clipboard/custom-clipboard.min.js"></script>

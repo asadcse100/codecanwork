@@ -4,19 +4,16 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('templete') }}/src/plugins/src/autocomplete/css/autoComplete.02.css" rel="stylesheet"
         type="text/css" />
-
     <link href="{{ asset('templete') }}/src/plugins/css/light/autocomplete/css/custom-autoComplete.css" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('templete') }}/src/plugins/css/dark/autocomplete/css/custom-autoComplete.css" rel="stylesheet"
         type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/light/pages/knowledge_base.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/pages/knowledge_base.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/forms/switches.css">
     <link href="{{ asset('templete') }}/src/plugins/css/light/pricing-table/css/component.css" rel="stylesheet"
         type="text/css" />
-
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/forms/switches.css">
     <link href="{{ asset('templete') }}/src/plugins/css/dark/pricing-table/css/component.css" rel="stylesheet"
         type="text/css" />
@@ -39,7 +36,6 @@
                 <div class="row" id="cancel-row">
                     @foreach ($packages as $key => $package)
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 layout-top-spacing">
-
                         </div>
                     @endforeach
                 </div>
@@ -48,7 +44,6 @@
     </div>
     <!--  END CONTENT AREA  -->
 @endsection
-
 @section('modal')
     <!-- Select Payment Type Modal -->
     <div class="modal fade" id="select_payment_type_modal" tabindex="-1" role="dialog"
@@ -89,7 +84,6 @@
             </div>
         </div>
     </div>
-
     <!-- Online Payment modal -->
     <div class="modal fade" id="purchase_package_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,13 +96,10 @@
                     </button>
                 </div>
                 <div class="modal-body" id="purchase_package_modal_body">
-
                 </div>
             </div>
         </div>
     </div>
-
-
     <!-- offline payment Modal -->
     <div class="modal fade" id="offline_client_package_purchase_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,7 +122,6 @@
     <script>
         var getSwithchInput = document.querySelector('#toggle-1');
         var pricingContainer = document.querySelector('.pricing-plans-container')
-
         getSwithchInput.addEventListener('change', function() {
             var isChecked = getSwithchInput.checked;
             if (isChecked) {
@@ -149,14 +139,11 @@
             }
         })
     </script>
-
-
     <script type="text/javascript">
         function select_payment_type(id) {
             $('input[name=package_id]').val(id);
             $('#select_payment_type_modal').modal('show');
         }
-
         function payment_type(type) {
             var package_id = $('#package_id').val();
             if (type == 'online') {
@@ -173,7 +160,6 @@
                 });
             }
         }
-
         function online_payment(id) {
             $.post('{{ route('get_package_purchase_modal') }}', {
                 _token: '{{ csrf_token() }}',

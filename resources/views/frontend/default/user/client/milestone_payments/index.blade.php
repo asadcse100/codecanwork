@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <section class="py-5">
         <div class="container">
             <div class="d-flex align-items-start">
@@ -105,12 +104,10 @@
                 $('#request_message_show_modal_body').html(data);
     		});
         }
-
         function select_payment_type(id) {
             $('input[name=milestone_payment_id]').val(id);
             $('#select_payment_type_modal').modal('show');
         }
-
         function payment_type(type) {
             var milestone_payment_id = $('#milestone_payment_id').val();
             if (type == 'online') {
@@ -127,7 +124,6 @@
                 });
             }
         }
-
         function show_online_payment_modal(id){
             $.post('{{ route('show_payment_select_modal') }}',{_token:'{{ csrf_token() }}', id:id}, function(data){
                 $('#show_online_payment_select_modal').modal('show');

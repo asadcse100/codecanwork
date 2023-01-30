@@ -70,7 +70,6 @@
 
         </div>
     </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')

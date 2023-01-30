@@ -12,11 +12,7 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 @endsection
 @section('content')
-
     <div class="layout-px-spacing">
-        <div class="">
-            <!-- Analytics -->
-
             <div class="layout-top-spacing ">
                 <h5 class="text-center">Running Projects</h5>
                 <hr>
@@ -65,10 +61,7 @@
                     {{-- End Bidded Projects --}}
                 </div>
             </div>
-
         </div>
-
-    </div>
 @endsection
 
 @section('script')

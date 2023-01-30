@@ -1,18 +1,8 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
-
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="row layout-spacing">
                 <div class="col-lg-12">
                     <div class="statbox widget box box-shadow">
@@ -100,11 +90,9 @@
                                                         </svg>
                                                     </a>
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -112,7 +100,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
@@ -134,9 +121,6 @@
     </div>
 @endsection
 @section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
         function show_verification_request_modal(id) {
             $.post('{{ route('cancel-project-request.show') }}', {

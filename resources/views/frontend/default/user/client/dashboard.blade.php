@@ -5,26 +5,18 @@
     <link href="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/light/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/light/users/user-profile.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/users/user-profile.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
-    <div class="layout-px-spacing">
-
+    <div class="layout-px-spacing layout-top-spacing">
         <div class="">
-
-            <div class="row layout-top-spacing">
-
+            <div class="row">
                 <div class="col-md-12">
                     @php
                         $verification = \App\Models\Verification::where('user_id', Auth::user()->id)
@@ -51,10 +43,7 @@
                         </div>
                     @endif
                 </div>
-
-
                 <!-- Start Update by Bashir -->
-
                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-one">
                         <div class="widget-heading">
@@ -86,13 +75,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="widget-content">
                             <div id="revenueMonthly"></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-two">
                         <div class="widget-heading">
@@ -109,22 +96,17 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-
 
             </div>
             <div class="row gutters-10">
-
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
                     <div class="widget widget-one_hybrid widget-followers">
                         <div class="widget-heading">
                             <div class="w-title">
                                 <div class="">
-
                                     <div class="opacity-50">{{ translate('Total Projects') }}</div>
                                     <div class="h3 fw-700">{{ count(Auth::user()->number_of_projects) }}</div>
-
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
@@ -134,7 +116,6 @@
                                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                     </svg>
                                 </div>
-
                             </div>
                         </div>
                         <div class="widget-content">
@@ -162,9 +143,7 @@
                                         @endphp
                                         <div class="h3 fw-700">{{ $completedProjects }}</div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                         <div class="widget-content">
@@ -192,9 +171,7 @@
                                         @endphp
                                         <div class="h3 fw-700">{{ $onGoingProjects }}</div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                         <div class="widget-content">
@@ -204,7 +181,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row widget-statistic">
@@ -241,7 +217,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -322,12 +297,11 @@
                                                 @endif
                                                 <span>{{ translate('Expert Bookmark option') }}</span>
                                             </li>
-                                           
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -356,7 +330,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
@@ -376,7 +349,7 @@
 															<span class="avatar avatar-sm flex-shrink-0 bg-soft-primary mr-3">
 																@if($project->client->photo != null)
 																	<img src="{{ asset('profile/photos/' . $project->client->photo) }}">
-                                                                    
+
 																@else
 																	<img src="{{asset('assets/frontend/default/img/avatar-place.png') }}">
 																@endif
@@ -390,7 +363,6 @@
 									</div>
 								</div>
 							</div>
-		
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
@@ -412,7 +384,7 @@
 																<span class="avatar avatar-sm flex-shrink-0 bg-soft-primary mr-3">
 																	@if($userProfile->user->photo != null)
 																		<img src=" {{ asset('profile/photos/' . $userProfile->user->photo) }}">
-                                                                       
+
 																	@else
 																		<img src="{{asset('assets/frontend/default/img/avatar-place.png') }}">
 																	@endif
@@ -431,26 +403,14 @@
 									</div>
 								</div>
 							</div>
-		
 						</div>
 					</div>
                 </div>
             </div>
-            
-
-           
-
         </div>
-
-    </div>
-
-    </div>
-
-    </div>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{{ asset('templete') }}/src/plugins/src/apex/apexcharts.min.js"></script>
     <script src="{{ asset('templete') }}/src/assets/js/dashboard/dash_1.js"></script>
-
     <script src="{{ asset('templete') }}/src/assets/js/dashboard/dash_2.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 @section('script')

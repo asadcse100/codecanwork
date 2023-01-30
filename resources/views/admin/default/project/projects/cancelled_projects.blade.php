@@ -1,17 +1,11 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
         <div class="">
             <div class="col-md-3   layout-top-spacing">
-                <h5 class="mb-md-0 h6">{{ translate('Cancelled Projects') }}</h5>
+                <h6>{{ translate('Cancelled Projects') }}</h6>
             </div>
 
             <div class="row layout-spacing">

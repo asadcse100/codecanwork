@@ -15,7 +15,6 @@
 @endsection
 @section('body')
     <div class="layout-px-spacing">
-        <div class="">
             <div class="row layout-top-spacing">
                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-six">
@@ -32,7 +31,6 @@
                                     <div id="total-users"></div>
                                 </div>
                             </div>
-
                             <div class="w-chart-section">
                                 <div class="w-detail">
                                     <p class="w-title">Paid Visits</p>
@@ -44,9 +42,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-four">
                         <div class="widget-content">
@@ -54,11 +50,8 @@
                                 <div class="w-info">
                                     <h6 class="value">Running Work</h6>
                                 </div>
-
                             </div>
-
                             <div class="w-content">
-
                                 <div class="w-info">
                                     <p class="value">141 <span>this week</span> <svg xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -68,26 +61,21 @@
                                             <polyline points="17 6 23 6 23 12"></polyline>
                                         </svg></p>
                                 </div>
-
                             </div>
-
                             <div class="w-progress-stats">
                                 <div class="progress">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%"
                                         aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-
                                 <div class="">
                                     <div class="w-icon">
                                         <p>57%</p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-three">
                         <div class="widget-content">
@@ -147,13 +135,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="widget-content">
                             <div id="revenueMonthly"></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-two">
                         <div class="widget-heading">
@@ -164,9 +150,7 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- End Update by Bashir -->
-
                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="row widget-statistic">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
@@ -254,27 +238,18 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-five">
-
                         <div class="widget-heading">
-
                             <a href="javascript:void(0)" class="task-info">
-
                                 <div class="usr-avatar">
                                     <span>FD</span>
                                 </div>
-
                                 <div class="w-title">
-
                                     <h5>Figma Design</h5>
                                     <span>Design Project</span>
-
                                 </div>
-
                             </a>
-
                             <div class="task-action">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" href="#" role="button" id="pendingTask"
@@ -288,7 +263,6 @@
                                             <circle cx="5" cy="12" r="1"></circle>
                                         </svg>
                                     </a>
-
                                     <div class="dropdown-menu left" aria-labelledby="pendingTask"
                                         style="will-change: transform;">
                                         <a class="dropdown-item" href="javascript:void(0);">View Project</a>
@@ -297,16 +271,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
                         <div class="widget-content">
-
                             <p>Doloribus nisi vel suscipit modi, optio ex repudiandae voluptatibus officiis commodi.</p>
-
                             <div class="progress-data">
-
                                 <div class="progress-info">
                                     <div class="task-count"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -321,16 +289,12 @@
                                         <p>86.2%</p>
                                     </div>
                                 </div>
-
                                 <div class="progress">
                                     <div class="progress-bar bg-primary" role="progressbar" style="width: 65%"
                                         aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-
                             </div>
-
                             <div class="meta-info">
-
                                 <div class="due-time">
                                     <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -339,10 +303,7 @@
                                             <polyline points="12 6 12 12 16 14"></polyline>
                                         </svg> 3 Days Left</p>
                                 </div>
-
-
                                 <div class="avatar--group">
-
                                     <div class="avatar translateY-axis more-group">
                                         <span class="avatar-title">+6</span>
                                     </div>
@@ -357,22 +318,14 @@
                                         <img alt="avatar"
                                             src="{{ asset('templete') }}/src/assets/img/profile-19.jpeg" />
                                     </div>
-
                                 </div>
-
                             </div>
-
-
                         </div>
-
                     </div>
-
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-one">
                         <div class="widget-content">
-
                             <div class="media">
                                 <div class="w-img">
                                     <img src="{{ asset('templete') }}/src/assets/img/profile-19.jpeg" alt="avatar">
@@ -382,10 +335,8 @@
                                     <p class="meta-date-time">Monday, May 18</p>
                                 </div>
                             </div>
-
                             <p>"Duis aute irure dolor" in reprehenderit in voluptate velit esse cillum "dolore eu fugiat"
                                 nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-
                             <div class="w-action">
                                 <div class="card-like">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -397,7 +348,6 @@
                                     </svg>
                                     <span>551 Likes</span>
                                 </div>
-
                                 <div class="read-more">
                                     <a href="javascript:void(0);">Read More <svg xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -411,11 +361,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-card-two">
                         <div class="widget-content">
-
                             <div class="media">
                                 <div class="w-img">
                                     <img src="{{ asset('templete') }}/src/assets/img/g-8.png" alt="avatar">
@@ -425,7 +373,6 @@
                                     <p class="meta-date-time">Bronx, NY</p>
                                 </div>
                             </div>
-
                             <div class="card-bottom-section">
                                 <h5>4 Members Going</h5>
                                 <div class="img-group">
@@ -441,7 +388,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

@@ -10,7 +10,6 @@
                     <h2 class="h6 mb-0">{{ count($total_clients) }} {{ translate('members found') }}</h2>
                 </div>
                 <!-- End Title -->
-
                 <!-- Filter -->
                 <div class="col-sm-8 col-md-6 text-sm-right">
                     <ul class="list-inline mb-0">
@@ -27,7 +26,6 @@
                 </div>
                 <!-- End Filter -->
             </div>
-
             <div class="row">
                 @if (count($total_clients) > 0)
                     @foreach ($clients as $key => $client)
@@ -45,13 +43,11 @@
                                             <span
                                                 class="badge badge-xs badge-outline-primary badge-pos badge-pos--bottom-left rounded-circle"></span>
                                         </div>
-
                                         <a class="btn btn-sm btn-icon btn-soft-warning btn-bg-transparent position-absolute top-0 right-0 rounded-circle m-3"
                                             href="javascript:;" data-toggle="tooltip" data-placement="top"
                                             title="Add to favorites">
                                             <span class="far fa-bookmark btn-icontranslateinner text-secondary"></span>
                                         </a>
-
                                         <h2 class="h6 mb-0">
                                             <a
                                                 href="{{ route('client.details', $client->user->user_name) }}">{{ $client->user->name }}</a>
@@ -61,7 +57,6 @@
                                         </span>
                                     </div>
                                     <!-- End Team -->
-
                                     <!-- Rewards -->
                                     <div class="mb-3">
                                         <img class="max-width-4 mr-1"
@@ -75,7 +70,6 @@
                                             alt="Image Description" title="Top Endorsed">
                                     </div>
                                     <!-- End Rewards -->
-
                                     <a class="btn btn-sm btn-soft-primary transition-3d-hover"
                                         href="{{ route('client.details', $client->user->user_name) }}">
                                         View Profile
@@ -85,7 +79,6 @@
                         </div>
                     @endforeach
                 @endif
-
             </div>
             <!-- Pagination -->
             <div class="d-flex justify-content-between align-items-center">

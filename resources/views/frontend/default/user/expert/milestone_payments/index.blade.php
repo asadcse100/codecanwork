@@ -2,11 +2,7 @@
 
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
-
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="row layout-spacing">
                 <div class="col-lg-12">
                     <div class="statbox widget box box-shadow">
@@ -62,23 +58,15 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-    </div>
-    </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
-
 @section('script')
     <script type="text/javascript">
         function request_message_show_modal(id) {
@@ -92,7 +80,6 @@
         }
     </script>
 @endsection
-
 @section('modal')
     <div class="modal fade" id="request_message_show_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">

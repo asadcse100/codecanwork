@@ -19,7 +19,6 @@
                                     <p>Fill out the form to get started</p>
                                     <hr>
                                 </div>
-
                                 <form class="" id="reg-form" method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <input type="hidden" name="user_types[]" value="expert">
@@ -33,7 +32,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
@@ -44,7 +42,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">Phone</label>
@@ -55,7 +52,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label class="form-label ">Password</label>
@@ -67,7 +63,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label class="form-label ">Confirm Password</label>
@@ -88,7 +83,6 @@
                                                 @if (!empty($reffer_code)) value="{{ $reffer_code }}" @endif>
                                         </div>
                                     </div>
-
                                     {{--
                                     <div class="form-group mb-4">
                                         <div class="aiz-radio-inline">
@@ -103,13 +97,11 @@
                                             </label>
                                         </div>
                                     </div> --}}
-
                                     @if (get_setting('google_recaptcha_activation_checkbox') == 1)
                                         <div class="form-group">
                                             <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
                                         </div>
                                     @endif
-
                                     <div class="form-group">
                                         <div class="aiz-checkbox-list">
                                             <label class="aiz-checkbox">
@@ -139,7 +131,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('google_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -152,7 +143,6 @@
                                         </div>
                                     @endif
 
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('facebook_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -164,7 +154,6 @@
                                             </div>
                                         </div>
                                     @endif
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('twitter_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -176,7 +165,6 @@
                                             </div>
                                         </div>
                                     @endif
-
                                     @if (\App\Utility\SettingsUtility::get_settings_value('linkedin_login_activation_checkbox') == 1)
                                         <div class="col-sm-3 col-12">
                                             <div class="mb-4">
@@ -189,7 +177,6 @@
                                         </div>
                                     @endif
                                 @endif
-
                                 <div class="col-12">
                                     <div class="text-center">
                                         <p class="mb-0">"Already have an account?<a href="{{ route('user.login') }}"

@@ -277,7 +277,6 @@
                                                         class="font-weight-bold">{{ $service->user->name }}</span></a>
                                             </span>
                                         </div>
-
                                         <a href="{{ route('service.show', $service->slug) }}" class="text-dark"  title="{{ $service->title }}">
                                             <h5 class="card-title fs-16 fw-700 h-40px">
                                                 {{ \Illuminate\Support\Str::limit($service->title, 45, $end = '...') }}</h5>
@@ -292,7 +291,6 @@
                             </div>
                         @endforeach
                 </div>
-
                 </div>
                 <div class="pt-5 text-center">
                     <a href="{{ route('search') }}?keyword=&type=service"
@@ -301,7 +299,6 @@
             </div>
         </section>
     @endif
-
 
     @if (get_setting('cta_section_show') == 'on')
         <section class="cta_section py-8 bg-white">
@@ -437,7 +434,6 @@
             $('#show_new_user_modal').modal({
                 show: true
             });
-
         </script>
     @endif
 @endsection

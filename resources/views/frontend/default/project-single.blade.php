@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @php
         $profile = \App\Models\UserProfile::where('user_id', $project->client_user_id)
             ->where('user_role_id', 3)
@@ -13,7 +12,6 @@
                     <div class="card project-card">
                         <div class="card-header d-block">
                             <h5 class="h4 my-3 lh-1-5"><strong> {{ $project->name }} </strong></h5>
-
                             <ul class="list-inline opacity-70 fs-13">
                                 <li class="list-inline-item">
                                     <i class="las la-clock opacity-40"></i>
@@ -70,7 +68,6 @@
                                                         <span class="avatar avatar-sm"><img
                                                                 src="{{ asset($attachment->file_name) }}"
                                                                 class="img-fit"></span>
-
                                                     </div>
                                                     <div class="body">
                                                         <h6 class="d-flex">
@@ -145,7 +142,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                             </div>
                             <div class="card-body">
                                 <div class="mb-5">
@@ -213,8 +209,6 @@
                                             </div>
                                         </div>
                                     </a>
-
-                                    <div class="">
                                         <div class="media mb-3">
                                             <div class="text-center text-primary mt-1 mr-3">
                                                 <i class="las la-map-marked la-2x"></i>
@@ -250,7 +244,6 @@
                                                     {{ translate('total spent') }}</span>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                                 <hr>
 
@@ -271,10 +264,8 @@
                                         </a>
                                     @endif
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -284,7 +275,6 @@
                     <hr>
                     <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="2"
                         data-md-items="1" data-arrows='true'>
-
                         <div class="row">
                             @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(8)->get() as $similar_type_project)
                                 @if (count($similar_types) > 0)

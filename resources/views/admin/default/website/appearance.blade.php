@@ -1,18 +1,7 @@
 @extends('admin.default.layouts.app')
-
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
-
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                     <div class="card">
@@ -159,18 +148,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection
-@section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-    <!-- END PAGE LEVEL SCRIPTS -->
-@endsection

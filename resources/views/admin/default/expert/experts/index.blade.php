@@ -21,14 +21,12 @@
  @section('content')
      <!--  BEGIN CONTENT AREA  -->
      <div class="layout-px-spacing">
-         <div class="">
              <!-- BREADCRUMB -->
              <div class="page-meta">
                  <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                      <div class="row">
                          <div class="col-md-10">
                              <ol class="breadcrumb">
-                                 <li class="breadcrumb-item">Home</li>
                                  <li class="breadcrumb-item active" aria-current="page">Experts Lists</li>
                              </ol>
                          </div>
@@ -40,9 +38,9 @@
                  </nav>
              </div>
              <!-- /BREADCRUMB -->
-
              <div class="row">
                  <div class="col-lg-12">
+                    <div class="statbox widget box box-shadow">
                      <div class="widget-content widget-content-area layout-top-spacing">
                          <form class="" id="sort_projects" action="" method="GET">
                              <div class="card-header row gutters-5" style="justify-content:center">
@@ -352,8 +350,7 @@
                      </div>
                  </div>
              </div>
-         </div>
-     </div>
+        </div>
      </div>
      <!--  END CONTENT AREA  -->
  @endsection

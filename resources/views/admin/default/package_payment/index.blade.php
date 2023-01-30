@@ -3,8 +3,6 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
-
             <!-- BREADCRUMB -->
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
@@ -22,8 +20,8 @@
 
             <div class="row layout-spacing">
                 <div class="col-lg-12">
+                    <div class="statbox widget box box-shadow">
                     <div class="widget-content widget-content-area layout-top-spacing">
-
                         <table id="individual-col-search" class="table dt-table-hover">
                             <thead>
                                 <tr>
@@ -102,7 +100,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!--  END CONTENT AREA  -->
 @endsection

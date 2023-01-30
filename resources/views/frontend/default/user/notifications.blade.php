@@ -4,11 +4,6 @@
     <section class="py-4 py-lg-5">
         <div class="container">
             <div class="d-flex align-items-start">
-                {{-- @if (isClient())
-                    @include('frontend.default.user.client.inc.sidebar')
-                @else
-                    @include('frontend.default.user.expert.inc.sidebar')
-                @endif --}}
                 <div class="aiz-user-panel">
                     <div class="card">
                         <div class="card-header">

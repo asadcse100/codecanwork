@@ -1,18 +1,8 @@
 @extends('admin.default.layouts.app')
 
-@section('css')
-    <!-- BEGIN PAGE LEVEL STYLES -->
-
-    <!-- END PAGE LEVEL STYLES -->
-@endsection
-
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
-    <div class="layout-px-spacing">
-        <div class="">
-            <div class="layout-top-spacing">
-            </div>
-
+    <div class="layout-px-spacing layout-top-spacing">
             <div class="aiz-titlebar text-left mt-2 mb-3">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -25,7 +15,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <form id="sort_uploads" action="">
                     <div class="card-header row gutters-5">
@@ -157,20 +146,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-    </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection
 @section('script')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
         function detailsInfo(e) {
             $('#info-modal-content').html(
@@ -183,10 +165,8 @@
                 id: id
             }, function(data) {
                 $('#info-modal-content').html(data);
-                // console.log(data);
             });
         }
-
         function copyUrl(e) {
             var url = $(e).data('url');
             var $temp = $("<input>");
@@ -200,7 +180,6 @@
             }
             $temp.remove();
         }
-
         function sort_uploads(el) {
             $('#sort_uploads').submit();
         }

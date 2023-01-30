@@ -3,25 +3,21 @@
 @section('css')
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
-    <link href="{{ asset('templete') }}/src/assets/css/light/users/user-profile.css" rel="stylesheet" type="text/css" />
-
+    <link href="{{ asset('templete') }}/src/assets/css/light/users/user-profile.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
-    <link href="{{ asset('templete') }}/src/assets/css/dark/users/user-profile.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templete') }}/src/assets/css/dark/users/user-profile.css" rel="stylesheet" type="text/css"/>
     <!--  END CUSTOM STYLE FILE  -->
 @endsection
 @section('body')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <!-- BREADCRUMB -->
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
-
                 </nav>
             </div>
             <!-- /BREADCRUMB -->
             <div class="row">
-
                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="payment-history layout-spacing ">
                         <div class="widget-content widget-content-area">
@@ -141,7 +137,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

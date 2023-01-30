@@ -13,7 +13,6 @@
                                 action="{{ route('user_profile.education_info_update', $education->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-
                                 <div class="container">
                                     <div class="row">
                                         <div class="card">

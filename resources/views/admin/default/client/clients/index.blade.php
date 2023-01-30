@@ -3,13 +3,13 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <div class="col-md-3   layout-top-spacing">
                 <h5 class="mb-md-0 h6">{{ translate('Client Lists') }}</h5>
             </div>
 
             <div class="row layout-spacing">
                 <div class="col-lg-12">
+                    <div class="statbox widget box box-shadow">
                     <div class="widget-content widget-content-area layout-top-spacing">
                         <form class="" id="sort_projects" action="" method="GET">
                             <div class="card-header row gutters-5" style="justify-content:center">
@@ -154,7 +154,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!--  END CONTENT AREA  -->
 @endsection

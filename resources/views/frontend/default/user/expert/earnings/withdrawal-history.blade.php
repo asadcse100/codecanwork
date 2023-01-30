@@ -69,13 +69,7 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <!--  END CONTENT AREA  -->
-
-    <!-- END PAGE LEVEL SCRIPTS -->
 @endsection
-
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection

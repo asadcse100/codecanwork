@@ -36,10 +36,8 @@
 @endsection
 
 @section('content')
-
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <!-- BREADCRUMB -->
             {{-- <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
@@ -1116,8 +1114,7 @@
                     </div>
 
                 </div>
-            </div>
-        </div>
+
 
 
         {{-- <div class="tab-pane fade" id="animated-underline-preferences" role="tabpanel"
@@ -1178,10 +1175,6 @@
                         </div>
                     </div> --}}
 
-    </div>
-    </div>
-    </div>
-    </div>
 
     <!--  END CONTENT AREA  -->
 

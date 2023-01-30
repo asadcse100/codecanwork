@@ -56,7 +56,6 @@
                     </ol>
                 </nav>
             </div>
-
             <!-- /BREADCRUMB -->
             <div class="row">
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -103,11 +102,8 @@
                             </div>
                         </div>
                     </div>
-
-
                     <form action="#" method="GET" name="share_matter" id="share_matter">
                         <div class="row">
-
                             <input type="hidden" name="skill" id="skill" value="-1">
                             <input type="hidden" name="sub_category_id" value="-1">
                             <div class="col-sm-2 mb-2">
@@ -118,11 +114,9 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col-sm-2">
                                 <button type="submit" class="btn btn-secondary p-1">Show</button>
                             </div>
-
                             <div class="col-sm-2 mb-2">
                                 <div class="form-check form-switch form-check-inline">
                                     <input class="form-check-input" type="checkbox" role="switch"
@@ -131,7 +125,6 @@
                                         for="flexSwitchCheckChecked">{{ __('Internal') }}</label>
                                 </div>
                             </div>
-
                             <div class="col-sm-2 mb-2">
                                 <div class="form-check form-switch form-check-inline">
                                     <input class="form-check-input" type="checkbox" role="switch"
@@ -240,9 +233,6 @@
 @endsection
 
 @section('script')
-    <!--  END CONTENT AREA  -->
-
-    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script type="text/javascript">
         function get_category_by_subcategory() {
             var category_id = $('#category_id').val();

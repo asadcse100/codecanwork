@@ -9,7 +9,7 @@
         margin-top: 0% !important;
     }
 </style>
-<div class="new-header container-xxl @if(Auth::check()) header-container @endif" style="background-color: #ffffff;">
+<div class="new-header container-xxl @if(Auth::check()) header-container @endif" style="background-color: #d8d8d8;">
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 @if(!Auth::check()) layout-top-spacing mb-3 @endif">
             <div class="row">
@@ -25,22 +25,21 @@
 
                                 &#160;
                                 <select class="form-select form-control-sm" name="type">
-                                    <option value="freelancer"
-                                        @isset($type) @if ($type == 'freelancer')
-                                    selected
-                                @endif @endisset>
-                                        Experts</option>
-                                    <option value="project"filter_category
-                                        @isset($type) @if ($type == 'project')
-                                    selected
-                                @endif @endisset>
-                                        Project</option>
-
-                                    <option value="service"
-                                        @isset($type) @if ($type == 'service')
-                                    selected
-                                @endif @endisset>
-                                        Services</option>
+                                    <option value="expert"
+                                        @isset($type) @if ($type == 'expert')
+                                            selected
+                                        @endif @endisset>
+                                                Experts</option>
+                                            <option value="project"filter_category
+                                                @isset($type) @if ($type == 'project')
+                                            selected
+                                        @endif @endisset>
+                                                Project</option>
+                                            <option value="service"
+                                                @isset($type) @if ($type == 'service')
+                                            selected
+                                        @endif @endisset>
+                                            Services</option>
 
                                 </select>
                                 {{-- <button type="submit" class="btn" style="background: #052440"> --}}
@@ -64,7 +63,7 @@
                         <li class="nav-item d-none d-lg-block">
                             <a class="nav-link" href="{{ route('login') }}">{{ translate('Log In') }}</a>
                         </li>
-                        <li class="nav-item ml-xl-3">
+                        <li class="nav-item d-none d-lg-block">
                             <a class="btn btn-primary rounded-1"
                                 href="{{ route('register') }}">{{ translate('Get Started') }}</a>
                         </li>

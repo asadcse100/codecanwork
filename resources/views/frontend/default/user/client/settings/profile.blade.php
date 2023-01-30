@@ -225,7 +225,6 @@
                         </div>
                     </div>
 
-
                     <div class="tab-pane fade" id="animated-underline-profile" role="tabpanel"
                         aria-labelledby="animated-underline-profile-tab">
                         <div class="row">
@@ -306,7 +305,6 @@
                                                                     name="city_id" id="city_id" required
                                                                     data-msg="Please select your city."
                                                                     data-live-search="true">
-
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -320,8 +318,6 @@
                                                                     class="form-control">
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                                 <div class="js-form-message layout-top-spacing">
@@ -359,8 +355,6 @@
                                                     <!-- End Buttons -->
                                                 </div>
                                         </form>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +394,6 @@
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                             <div class="section general-info">
-
                                 @if ($verification == null)
                                     <div class="info">
                                         <div class="card-header">
@@ -462,8 +455,6 @@
             </div>
         </div>
     </div>
-    </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')

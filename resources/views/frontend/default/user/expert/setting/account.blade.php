@@ -42,9 +42,7 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-
         <div class="middle-content container-xxl p-0">
-
             <!-- BREADCRUMB -->
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
@@ -55,9 +53,7 @@
                 </nav>
             </div>
             <!-- /BREADCRUMB -->
-
             <div class="account-settings-container layout-top-spacing">
-
                 <div class="account-content">
                     <div class="row mb-3">
                         <div class="col-md-12">
@@ -99,7 +95,6 @@
                         <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
                             aria-labelledby="animated-underline-home-tab">
                             <div class="row">
-
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                         <div class="info">
                                             <h5 class="">Change Password</h5>
@@ -116,7 +111,6 @@
                                                                         placeholder="New Password">
                                                                 </div>
                                                             </div>
-
                                                             <div class="col-md-6">
                                                                 <div class="input-group mb-3">
                                                                     <span class="input-group-text text-primary">Confirm Password</span>
@@ -137,7 +131,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="tab-pane fade" id="animated-underline-profile" role="tabpanel"
                             aria-labelledby="animated-underline-profile-tab">
                             <div class="row">
@@ -147,7 +140,6 @@
                                             <h6 class="">Bank Info</h6>
                                             <p>Add your New <span class="text-success">Bank</span> Information.
                                             </p>
-
                                             <div class="row mt-4">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
@@ -174,10 +166,7 @@
                                                         <input type="number" class="form-control">
                                                     </div>
                                                 </div>
-
-
                                             </div>
-
                                             <div class="text-right">
                                                 <button type="submit"
                                                     class="btn btn-primary transition-3d-hover mr-1">{{ translate('Add') }}</button>
@@ -185,14 +174,12 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-xl-6 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info payment-info">
                                         <div class="info">
                                             <h6 class="">Add Payment Method</h6>
                                             <p>Changes your New <span class="text-success">Payment Method</span>
                                                 Information.</p>
-
                                             <div class="row mt-4">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
@@ -248,7 +235,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Card Number</label>
@@ -319,13 +305,11 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
 

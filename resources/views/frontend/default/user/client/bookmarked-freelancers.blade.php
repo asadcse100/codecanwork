@@ -7,7 +7,6 @@
                 @include('frontend.default.user.client.inc.sidebar')
                 <div class="aiz-user-panel">
                     <h6 class="mb-4">{{ translate('Bookmarked Experts') }}</h6>
-
                     <div class="row gutters-10">
                         @forelse ($bookmarked_experts as $key => $bookmarked_expert)
                             @if ($bookmarked_expert->expert != null)

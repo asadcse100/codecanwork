@@ -4,12 +4,10 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('templete') }}/src/plugins/src/autocomplete/css/autoComplete.02.css" rel="stylesheet"
         type="text/css" />
-
     <link href="{{ asset('templete') }}/src/plugins/css/light/autocomplete/css/custom-autoComplete.css" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('templete') }}/src/plugins/css/dark/autocomplete/css/custom-autoComplete.css" rel="stylesheet"
         type="text/css" />
-
     <link href="{{ asset('templete') }}/src/assets/css/light/pages/knowledge_base.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templete') }}/src/assets/css/dark/pages/knowledge_base.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -18,12 +16,10 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <div class="col-md-3 layout-top-spacing">
                 <h5 class="mb-md-0 h6">{{ translate('Reviews') }}</h5>
             </div>
             <div class="widget-content widget-content-area layout-top-spacing">
-
                 <table id="individual-col-search" class="table dt-table-hover">
                     <thead>
                         <tr>
@@ -75,10 +71,8 @@
                     </tbody>
                 </table>
                 {{ $reviews->links() }}
-
             </div>
         </div>
-    </div>
     <!--  END CONTENT AREA  -->
 @endsection
 @section('modal')

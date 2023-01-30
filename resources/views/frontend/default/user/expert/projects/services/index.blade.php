@@ -3,7 +3,6 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="">
             <!-- BREADCRUMB -->
             <div class="page-meta layout-top-spacing">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
@@ -27,7 +26,6 @@
                 <div class="row layout-spacing">
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="row gutters-10">
-
                             <div class="row">
                                 @foreach ($services as $service)
                                     <div class="col-sm-3 mb-4">
@@ -57,7 +55,6 @@
                                                     </div>
                                                 </a>
                                             </div>
-
                                             <a href="{{ route('service.show', $service->slug) }}">
                                                 <div class="card-body px-0 pb-0 ">
                                                     <p class="card-title mb-3 container">
@@ -65,7 +62,6 @@
                                                     </p>
                                                 </div>
                                             </a>
-
                                             <div class="container text-center">
                                                 <span type="button" data-bs-dismiss="modal"
                                                     class="badge outline-badge-primary mb-2 me-4"> <a
@@ -84,11 +80,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
     <!--  END CONTENT AREA  -->
 @endsection
-
 @section('modal')
     @include('admin.default.partials.delete_modal')
 @endsection
