@@ -9,13 +9,11 @@
                     <div class="row">
                         <div class="col-md-10">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Expert</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Service</li>
                             </ol>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('service.create') }}" class="btn btn-primary mb-2 me-4">Add
+                            <a href="{{ route('service.create') }}" class="btn btn-outline-info mb-2 me-4">Add
                                 Service</a>
                         </div>
                     </div>

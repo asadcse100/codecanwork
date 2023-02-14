@@ -47,6 +47,15 @@ class ProfileController extends Controller
 
     }
 
+    public function profile_show(){
+        $data = null;
+        $data['freelancer_account'] = ExpertAccount::where('user_id', Auth::user()->id)->first();
+        $data['user_profile'] = UserProfile::where('user_id', Auth::user()->id)->first();
+        $data['verification'] = Verification::where('user_id', Auth::user()->id)->where('type', 'identity_verification')->first();
+
+        return view('frontend.default.user.user-profile-show',$data);
+    }
+
     //Redirect to user profile page to update profile
     public function user_profile()
     {

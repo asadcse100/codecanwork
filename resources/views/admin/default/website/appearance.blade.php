@@ -11,11 +11,8 @@
                         <div class="card-body">
                             <form action="{{ route('general-config.store') }}" method="POST">
                                 @csrf
-                                <div class="row">
-                                    <div class="row mb-4 layout-spacing">
-                                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
-                                            <div class="widget-content widget-content-area blog-create-section">
-                                                <div class="card">
+                                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="widget-content widget-content-area">
                                                     <div class="row layout-top-spacing p-4">
                                                         <div class="col-sm-6 mb-4">
                                                             <div class="input-group  mb-3 required">
@@ -75,14 +72,11 @@
 
                                                         <div class="text-right">
                                                             <button type="submit"
-                                                                class="btn btn-outline-primary btn-sm mb-2 me-4">{{ translate('Update') }}</button>
+                                                                class="btn btn-outline-info mb-2 me-4">{{ translate('Update') }}</button>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -94,11 +88,9 @@
                             <form action="{{ route('system_configuration.update') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
                                     <div class="row mb-4 layout-spacing">
                                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
                                             <div class="widget-content widget-content-area blog-create-section">
-                                                <div class="card">
                                                     <div class="row layout-top-spacing p-4">
 
                                                         <div class="col-sm-6 mb-4">
@@ -138,11 +130,9 @@
                                                                 class="btn btn-outline-primary btn-sm mb-2 me-4">{{ translate('Update') }}</button>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>

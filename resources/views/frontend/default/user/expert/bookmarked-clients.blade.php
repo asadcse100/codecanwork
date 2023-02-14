@@ -16,9 +16,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Expert</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Following Clients</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ translate('Following Clients') }}</li>
                             </ol>
                         </div>
                     </div>
@@ -34,17 +32,9 @@
                                     <div class="col-sm-3 mb-4">
                                         <div class="card">
                                             <div class="absolute-top-right p-2">
-                                                <span class="btn btn-outline-warning btn-icon mb-2 me-4"
-                                                    onclick="myFunction()">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-heart">
-                                                        <path
-                                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                                        </path>
-                                                    </svg>
-                                                </span>
+                                            <a class="d-inline-block confirm-alert" href="javascript:void(0)" data-href="{{ route('bookmarked-clients.destroy', $bookmarked_client->id) }}" data-toggle="tooltip" title="{{ translate('Remove from bookmark') }}" data-target="#unfollow-modal">
+                                                <i class="las la-bookmark la-2x"></i>
+                                            </a>
                                             </div>
                                             <div class="card-body">
                                                 <a href="{{ route('client.details', $bookmarked_client->client->user_name) }}"

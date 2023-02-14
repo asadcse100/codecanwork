@@ -120,7 +120,7 @@ Route::group(['middleware' => ['user', 'packagePurchased']], function(){
 	Route::post('wallet-recharge', 'WalletController@rechage')->name('wallet_recharge');
 
 	Route::get('/expert/packages/history', 'PackagePaymentController@expert_package_purchase_history_index')->name('expert.packages.history');
-	Route::get('/client/packages/history', 'PackagePaymentController@expert_package_purchase_history_index')->name('client.packages.history');
+	Route::get('/client/packages/history', 'PackagePaymentController@client_package_purchase_history_index')->name('client.packages.history');
 
 	Route::get('/user-reviews/{type}', 'ReviewController@review_index')->name('user_review');
 

@@ -124,7 +124,7 @@
                                                                             </div>
 
                                                                             <input type="hidden" id="type"
-                                                                                name="type" value="freelancer"
+                                                                                name="type" value="expert"
                                                                                 class="form-control">
 
                                                                             <div class="col-sm-6 mb-2">

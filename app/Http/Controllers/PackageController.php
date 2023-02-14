@@ -20,7 +20,7 @@ class PackageController extends Controller
 
     public function index($type)
     {
-        $packages = Package::latest()->where('type', $type)->paginate(10);
+        $packages = Package::latest()->where('type', $type)->paginate(20);
         if ($type == 'expert') {
             return view('admin.default.expert.packages.index', compact('packages'));
         }

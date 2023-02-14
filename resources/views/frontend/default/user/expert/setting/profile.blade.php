@@ -48,13 +48,11 @@
                 </nav>
             </div> --}}
             <!-- /BREADCRUMB -->
-
             <div class="account-settings-container layout-top-spacing">
                 <div class="account-content">
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h5 class="mb-md-0 h6">{{ translate('Profile Settings') }}</h5>
-
                             <div class="animated-underline-content">
                                 <ul class="nav nav-tabs" id="animateLine" role="tablist">
                                     <li class="nav-item">
@@ -113,12 +111,10 @@
                                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                             </svg> Portfolio</a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-content" id="animateLineContent-4">
                         <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
                             aria-labelledby="animated-underline-home-tab">
@@ -151,7 +147,6 @@
                                                         </div>
                                                         <div class="file-preview box"></div>
                                                         --}}
-
                                                         <input type="file" name="verification_file"
                                                             placeholder="change file"
                                                             @if (!empty($verification->attachment)) value="{{ $verification->attachment }}" @endif />
@@ -162,8 +157,6 @@
                                                     <div class="form-group">
                                                         <div class="file-preview"></div>
                                                     </div>
-
-
                                                     <div class="text-right mt-4">
                                                         <!-- Buttons -->
                                                         <button type="submit" class="btn btn-primary">Save
@@ -198,12 +191,8 @@
                                                 <div class="col-lg-11 mx-auto">
                                                     <div class="row">
                                                         <div class="col-xl-3 col-lg-12 col-md-4">
-
-
                                                             {{-- <div class="profile-image mt-4 pe-md-4"> --}}
-                                                            <!-- // The classic file input element we'll enhance
-                                                                                                                                                                                                                                                                                                          // to a file pond, we moved the configuration
-                                                                                                                                                                                                                                                                                                          // properties to JavaScript -->
+                                                            <!-- // The classic file input element we'll enhance                                                                                                                                                                                         // properties to JavaScript -->
                                                             {{-- <p class="text-center">Profile Photo</p>
                                                                 <div class="img-uploader-content">
                                                                 <input
@@ -215,10 +204,8 @@
                                                                 />
                                                                 </div>
                                                             </div> --}}
-
                                                             <div class="profile-image text-center mt-4 mb-4">
                                                                 <p class="text-center">Profile Photo</p>
-
                                                                 @if ($user_profile->user->photo)
                                                                     <div
                                                                         class="avatar avatar-xl avatar-indicators avatar-online">
@@ -232,7 +219,6 @@
                                                                         @endif
                                                                     </div>
                                                                 @endif
-
                                                                 <p class="text-center">change photo</p>
                                                                 <div class="img-uploader-content">
                                                                     <input type="file" onchange="upload_check()"
@@ -253,7 +239,6 @@
                                                             <div class="form">
                                                                 <div class="layout-top-spacing">
                                                                     <div class="row">
-
                                                                         <div class="col-sm-6 mb-3">
                                                                             <div class="input-group required">
                                                                                 <span
@@ -264,7 +249,6 @@
                                                                                     placeholder="Username" disabled>
                                                                             </div>
                                                                         </div>
-
                                                                         <div class="col-sm-6 mb-3">
                                                                             <div class="input-group required">
                                                                                 <span class="input-group-text">Full
@@ -277,7 +261,6 @@
                                                                             <small class="form-text text-muted">Displayed
                                                                                 on your public profile.</small>
                                                                         </div>
-
                                                                         <div class="col-sm-6 mb-3">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-text">Email</span>
@@ -305,7 +288,6 @@
                                                                                     your email address</span>
                                                                             @endif
                                                                         </div>
-
                                                                         <div class="col-sm-6 mb-3">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-text">Phone</span>
@@ -320,7 +302,6 @@
                                                                                     data-success-class="u-has-success">
                                                                             </div>
                                                                         </div>
-
                                                                         {{-- <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label for="city">Nationality</label>
@@ -341,7 +322,6 @@
                                                                                 </select>
                                                                             </div>
                                                                         </div> --}}
-
                                                                         <div class="col-md-12 mt-1">
                                                                             <div class="form-group text-end">
                                                                                 <button type="submit"
@@ -358,8 +338,6 @@
                                         </div>
                                     </form>
                                 </div>
-
-
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                     <form class="section general-info"
                                         action="{{ route('user_profile.address_update') }}" method="POST">
@@ -379,10 +357,8 @@
                                                                     value="@if (!empty($address->village)) {{ $address->village }} @endif">
                                                             </div>
                                                         </div>
-
                                                         <input type="hidden" name="user_id"
                                                             value="{{ Auth::user()->id }}">
-
                                                         <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Country</span>
@@ -404,7 +380,6 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-
                                                         <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">City</span>
@@ -421,7 +396,6 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-
                                                         <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Postal Code</span>
@@ -430,7 +404,6 @@
                                                                     placeholder="('Eg. 1203')" class="form-control">
                                                             </div>
                                                         </div>
-
                                                         <div class="col-md-12 mt-1">
                                                             <div class="form-group text-end">
                                                                 <button type="submit"
@@ -439,13 +412,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
-
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                     <form class="section general-info"
                                         action="{{ route('user_profile.profile_update') }}" method="POST">
@@ -479,7 +449,6 @@
                                                                     value="{!! $user_profile->linkedin !!}">
                                                             </div>
                                                         </div>
-
                                                         <div class="col-md-6">
                                                             <div class="input-group social-tweet mb-3">
                                                                 <span class="input-group-text me-3" id="tweet"><svg
@@ -501,7 +470,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-11 mx-auto">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -522,7 +490,6 @@
                                                                     aria-describedby="fb" value="{!! $user_profile->facebook !!}">
                                                             </div>
                                                         </div>
-
                                                         <div class="col-md-6">
                                                             <div class="input-group social-github mb-3">
                                                                 <span class="input-group-text me-3" id="github"><svg
@@ -543,25 +510,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-12 mt-1">
                                                         <div class="form-group text-end">
                                                             <button type="submit" class="btn btn-secondary">Save</button>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
-
                             </div>
                         </div>
-
                         <div class="tab-pane" id="professional" role="tabpanel" aria-labelledby="professional">
-
                             <form class="section general-info" action="{{ route('user_profile.profile_update') }}"
                                 method="POST">
                                 <input name="_method" type="hidden" value="PATCH">
@@ -571,7 +532,6 @@
                                         <div class="info">
                                             <h6 class="">Professional Information</h6>
                                             <div class="row mt-4">
-
                                                 {{-- <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="city">Specialist</label>
@@ -584,7 +544,6 @@
                                                         </select>
                                                     </div>
                                                 </div> --}}
-
                                                 <div class="col-sm-2 mb-2">
                                                     <div class="input-group">
                                                         <span class="input-group-text">Gender</span>
@@ -605,7 +564,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-sm-4 mb-2">
                                                     <div class="input-group">
                                                         <span class="input-group-text">Skill</span>
@@ -618,10 +576,8 @@
                                                                 ->get()
                                                                 ->toJson();
                                                         @endphp
-
                                                         {{-- <label for="country">Skill (Max
                                                             {{ $user_profile->user->userPackage->skill_add_limit }})</label>
-
                                                         <select class="form-control" multiple name="skills[]"
                                                             data-live-search="true" data-selected-text-format="count"
                                                             data-max-options="{{ $user_profile->user->userPackage->skill_add_limit }}">
@@ -677,12 +633,9 @@
                             </form>
                         </div>
                     </div>
-
                     <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience">
-
                         <div class="row">
                             @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences))
-
                                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                         <form class="section general-info"
                                     action="{{ route('user_profile.work_experience_add') }}" method="POST"
@@ -716,7 +669,6 @@
                                                             <input class="form-check-input" type="checkbox"
                                                                 role="switch" name="present" id="current_working">
                                                         </div>
-
                                                     </div>
                                                     <div class="col-sm-4 mb-3">
                                                         <div class="input-group">
@@ -749,7 +701,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-12 mt-1 mb-3">
                                                     <div class="form-group text-end">
                                                         <button class="btn btn-secondary">Add Work
@@ -757,14 +708,12 @@
                                                     </div>
                                                 </div>
                                         </div>
-
                                 </form>
                                 @if (count($user_profile->user->workExperiences) > 0)
-
                                 <div class="row gutters-10">
                                     @foreach ($user_profile->user->workExperiences as $key => $work_experience)
                                         <div class="col-md-6 mt-3">
-                                            <div class="widget-content widget-content-area">
+                                            <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-9">
@@ -841,14 +790,11 @@
                                     You have added maximum number of work experience according to your package.
                                 </div>
                             @endif
-
                         </div>
                     </div>
                     <div class="tab-pane fade" id="educational" role="tabpanel" aria-labelledby="educational">
                         <div class="row">
-
                             <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-
                                 <form class="section general-info"
                                 action="{{ route('user_profile.education_info_add') }}" method="POST"
                                 enctype="multipart/form-data">
@@ -857,7 +803,6 @@
                                     <h6 class="">Educational Information</h6>
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-
                                                     <div class="row gutters-10">
                                                         <div class="col-sm-4 mb-2">
                                                             <div class="input-group">
@@ -873,7 +818,6 @@
                                                                     placeholder="Ex. Bachelor of Science" required>
                                                             </div>
                                                         </div>
-
                                                         <div class="col-sm-4 mb-3">
                                                             <div class="input-group">
                                                                 <span class="input-group-text">Passing Year</span>
@@ -907,11 +851,10 @@
                                 </div>
 
                                 @if (count($user_profile->user->education_details) > 0)
-
                                     <div class="row">
                                         @foreach ($user_profile->user->education_details as $key => $education)
                                             <div class="col-md-6 mt-3">
-                                                <div class="widget-content widget-content-area br-8">
+                                                <div class="card">
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-md-9">
@@ -980,10 +923,8 @@
                             @endif
                             </div>
                         </div>
-
                     <div class="tab-pane fade" id="portfolio" role="tabpanel" aria-labelledby="portfolio">
                         <div class="row">
-
                             <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                 @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios))
                                     <form class="section general-info" action="{{ route('user_profile.portfolio_add') }}"
@@ -1112,11 +1053,7 @@
                                     @endif
                         </div>
                     </div>
-
                 </div>
-
-
-
         {{-- <div class="tab-pane fade" id="animated-underline-preferences" role="tabpanel"
                         aria-labelledby="animated-underline-preferences-tab">
                         <div class="row">
@@ -1137,7 +1074,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                 <div class="section general-info">
                                     <div class="info">
@@ -1154,7 +1090,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                 <div class="section general-info">
                                     <div class="info">
@@ -1174,10 +1109,7 @@
                             </div>
                         </div>
                     </div> --}}
-
-
     <!--  END CONTENT AREA  -->
-
 @endsection
 
 @section('script')
@@ -1315,11 +1247,8 @@
                 });
             }
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
-
             $("#current_working").click(function() {
                 var checked_status = this.checked;
                 if (checked_status == false) {
@@ -1328,9 +1257,7 @@
                     $("#leaving_date").attr("disabled", "disabled");
                 }
             });
-
             var inputElm = document.querySelector('input[name=skills]');
-
             function tagTemplate(tagData) {
                 return `
         <tag title="${tagData.name}"
@@ -1343,8 +1270,7 @@
             <div>
                 <span class='tagify__tag-text'>${tagData.name}</span>
             </div>
-        </tag>
-    `
+        </tag>`
             }
 
             function suggestionItemTemplate(tagData) {
@@ -1354,10 +1280,8 @@
             tabindex="0"
             role="option">
             <strong>${tagData.name}</strong>
-        </div>
-    `
+        </div>`
             }
-
             // initialize Tagify on the above input node reference
             var usrList = new Tagify(inputElm, {
                 tagTextProp: 'name', // very important since a custom template is used with this property as text
@@ -1382,13 +1306,10 @@
             usrList.on('dropdown:select', onSelectSuggestion)
 
             var addAllSuggestionsElm;
-
             function onDropdownShow(e) {
                 var dropdownContentElm = e.detail.tagify.DOM.dropdown.content;
-
                 if (usrList.suggestedListItems.length > 1) {
                     addAllSuggestionsElm = getAddAllSuggestionsElm();
-
                     // insert "addAllSuggestionsElm" as the first element in the suggestions list
                     dropdownContentElm.insertBefore(addAllSuggestionsElm, dropdownContentElm.firstChild)
                 }

@@ -1,64 +1,26 @@
 @extends('layouts.app')
 
 @section('css')
-    <!--  BEGIN CUSTOM STYLE FILE  -->
-    <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/filepond.min.css">
-    <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.css">
-    <link href="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.css" rel="stylesheet"
-        type="text/css" />
-    <link rel="stylesheet" href="{{ asset('templete') }}/src/plugins/src/sweetalerts2/sweetalerts2.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/assets/css/light/components/tabs.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/elements/alert.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/light/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/light/notification/snackbar/custom-snackbar.css" rel="stylesheet"
-        type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/forms/switches.css">
-    <link href="{{ asset('templete') }}/src/assets/css/light/components/list-group.css" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('templete') }}/src/assets/css/light/users/account-setting.css" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/assets/css/dark/components/tabs.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/elements/alert.css">
-
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/notification/snackbar/custom-snackbar.css" rel="stylesheet"
-        type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/forms/switches.css">
-    <link href="{{ asset('templete') }}/src/assets/css/dark/components/list-group.css" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('templete') }}/src/assets/css/dark/users/account-setting.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('templete') }}/src/plugins/css/dark/tagify/custom-tagify.css" rel="stylesheet" type="text/css" />
-    <!--  END CUSTOM STYLE FILE  -->
 @endsection
 
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
             <!-- BREADCRUMB -->
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Users</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
                     </ol>
                 </nav>
             </div>
             <!-- /BREADCRUMB -->
-            <div class="account-settings-container layout-top-spacing">
+            <div class="account-settings-container">
                 <div class="account-content">
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <h3>Account Settings</h3>
-
                             <div class="animated-underline-content">
                                 <ul class="nav nav-tabs" id="animateLine" role="tablist">
                                     <li class="nav-item">
@@ -96,14 +58,15 @@
                             aria-labelledby="animated-underline-home-tab">
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                    <div class="section general-info payment-info">
                                         <div class="info">
-                                            <h5 class="">Change Password</h5>
+                                            <h6>Change Password</h6>
                                             <div class="row">
                                                 <form method="POST" action="{{ route('passupdate') }}">
                                                     @csrf
                                                     <div class="col-md-11 mx-auto">
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-7">
                                                                 <div class="input-group  mb-3">
                                                                     <span class="input-group-text text-primary">New
                                                                         Password</span>
@@ -111,7 +74,7 @@
                                                                         placeholder="New Password">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-7">
                                                                 <div class="input-group mb-3">
                                                                     <span class="input-group-text text-primary">Confirm Password</span>
                                                                     <input type="password" class="form-control"
@@ -128,6 +91,7 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +101,7 @@
                                 <div class="col-xl-6 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info payment-info">
                                         <div class="info">
-                                            <h6 class="">Bank Info</h6>
+                                            <h6>Bank Info</h6>
                                             <p>Add your New <span class="text-success">Bank</span> Information.
                                             </p>
                                             <div class="row mt-4">
@@ -261,7 +225,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="text-right">
                                                 <button type="submit"
                                                     class="btn btn-primary transition-3d-hover mr-1">{{ translate('Add') }}</button>
@@ -309,24 +272,5 @@
                 </div>
             </div>
         </div>
-    </div>
     <!--  END CONTENT AREA  -->
-@endsection
-
-@section('script')
-    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/filepond.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginFileValidateType.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImageExifOrientation.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImageCrop.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImageResize.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/FilePondPluginImageTransform.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/filepond/filepondPluginFileValidateSize.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/notification/snackbar/snackbar.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/sweetalerts2/sweetalerts2.min.js"></script>
-    <script src="{{ asset('templete') }}/src/assets/js/users/account-settings.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/tagify/tagify.min.js"></script>
-    <script src="{{ asset('templete') }}/src/plugins/src/tagify/custom-tagify.js"></script>
-    <!--  END CUSTOM SCRIPTS FILE  -->
 @endsection
