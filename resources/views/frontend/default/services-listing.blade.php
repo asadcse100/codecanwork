@@ -47,16 +47,7 @@
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing mb-5">
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <!-- BREADCRUMB -->
-            <div class="page-meta">
-                <nav class="breadcrumb-style-one" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">Home</li>
-                        <li class="breadcrumb-item active" aria-current="page">Service</li>
-                    </ol>
-                </nav>
-            </div>
-            <!-- /BREADCRUMB -->
+
             <div class="row">
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="col-sm-12">
@@ -117,22 +108,14 @@
                             <div class="col-sm-2">
                                 <button type="submit" class="btn btn-secondary p-1">Show</button>
                             </div>
-                            <div class="col-sm-2 mb-2">
+                            <!-- <div class="col-sm-2 mb-2">
                                 <div class="form-check form-switch form-check-inline">
                                     <input class="form-check-input" type="checkbox" role="switch"
                                         id="flexSwitchCheckChecked" data-switch="no">
                                     <label class="form-check-label"
                                         for="flexSwitchCheckChecked">{{ __('Internal') }}</label>
                                 </div>
-                            </div>
-                            <div class="col-sm-2 mb-2">
-                                <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                        id="flexSwitchCheckChecked" data-switch="no">
-                                    <label class="form-check-label"
-                                        for="flexSwitchCheckChecked">{{ __('External') }}</label>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>

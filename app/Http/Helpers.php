@@ -586,4 +586,107 @@ function hex2rgba($color, $opacity = false) {
     return $output;
 }
 
+
+if (!function_exists('referral_system')) {
+    /**
+     * @since 1.0
+     * @version 1.0.0
+     */
+    function referral_system()
+    {
+        return (sys_settings('referral_system', 'no') == 'yes') ? true : false;
+    }
+}
+
+if (!function_exists('base_currency')) {
+    /**
+     * @version 1.0.0
+     * @since 1.0
+     */
+    function base_currency()
+    {
+        return sys_settings('base_currency', 'USD');
+    }
+}
+
+if (!function_exists('show_date')) {
+    /**
+     * @param $date
+     * @param false $withTime
+     * @return string|void
+     * @version 1.0.0
+     * @since 1.0
+     */
+    function show_date($date, $withTime = false, $zone = true)
+    {
+        if (empty($date)) {
+            return;
+        }
+
+        if (!($date instanceof Carbon)) {
+            if (1 === preg_match('~^[1-9][0-9]*$~', $date)) {
+                $date = Carbon::createFromTimestamp($date);
+            } else {
+                $date = Carbon::parse($date);
+            }
+        }
+
+        $format = sys_settings('date_format');
+
+        if ($withTime) {
+            $format .= ' ' . sys_settings('time_format');
+        }
+
+        if ($zone == true) {
+            $timezone = sys_settings('time_zone');
+            return $date->timezone($timezone)->format($format);
+        }
+
+        return $date->format($format);
+    }
+}
+
+if (!function_exists('sys_settings')) {
+    /**
+     * @param $key
+     * @param null $default
+     * @return mixed
+     * @version 1.0.0
+     * @since 1.0
+     */
+    function sys_settings($key, $default = null)
+    {
+        $settings = Cache::remember('sys_settings', 1800, function () {
+            return Setting::all()->pluck('value', 'key');
+        });
+
+        $value = $settings->get($key) ?? $default;
+
+        return is_json($value) ? json_decode($value, true) : $value;
+    }
+}
+
+if (!function_exists('is_json')) {
+    /**
+     * check json value
+     * @param $string, $decoded
+     * @version 1.0.0
+     * @since 1.0
+     */
+    function is_json($string, $decoded = false)
+    {
+        if (is_array($string)) {
+            return false;
+        }
+        json_decode($string);
+        $check = (json_last_error() == JSON_ERROR_NONE);
+
+        if ($decoded && $check) {
+            return json_decode($string);
+        }
+
+        return $check;
+    }
+}
+
 ?>

@@ -3,16 +3,16 @@
 @section('content')
 
 <div class="layout-px-spacing layout-top-spacing">
-    <div class="widget-content widget-content-area layout-top-spacing">
+    <div class="layout-top-spacing">
         @if ($keyword != null)
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2 text-center">
-                <h1 class="h5 mt-3 mt-lg-0 mb-5 fw-400">{{ translate('Total') }} <span
-                        class="fw-600">{{ $total }}</span> {{ translate('projects found for') }} <span
-                        class="fw-600">{{ $keyword }}</span></h1>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 text-center">
+                    <h1 class="h5 mt-3 mt-lg-0 mb-5 fw-400">{{ translate('Total') }} <span
+                            class="fw-600">{{ $total }}</span> {{ translate('projects found for') }} <span
+                            class="fw-600">{{ $keyword }}</span></h1>
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
     <form id="project-filter-form" action="" method="GET">
         <div class="row gutters-10">
             <div class="col-xl-3 col-lg-4">
@@ -26,45 +26,12 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            {{-- <div class="mb-5">
+                           
+                            <!-- Categories -->
+                            <div class="mb-5">
                                 <h6 class="separator text-left mb-3 fs-12 text-uppercase text-secondary">
                                     <span class="pr-3">{{ translate('Categories') }}</span>
                                 </h6>
-                                <div class="category-filter fs-14">
-                                    <ul class="list-unstyled mb-0">
-                                        @if (!isset($category_id))
-                                            @foreach (\App\Models\ProjectCategory::where('parent_id', 0)->get() as $category)
-                                                <li><a
-                                                        href="{{ route('projects.category', $category->slug) }}">{{ $category->name }}</a>
-                                                </li>
-                                            @endforeach
-                                        @else
-                                            <li class="go-back"><a
-                                                    href="{{ route('search') }}">{{ translate('All Categories') }}</a>
-                                            </li>
-                                            @if (\App\Models\ProjectCategory::find($category_id)->parent_id != 0)
-                                                <li class="go-back"><a
-                                                        href="{{ route('projects.category', \App\Models\ProjectCategory::find(\App\Models\ProjectCategory::find($category_id)->parent_id)->slug) }}">{{ \App\Models\ProjectCategory::find(\App\Models\ProjectCategory::find($category_id)->parent_id)->name }}</a>
-                                                </li>
-                                            @endif
-                                            <li class="go-back"><a
-                                                    href="{{ route('projects.category', \App\Models\ProjectCategory::find($category_id)->slug) }}">{{ \App\Models\ProjectCategory::find($category_id)->name }}</a>
-                                            </li>
-                                            @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key => $id)
-                                                <li><a
-                                                        href="{{ route('projects.category', \App\Models\ProjectCategory::find($id)->slug) }}">{{ \App\Models\ProjectCategory::find($id)->name }}</a>
-                                                </li>
-                                            @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div> --}}
-                            <!-- Categories -->
-                            <div class="mb-5">
-                                <h6 class="text-left mb-3 fs-14 fw-700">
-                                    <span class="bg-white pr-3">{{ translate('Categories') }}</span>
-                                </h6>
-                                <div class="">
                                     <select class="select2 form-control aiz-selectpicker rounded-1" name="category_id" onchange="applyFilter()" data-toggle="select2" data-live-search="true">
                                         <option value="">{{ translate('All Categories') }}</option>
                                         @foreach(\App\Models\ProjectCategory::all() as $category)
@@ -73,7 +40,6 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
                             </div>
                             <div class="mb-5">
                                 <h6 class="separator text-left mb-3 fs-12 text-uppercase text-secondary">
@@ -215,15 +181,15 @@
                         </div>
 
                     </div>
-                    <div class="card-body p-0">
+                    
                         @foreach ($projects as $key => $project)
+                        <div class="card-body p-0">
                             <a href="{{ route('project.details', $project->slug) }}"
                                 class="d-block d-xl-flex card-project text-inherit px-3 py-4">
                                 <div class="flex-grow-1">
                                     <h5 class="h4 fw-600 lh-1-5"><strong>{!! $project->name !!}</strong></h5>
                                     <div class="lh-1-8">
                                         <p class="text-muted">{!! $project->excerpt !!}</p>
-                                        <hr>
                                     </div>
                                     <ul class="list-inline opacity-70 fs-12">
                                         <li class="list-inline-item">
@@ -251,14 +217,12 @@
                                                 $skill = \App\Models\Skill::find($skill_id);
                                             @endphp
                                             @if ($skill != null)
-                                                <span
-                                                    class="btn btn-outline-info btn-sm mb-1">{{ $skill->name }}</span>
+                                                <span class="btn btn-outline-info p-1 mb-1">{{ $skill->name }}</span>
                                             @endif
                                         @endforeach
                                     </div>
                                 </div>
-                                <div
-                                    class="flex-shrink-0 pt-4 pt-xl-0 pl-xl-4 d-flex flex-row-reverse flex-xl-column justify-content-between align-items-center">
+                                <div class="flex-shrink-0 pt-4 pt-xl-0 pl-xl-4 d-flex flex-row-reverse flex-xl-column justify-content-between align-items-center">
                                     <div class="text-right">
                                         <span class="small text-secondary">{{ translate('Budget') }}</span>
                                         <h4 class="mb-0">{{ single_price($project->price) }}</h4>
@@ -300,10 +264,11 @@
                                     </div>
                                 </div>
                             </a>
+                            
+                    </div>
                             <hr>
                         @endforeach
 
-                    </div>
                 </div>
             </div>
         </div>

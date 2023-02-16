@@ -1,5 +1,23 @@
 @extends('layouts.app')
 
+@section('css')
+        <style>
+            div#social-links {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            div#social-links ul li {
+                display: inline-block;
+            }          
+            div#social-links ul li a {
+                padding: 0px;
+                margin: 1px;
+                font-size: 30px;
+                color: blue;
+            }
+        </style>
+@endsection
+
 @section('content')
     @php
         $profile = \App\Models\UserProfile::where('user_id', $project->client_user_id)
@@ -106,170 +124,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xxl-3 col-xl-4 col-lg-5">
-                    <div class="sticky-top z-3">
-                        <div class="card project-card">
-                            <div class="card-header py-4">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <span class="small">{{ translate('Budget') }}</span>
-                                        <h4 class="mb-0 fw-900">{{ single_price($project->price) }}</h4>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if (!Auth::check())
-                                            <div class="alert alert-info" role="alert">
-                                                {{ translate('You need to login as a expert to bid the project.') }}
-                                            </div>
-                                        @elseif (Auth::check() && auth()->user()->user_type == 'admin')
-                                            <div class="alert alert-info" role="alert">
-                                                {{ translate('You are visiting this details as an Admin. For place a bid you need to have a expert account.') }}
-                                            </div>
-                                        @elseif (Auth::check() && isExpert() && !$project->private)
-                                            @php
-                                                $allow_for_bid = \App\Models\ProjectBid::where('project_id', $project->id)
-                                                    ->where('bid_by_user_id', Auth::user()->id)
-                                                    ->first();
-                                            @endphp
-                                            @if ($allow_for_bid == null)
-                                                <a href="javascript:void(0)" class="btn btn-info"
-                                                    onclick="bid_modal({{ $project->id }})">{{ translate('Place Bid') }}</a>
-                                            @else
-                                                <div class="alert alert-info m-2" role="alert">
-                                                    {{ translate('You have already submitted bid for this project.') }}
-                                                </div>
-                                            @endif
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-5">
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <span class="text-secondary">{{ translate('Posted') }} -</span>
-                                        <span
-                                            class="fw-600">{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <span class="text-secondary">{{ translate('Posted in') }} -</span>
-                                        <span class="fw-600">
-                                            @if ($project->project_category != null)
-                                                {{ $project->project_category->name }}
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <span class="text-secondary">{{ translate('Project type') }} -</span>
-                                        <span class="fw-600">{{ $project->type }}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="separator mb-4"><span
-                                            class="text-center">{{ translate('About This Client') }}</span></h6>
-                                    <a href="{{ route('client.details', $project->client->user_name) }}"
-                                        class="text-inherit">
-                                        <div class="px-4 text-center mb-3">
-                                            <span class="avatar avatar-xl mb-3">
-                                                @if ($project->client->photo != null)
-                                                    <img src="{{ asset('profile/photos/' . $project->client->photo) }}"
-                                                        class="rounded-circle">
-                                                @else
-                                                    <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}"
-                                                        class="rounded-circle">
-                                                @endif
-                                                @if (Cache::has('user-is-online-' . $project->client_user_id))
-                                                    <span class="avatar avatar-xl avatar-indicators avatar-offline"></span>
-                                                @else
-                                                    <span class="avatar avatar-lg avatar-indicators avatar-online"></span>
-                                                @endif
-                                            </span>
-                                            <div class="text-secondary fs-10 mb-1">
-                                                <i class="las la-star text-rating"></i>
-                                                <span class="fw-600">
-                                                    {{ formatRating(getAverageRating($project->client->id)) }}
-                                                </span>
-                                                <span>
-                                                    ({{ getNumberOfReview($project->client->id) }}
-                                                    {{ translate('Reviews') }})
-                                                </span>
-                                            </div>
-                                            <h4 class="h5 mb-2 fw-600">
-                                                @if ($project->client != null)
-                                                    {{ $project->client->name }}
-                                                @endif
-                                            </h4>
-                                            <div class="text-center">
-                                                @foreach ($project->client->badges as $key => $user_badge)
-                                                    @if ($user_badge->badge != null)
-                                                        <span class="avatar avatar-square avatar-xxs"
-                                                            title="{{ $user_badge->badge->name }}"><img
-                                                                src="{{ asset('profile/badge/' . $user_badge->badge->icon) }}"></span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </a>
-                                        <div class="media mb-3">
-                                            <div class="text-center text-primary mt-1 mr-3">
-                                                <i class="las la-map-marked la-2x"></i>
-                                            </div>
-                                            <div class="media-body pt-2">
-                                                @if ($project->client != null &&
-                                                    $project->client->address != null &&
-                                                    $project->client->address->city != null &&
-                                                    $project->client->address->country != null)
-                                                    <span
-                                                        class="d-block font-weight-medium">{{ $project->client->address->city->name }},
-                                                        {{ $project->client->address->country->name }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="media mb-3">
-                                            <div class="text-center text-primary mt-1 mr-3">
-                                                <i class="las la-briefcase la-2x"></i>
-                                            </div>
-                                            <div class="media-body pt-2">
-                                                <span
-                                                    class="d-block font-weight-medium">{{ count($project->client->number_of_projects) }}
-                                                    {{ translate('jobs posted') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="text-center text-primary mt-1 mr-3">
-                                                <i class="las la-money-check-alt la-2x"></i>
-                                            </div>
-                                            <div class="media-body pt-2">
-                                                <span
-                                                    class="d-block font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
-                                                    {{ translate('total spent') }}</span>
-                                            </div>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class="col text-center">
-                                    @if (Auth::check() &&
-                                        ($bookmarked_project = \App\Models\BookmarkedProject::where('user_id', auth()->user()->id)->where('project_id', $project->id)->first()) != null)
-                                        <a class="btn btn-block btn-primary confirm-alert" href="javascript:void(0)"
-                                            data-href="{{ route('bookmarked-projects.destroy', $bookmarked_project->id) }}"
-                                            data-target="#bookmark-remove-modal">
-                                            <i class="las la-bookmark"></i>
-                                            <span>{{ translate('Remove Bookmark') }}</span>
-                                        </a>
-                                    @else
-                                        <a class="btn btn-block btn-outline-primary"
-                                            href="{{ route('bookmarked-projects.store', encrypt($project->id)) }}">
-                                            <i class="las la-bookmark"></i>
-                                            <span>{{ translate('Bookmark Project') }}</span>
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+                    <div class="row">
                 <div class="col-12">
                     <h5 class="mb-4">{{ translate('Similar Projects') }}</h5>
                     <hr>
@@ -386,6 +241,175 @@
                     </div>
                 </div>
             </div>
+                </div>
+                
+                <div class="col-xxl-3 col-xl-4 col-lg-5">
+                    <div class="sticky-top z-3">
+                        <div class="card project-card">
+                            <div class="card-header py-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="small">{{ translate('Budget') }}</span>
+                                        <h4 class="mb-0 fw-900">{{ single_price($project->price) }}</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @if (!Auth::check())
+                                            <div class="alert alert-info" role="alert">
+                                                {{ translate('You need to login as a expert to bid the project.') }}
+                                            </div>
+                                        @elseif (Auth::check() && auth()->user()->user_type == 'admin')
+                                            <div class="alert alert-info" role="alert">
+                                                {{ translate('You are visiting this details as an Admin. For place a bid you need to have a expert account.') }}
+                                            </div>
+                                        @elseif (Auth::check() && isExpert() && !$project->private)
+                                            @php
+                                                $allow_for_bid = \App\Models\ProjectBid::where('project_id', $project->id)
+                                                    ->where('bid_by_user_id', Auth::user()->id)
+                                                    ->first();
+                                            @endphp
+                                            @if ($allow_for_bid == null)
+                                                <a href="javascript:void(0)" class="btn btn-info"
+                                                    onclick="bid_modal({{ $project->id }})">{{ translate('Place Bid') }}</a>
+                                            @else
+                                                <div class="alert alert-info m-2" role="alert">
+                                                    {{ translate('You have already submitted bid for this project.') }}
+                                                </div>
+                                            @endif
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5>{{ translate('Share Project') }}</h5>
+                                {!! $shareComponent !!}
+
+                                <div class="col text-center">
+                                    @if (Auth::check() &&
+                                        ($bookmarked_project = \App\Models\BookmarkedProject::where('user_id', auth()->user()->id)->where('project_id', $project->id)->first()) != null)
+                                        <a class="btn btn-block btn-primary confirm-alert" href="javascript:void(0)"
+                                            data-href="{{ route('bookmarked-projects.destroy', $bookmarked_project->id) }}"
+                                            data-target="#bookmark-remove-modal">
+                                            <i class="las la-bookmark"></i>
+                                            <span>{{ translate('Remove Bookmark') }}</span>
+                                        </a>
+                                    @else
+                                        <a class="btn btn-block btn-outline-primary"
+                                            href="{{ route('bookmarked-projects.store', encrypt($project->id)) }}">
+                                            <i class="las la-bookmark"></i>
+                                            <span>{{ translate('Bookmark Project') }}</span>
+                                        </a>
+                                    @endif
+                                </div>
+                            <div class="card-body">
+                                <div class="mb-5">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="text-secondary">{{ translate('Posted') }} -</span>
+                                        <span
+                                            class="fw-600">{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="text-secondary">{{ translate('Posted in') }} -</span>
+                                        <span class="fw-600">
+                                            @if ($project->project_category != null)
+                                                {{ $project->project_category->name }}
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="text-secondary">{{ translate('Project type') }} -</span>
+                                        <span class="fw-600">{{ $project->type }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="separator mb-4"><span
+                                            class="text-center">{{ translate('About This Client') }}</span></h6>
+                                    <a href="{{ route('client.details', $project->client->user_name) }}"
+                                        class="text-inherit">
+                                        <div class="px-4 text-center mb-3">
+                                            <span class="avatar avatar-xl mb-3">
+                                                @if ($project->client->photo != null)
+                                                    <img src="{{ asset('profile/photos/' . $project->client->photo) }}"
+                                                        class="rounded-circle">
+                                                @else
+                                                    <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}"
+                                                        class="rounded-circle">
+                                                @endif
+                                                @if (Cache::has('user-is-online-' . $project->client_user_id))
+                                                    <span class="avatar avatar-xl avatar-indicators avatar-offline"></span>
+                                                @else
+                                                    <span class="avatar avatar-lg avatar-indicators avatar-online"></span>
+                                                @endif
+                                            </span>
+                                            <div class="text-secondary fs-10 mb-1">
+                                                <i class="las la-star text-rating"></i>
+                                                <span class="fw-600">
+                                                    {{ formatRating(getAverageRating($project->client->id)) }}
+                                                </span>
+                                                <span>
+                                                    ({{ getNumberOfReview($project->client->id) }}
+                                                    {{ translate('Reviews') }})
+                                                </span>
+                                            </div>
+                                            <h4 class="h5 mb-2 fw-600">
+                                                @if ($project->client != null)
+                                                    {{ $project->client->name }}
+                                                @endif
+                                            </h4>
+                                            <div class="text-center">
+                                                @foreach ($project->client->badges as $key => $user_badge)
+                                                    @if ($user_badge->badge != null)
+                                                        <span class="avatar avatar-square avatar-xxs"
+                                                            title="{{ $user_badge->badge->name }}"><img
+                                                                src="{{ asset('profile/badge/' . $user_badge->badge->icon) }}"></span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </a>
+                                        <div class="media mb-3">
+                                            <div class="text-center text-primary mt-1 mr-3">
+                                                <i class="las la-map-marked la-2x"></i>
+                                            </div>
+                                            <div class="media-body pt-2">
+                                                @if ($project->client != null &&
+                                                    $project->client->address != null &&
+                                                    $project->client->address->city != null &&
+                                                    $project->client->address->country != null)
+                                                    <span
+                                                        class="d-block font-weight-medium">{{ $project->client->address->city->name }},
+                                                        {{ $project->client->address->country->name }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="media mb-3">
+                                            <div class="text-center text-primary mt-1 mr-3">
+                                                <i class="las la-briefcase la-2x"></i>
+                                            </div>
+                                            <div class="media-body pt-2">
+                                                <span
+                                                    class="d-block font-weight-medium">{{ count($project->client->number_of_projects) }}
+                                                    {{ translate('jobs posted') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <div class="text-center text-primary mt-1 mr-3">
+                                                <i class="las la-money-check-alt la-2x"></i>
+                                            </div>
+                                            <div class="media-body pt-2">
+                                                <span
+                                                    class="d-block font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
+                                                    {{ translate('total spent') }}</span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <hr>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 @endsection

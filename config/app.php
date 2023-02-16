@@ -168,7 +168,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -233,6 +233,7 @@ return [
         'Carbon' => Illuminate\Support\Carbon::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 
 ];

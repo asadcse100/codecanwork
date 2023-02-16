@@ -76,8 +76,19 @@ class HomeController extends Controller
     //Show details info of specific project
     public function project_details($slug)
     {
-        $project = Project::where('slug', $slug)->first();
-        return view('frontend.default.project-single', compact('project'));
+        $currenturl = url()->full();
+        $data['shareComponent'] = \Share::page(
+            $currenturl,
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()        
+        ->reddit();
+        
+        $data['project'] = Project::where('slug', $slug)->first();
+        return view('frontend.default.project-single', $data);
     }
 
     //Show details info of specific project

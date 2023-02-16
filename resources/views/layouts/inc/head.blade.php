@@ -71,7 +71,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/css/dark/table/datatable/dt-global_style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/plugins/css/dark/table/datatable/custom_dt_miscellaneous.css">
     <link href="{{ asset('templete') }}/src/assets/css/dark/custom.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script>
     	var AIZ = AIZ || {};
         AIZ.local = {
