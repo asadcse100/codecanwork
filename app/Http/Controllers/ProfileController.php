@@ -181,4 +181,39 @@ class ProfileController extends Controller
             return redirect()->route('user.profile');
         }
     }
+
+    
+    public function profile_update(Request $request)
+    {
+        // dd($request->toArray());
+
+        // $user = User::find(Auth::user()->id);
+        // $user_profile = UserProfile::where('user_id', $user->id)->first();
+
+        // if ($request->skills != null) {
+        //     $user_profile->skills = json_encode(array_slice($request->skills, 0, $user->userPackage->skill_add_limit));
+        // }
+        // if($user_profile){
+        //     $user_profile->update($request->all());
+        // }
+
+        UserProfile::updateOrCreate([
+            'user_id' => Auth::user()->id
+          ],
+          [
+            'gender' => $request->gender,
+            'bio' => $request->bio,
+            'headline' => $request->headline,
+            'github' => $request->github,
+            'facebook' => $request->facebook,
+            'tweeter' => $request->tweeter,
+            'linkedin' => $request->linkedin,
+            'skills' => $request->skills,
+            'hourly_rate' => $request->hourly_rate,
+            'consultant_fee' => $request->consultant_fee,
+            'created_at' => Carbon::now()
+          ]);
+
+        return back();
+    }
 }

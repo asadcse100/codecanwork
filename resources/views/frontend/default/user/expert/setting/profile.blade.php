@@ -567,34 +567,12 @@
                                                 <div class="col-sm-4 mb-2">
                                                     <div class="input-group">
                                                         <span class="input-group-text">Skill</span>
-                                                        <input name='skills' value=''>
-                                                        {{-- <input name='skills'
-                                                            value='@if (!empty($user_profile->skills)) @foreach (json_decode($user_profile->skills) as $sk){{ $sk->name . ',' }}@endforeach @endif'> --}}
+                                                        <input name='skills' value=''>                                                        
                                                         @php
                                                             $to_json = \App\Models\Skill::select('id as value', 'name')
-                                                                // ->where('category_id', $user_profile->professional_type_id)
                                                                 ->get()
                                                                 ->toJson();
                                                         @endphp
-                                                        {{-- <label for="country">Skill (Max
-                                                            {{ $user_profile->user->userPackage->skill_add_limit }})</label>
-                                                        <select class="form-control" multiple name="skills[]"
-                                                            data-live-search="true" data-selected-text-format="count"
-                                                            data-max-options="{{ $user_profile->user->userPackage->skill_add_limit }}">
-                                                            @if ($user_profile->skills != null)
-                                                                @foreach (\App\Models\Skill::all() as $key => $skill)
-                                                                    <option value="{{ $skill->id }}"
-                                                                        @if (in_array($skill->id, json_decode($user_profile->skills))) selected @endif>
-                                                                        {{ $skill->name }}</option>
-                                                                @endforeach
-                                                            @else
-                                                                @foreach (\App\Models\Skill::all() as $key => $skill)
-                                                                    <option value="{{ $skill->id }}">
-                                                                        {{ $skill->name }}</option>
-                                                                @endforeach
-                                                            @endif
-                                                        </select> --}}
-
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 mb-2">
@@ -617,6 +595,13 @@
                                                 </div>
                                                 <div class="col-md-12 layout-spacing">
                                                     <label>Bio Details</label><br>
+                                                    <div class="col-sm-6 mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">Headline</span>
+                                                            <input type="text" class="form-control" name="headline"
+                                                                value="{{ $user_profile->headline }}" placeholder="How many expert on your filed">
+                                                        </div>
+                                                    </div>
                                                     <small>Tell us about yourself in few sentences..</small>
                                                     <div class="form-group">
                                                         <textarea class="form-control" rows="10" name="bio" required>{{ $user_profile->bio }}</textarea>

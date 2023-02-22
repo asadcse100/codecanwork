@@ -7,9 +7,9 @@
             </div>
             <span class="avatar avatar-xs flex-shrink-0">
                 @if ($chat->sender->photo != null)
-                    <img src="{{ custom_asset($chat->sender->photo) }}">
+                    <img src="{{ asset($chat->sender->photo) }}">
                 @else
-                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                    <img src="{{ asset('assets/frontend/default/img/avatar-place.png') }}">
                 @endif
             </span>
         </div>
@@ -29,7 +29,7 @@
                                 <div class="mb-2 file-preview-item" title="{{ $attachment->file_name }}">
                                     <a href="{{ route('download_attachment', $attachment->id) }}" target="_blank" class="d-block">
                                         <div class="thumb">
-                                            <img src="{{ my_asset($attachment->file_name) }}" class="img-fit">
+                                            <img src="{{ asset($attachment->file_name) }}" class="img-fit">
                                         </div>
                                         <div class="body">
                                             <h6 class="d-flex">
@@ -66,7 +66,7 @@
                 <span class="time">{{ Carbon\Carbon::parse($chat->created_at)->diffForHumans() }}</span>
             </div>
             <span class="avatar avatar-xs flex-shrink-0">
-                <img @if ($chat->sender->photo != null) src="{{ custom_asset(($chat->sender->photo))}}" @endif>
+                <img @if ($chat->sender->photo != null) src="{{ asset(($chat->sender->photo))}}" @endif>
             </span>
         </div>
     </div>

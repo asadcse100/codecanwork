@@ -21,12 +21,15 @@ Route::post('/save-image', 'CommonController@image_save')->name("image-upload");
 
 Route::post('ckeditor/image_upload', [CommonController::class, 'upload'])->name('upload');
 
-Route::post('/aiz-uploader', 'AizUploadController@show_uploader');
-Route::post('/aiz-uploader/upload', 'AizUploadController@upload');
-Route::get('/aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
-Route::delete('/aiz-uploader/destroy/{id}', 'AizUploadController@destroy');
-Route::post('/aiz-uploader/get_file_by_ids', 'AizUploadController@get_preview_files');
-Route::get('/aiz-uploader/download/{id}', 'AizUploadController@attachment_download')->name('download_attachment');
+Route::post('aiz-uploader', 'AizUploadController@show_uploader')->name('aiz-uploader');
+Route::post('aiz-uploader/upload', 'AizUploadController@upload');
+Route::get('aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
+Route::delete('aiz-uploader/destroy/{id}', 'AizUploadController@destroy');
+Route::post('aiz-uploader/get_file_by_ids', 'AizUploadController@get_preview_files');
+Route::get('aiz-uploader/download/{id}', 'AizUploadController@attachment_download')->name('download_attachment');
+
+
+
 
 // Subscribe
 Route::resource('subscribers', 'SubscriberController');

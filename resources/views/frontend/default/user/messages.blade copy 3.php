@@ -36,7 +36,7 @@
                                                     <a href="javascript:void(0)" class="chat-user-item p-3 d-block text-inherit" 
                                                     data-url="{{ route('chat_view', $single_chat_thread->id) }}" 
                                                     data-refresh="{{ route('chat_refresh', $single_chat_thread->id) }}" onclick="loadChats(this)">
-                                                    <div class="person">
+                                                    <div class="person" data-chat="person6">
                                                         <div class="user-info">
                                                             <div class="f-head">                                                                
                                                                 @if ($single_chat_thread->sender->photo != null)
@@ -111,14 +111,18 @@
                                                 <i class="las la-frown la-4x mb-4 opacity-40"></i>
                                                 <h4>{{ translate('Nothing Found')}}</h4>
                                             </div>
-                                        @endforelse                                                                                   
+                                        @endforelse
+                                                                                   
                                         </div>
                                     </div>
 
-                                    <div class="chat-box">                                        
+                                    
+                                    <div class="chat-box">
+                                        
                                             <div class="chat-not-selected">
                                                 <p> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> {{ translate('Select a') }} @if (isClient()) {{ translate('Expert') }} @else {{ translate('Client') }} @endif {{ translate('to view chats') }}</p>
-                                            </div>    
+                                            </div>                                    
+    
                                         <div class="chat-box-inner">
                                             <div class="chat-meta-user">
                                                 <div class="current-chat-user-name"><span><img src="{{ asset('templete') }}/src/assets/img/90x90.jpg" alt="dynamic-image"><span class="name"></span></span></div>
@@ -139,31 +143,34 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="chat-conversation-box" id="single_chat">
-                                                
-                                            </div>
-                                            <div class="chat-footer">
-                                                <div class="chat-input"> 
-                                                    <form id="send-mesaage">                                                    
-                                                        <div class="input-group">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                                            <input type="hidden" id="chat_thread_id" name="chat_thread_id" value="@if(isset($chat_thread) && !empty($chat_thread)){{ $chat_thread->id }}@endif">
-                                                            <input type="text" class="form-control" name="message" id="message" placeholder="Your Message.." autocomplete="off">
-                                                            <input type="hidden" class="" name="attachment" id="attachment">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-circle btn-icon chat-attachment" type="button">
-                                                                    <i class="las la-paperclip"></i>
-                                                                </button>
-                                                                <button class="btn btn-primary btn-circle btn-icon" onclick="send_reply()" type="button">
-                                                                    <i class="las la-paper-plane"></i>
-                                                                </button>
-                                                            </div>
+                                            <div class="chat-conversation-box">
+                                                <div id="chat-conversation-box-scroll" class="chat-conversation-box-scroll">                                                    
+                                                    <div class="chat" data-chat="person6">
+                                                        <div class="conversation-start">
+                                                            <span>Monday, 1:27 PM</span>
                                                         </div>
-                                                    </form>                                                    
+                                                        <div class="bubble you">
+                                                            Hi, I am back from vacation
+                                                        </div>
+                                                        <div class="bubble you">
+                                                            How are you?
+                                                        </div>
+                                                        <div class="bubble me">
+                                                            Welcom Back
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                        </div>                                        
+                                            <div class="chat-footer">
+                                                <div class="chat-input">
+                                                    <form class="chat-form" action="javascript:void(0);">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                                        <input type="text" class="mail-write-box form-control" placeholder="Your Message..."/>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>    
                             </div>
@@ -175,7 +182,6 @@
 @section('script')
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{ asset('templete') }}/src/assets/js/apps/chat.js"></script>
-    <script src="{{ asset('assets/common/js/aiz-core.js') }}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script type="text/javascript">
         function loadChats(el) {
@@ -200,7 +206,6 @@
 
         function send_reply() {
             var chat_thread_id = $('#chat_thread_id').val();
-            console.log(chat_thread_id);
             var message = $('#message').val();
             var attachment = $('#attachment').val();
             if (message.length > 0 || attachment.length > 0) {

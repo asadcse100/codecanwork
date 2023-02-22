@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\ChatThread;
 use App\Models\UserProfile;
+use App\Models\ServicePackagePayment;
 use Carbon;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -150,8 +151,18 @@ class HomeController extends Controller
     //Show specific expert details to user
     public function expert_details($username)
     {
-        $expert = User::where('user_name', $username)->first();
-        return view('frontend.default.expert-single', compact('expert'));
+        $data = [];
+        $crrent_url = url()->full();
+        $data['share'] = \Share::page(
+            $crrent_url,
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin();
+
+        $data['expert'] = User::where('user_name', $username)->first();
+        $data['complete_work'] = ServicePackagePayment::where('service_owner_id', $data['expert']->id)->count();
+        return view('frontend.default.expert-single', $data);
     }
 
     //check if username exists
