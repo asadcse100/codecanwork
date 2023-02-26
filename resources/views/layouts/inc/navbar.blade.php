@@ -9,11 +9,9 @@
         margin-top: 0% !important;
     }
 </style>
-<div class="new-header container-xxl @if(Auth::check()) header-container @endif" style="background-color: #d8d8d8;">
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 @if(!Auth::check()) layout-top-spacing mb-3 @endif">
+<div class="new-header card container-xxl @if(Auth::check()) header-container @endif">
             <div class="row">
-            <header class="header navbar navbar-expand-sm expand-header">
+            <header class="header navbar navbar-expand-sm expand-header @if(!Auth::check()) layout-top-spacing mb-3 @endif">
 
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
                         @if(!Auth::check())<h1>LOGO</h1>@endif
@@ -21,58 +19,28 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <form action="{{ route('search') }}" method="GET" class="flex-grows ">
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" placeholder="Search..." name="keyword">
-
+                                <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5">
+                                    <input type="text" class="form-control" placeholder="Search..." name="keyword">
+                                </div>                                
                                 &#160;
-                                <select class="form-select form-control-sm" name="type">
-                                    <option value="expert"
-                                        @isset($type) @if ($type == 'expert')
-                                            selected
-                                        @endif @endisset>
-                                                Experts</option>
-                                            <option value="project"filter_category
-                                                @isset($type) @if ($type == 'project')
-                                            selected
-                                        @endif @endisset>
-                                                Project</option>
-                                            <option value="service"
-                                                @isset($type) @if ($type == 'service')
-                                            selected
-                                        @endif @endisset>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4">
+                                    <select class="form-select" name="type">
+                                        <option value="expert" @isset($type) @if ($type=='expert' ) selected @endif @endisset>
+                                            Experts</option>
+                                        <option value="project" filter_category @isset($type) @if ($type=='project' ) selected @endif @endisset>
+                                            Project</option>
+                                        <option value="service" @isset($type) @if ($type=='service' ) selected @endif @endisset>
                                             Services</option>
-
-                                </select>
-                                {{-- <button type="submit" class="btn" style="background: #052440"> --}}
-                                <button type="submit" class="btn btn-bg">
-                                    <span class="input-group">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="36"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
-                                            <circle cx="11" cy="11" r="8"></circle>
-                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                        </svg>
-                                    </span>
-                                </button>
+                                    </select>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                                    <button class="btn btn-primary btn-lg" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                                </div>
                             </div>
                         </form>
                     </div>
 
                 <ul class="navbar-item flex-row ms-lg-auto ms-0" id="pills-tab" role="tablist">
-
-                    @if (!Auth::check())
-                        <li class="nav-item d-none d-lg-block">
-                            <a class="nav-link" href="{{ route('login') }}">{{ translate('Log In') }}</a>
-                        </li>
-                        <li class="nav-item d-none d-lg-block">
-                            <a class="btn btn-primary rounded-1"
-                                href="{{ route('register') }}">{{ translate('Get Started') }}</a>
-                        </li>
-                    @elseif (isAdmin())
-                        <li class="nav-item d-none d-lg-block">
-                            <a class="nav-link fw-700"
-                                href="{{ route('admin.dashboard') }}">{{ translate('My Panel') }}</a>
-                        </li>
-                    @elseif (isClient() || isExpert())
                         <li class="nav-item theme-toggle-item">
                             <a href="javascript:void(0);" class="nav-link theme-toggle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -97,7 +65,21 @@
                                 </svg>
                             </a>
                         </li>
-
+                    @if (!Auth::check())                        
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link" href="{{ route('login') }}">{{ translate('Log In') }}</a>
+                        </li>
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="btn btn-primary rounded-1"
+                                href="{{ route('register') }}">{{ translate('Get Started') }}</a>
+                        </li>
+                    @elseif (isAdmin())
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link fw-700"
+                                href="{{ route('admin.dashboard') }}">{{ translate('My Panel') }}</a>
+                        </li>
+                    @elseif (isClient() || isExpert())
+                        
                         <li class="nav-item dropdown notification-dropdown">
                             <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -197,8 +179,7 @@
                                             @endforelse
                                         </div>
                                         <div class="border-top">
-                                            <a
-                                                href="{{ route('all.messages') }}">{{ translate('View All Messages') }}</a>
+                                            <a href="{{ route('all.messages') }}">{{ translate('View All Messages') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -381,8 +362,6 @@
                 </ul>
             </header>
         </div>
-        </div>
-    </div>
 </div>
 
 <script>

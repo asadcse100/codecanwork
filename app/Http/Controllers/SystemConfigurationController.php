@@ -160,7 +160,6 @@ class SystemConfigurationController extends Controller
         dd($request->all());
     }
 
-
     //return policy page
     public function policy_index($type)
     {
