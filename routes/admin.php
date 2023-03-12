@@ -9,12 +9,12 @@ Route::post('/update', 'UpdateController@step0')->name('update');
 Route::get('/update/step1', 'UpdateController@step1')->name('update.step1');
 Route::get('/update/step2', 'UpdateController@step2')->name('update.step2');
 
-Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
-    Route::get('/', 'HomeController@admin_dashboard')->name('admin.dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+	Route::get('/', 'HomeController@admin_dashboard')->name('admin.dashboard');
 	Route::get('profile', 'ProfileController@admin_profile')->name('admin.profile');
 	Route::post('profile-update/{id}', 'ProfileController@update_admin_profile')->name('admin_profile.update');
-    Route::get('global/referral', 'ReferralController@referrals')->name('global.referral');
-    Route::post('update/referral', 'ReferralController@update')->name('update.referral');
+	Route::get('global/referral', 'ReferralController@referrals')->name('global.referral');
+	Route::post('update/referral', 'ReferralController@update')->name('update.referral');
 	Route::resource('/project-categories', 'ProjectCategoryController');
 	Route::get('project-categories/destroy/{id}', 'ProjectCategoryController@destroy')->name('project-categories.destroy');
 
@@ -25,12 +25,12 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('skills/destroy/{id}', 'SkillController@destroy')->name('skills.destroy');
 
 
-	Route::resource('badges','BadgeController');
+	Route::resource('badges', 'BadgeController');
 	Route::get('/badges/destroy/{id}', 'BadgeController@destroy')->name('badges.destroy');
 	Route::get('/client-badge', 'BadgeController@client_badges_create')->name('client_badges_create');
 	Route::get('/client-badge/list', 'BadgeController@client_badges_index')->name('client_badges_index');
 	Route::get('/client-badge/edit/{id}', 'BadgeController@client_badges_edit')->name('client_badges_edit');
-    // wallet balance add by admin
+	// wallet balance add by admin
 	Route::post('/wallet-balance-by-admin', 'WalletController@wallet_payment_by_admin')->name('admin_wallet.store');
 	//PackageController for Expert and Client
 	Route::get('/expert-package-index/{type}', 'PackageController@index')->name('expert_package.index');
@@ -47,17 +47,17 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');
 	Route::post('/languages/update_language_status', 'LanguageController@update_language_status')->name('languages.update_language_status');
 	Route::post('/languages/key_value_store', 'LanguageController@key_value_store')->name('languages.key_value_store');
-    Route::post('/languages/update_language_status', 'LanguageController@update_language_status')->name('languages.update_language_status');
+	Route::post('/languages/update_language_status', 'LanguageController@update_language_status')->name('languages.update_language_status');
 	//.env update
 	Route::post('/env_key_update', 'SystemConfigurationController@env_key_update')->name('env_key_update.update');
 	Route::post('/system-configuration/update', 'SystemConfigurationController@update')->name('system_configuration.update');
 	//CurrencyController
-	Route::resource('currencies','CurrencyController');
+	Route::resource('currencies', 'CurrencyController');
 	Route::get('/currencies/destroy/{id}', 'CurrencyController@destroy')->name('currencies.destroy');
 	Route::get('/currency/set_currency', 'CurrencyController@set_currency')->name('currencies.set_currency');
 	//RoleController
-	Route::resource('roles','RoleController');
-    Route::get('/roles/destroy/{id}', 'RoleController@destroy')->name('roles.destroy');
+	Route::resource('roles', 'RoleController');
+	Route::get('/roles/destroy/{id}', 'RoleController@destroy')->name('roles.destroy');
 	//EmployeeController
 	Route::get('/employees/{name}', 'EmployeeController@index')->name('employees.index');
 	Route::get('/employee/create', 'EmployeeController@create')->name('employees.create');
@@ -65,11 +65,11 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/employee/update/{id}', 'EmployeeController@update')->name('employees.update');
 	Route::get('/employee/edit/{id}', 'EmployeeController@edit')->name('employees.edit');
 	Route::get('/employee/set-permission/{id}', 'EmployeeController@show')->name('employees.set_permission');
-    Route::get('/employees/destroy/{id}', 'EmployeeController@destroy')->name('employees.destroy');
+	Route::get('/employees/destroy/{id}', 'EmployeeController@destroy')->name('employees.destroy');
 	Route::post('/permissions/update/{id}', 'EmployeeController@permission_update')->name('permissions.update');
-	Route::resource('countries','CountryController');
+	Route::resource('countries', 'CountryController');
 	Route::get('/countries/destroy/{id}', 'CountryController@destroy')->name('countries.destroy');
-	Route::resource('cities','CityController');
+	Route::resource('cities', 'CityController');
 	Route::get('/cities/destroy/{id}', 'CityController@destroy')->name('cities.destroy');
 	Route::get('/all-projects', 'AdminProjectController@all_projects')->name('all_projects');
 	Route::get('/running-projects', 'AdminProjectController@running_projects')->name('running_projects');
@@ -86,40 +86,40 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('cancel-project-request/destroy/{id}', 'CancelProjectController@destroy')->name('cancel-project-request.destroy');
 	Route::post('cancel-project-request/accepted', 'CancelProjectController@request_accepted')->name('cancel-project-request.request_accepted');
 	//general config
-    Route::resource('general-config', 'GeneralConfigurationController')->only([
-        'index', 'store'
-    ]);
-    //email config
-    Route::resource('email-config', 'EmailConfigurationController')->only([
-        'index', 'store'
-    ]);
-    //payment config
-    Route::resource('payment-config', 'PaymentConfigurationController')->only([
-        'index', 'store'
-    ]);
-    //social-media config
-    Route::resource('social-media-config', 'SocialMediaConfigurationController')->only([
-        'index', 'store'
-    ]);
+	Route::resource('general-config', 'GeneralConfigurationController')->only([
+		'index', 'store'
+	]);
+	//email config
+	Route::resource('email-config', 'EmailConfigurationController')->only([
+		'index', 'store'
+	]);
+	//payment config
+	Route::resource('payment-config', 'PaymentConfigurationController')->only([
+		'index', 'store'
+	]);
+	//social-media config
+	Route::resource('social-media-config', 'SocialMediaConfigurationController')->only([
+		'index', 'store'
+	]);
 	Route::get('/all-experts', 'UserController@all_experts')->name('all_experts');
 	Route::get('/expert-info/{user_name}', 'UserController@expert_details')->name('expert_info_show');
 	Route::get('/all-clients', 'UserController@all_clients')->name('all_clients');
 	Route::get('/client-info/{user_name}', 'UserController@client_details')->name('client_info_show');
 	Route::get('user/ban/{id}', 'UserController@destroy')->name('user.ban');
 	Route::get('/user/login/{id}', 'UserController@login')->name('experts_clients.login');
-    Route::get('/verification-requests', 'VerificationController@index')->name('verification_requests');
+	Route::get('/verification-requests', 'VerificationController@index')->name('verification_requests');
 	Route::get('/verification-request/details/{username}', 'VerificationController@show')->name('verification_request_details');
 	Route::get('/verification-request/destroy/{id}', 'VerificationController@destroy')->name('verification_request_delete');
 	Route::post('/verification-accept', 'VerificationController@verification_accept')->name('verififaction_accept');
 	Route::post('/verification-reject', 'VerificationController@verification_reject')->name('verififaction_reject');
 	//Blog Section
-    Route::resource('blog-category', 'BlogCategoryController');
-    Route::get('/blog-category/destroy/{id}', 'BlogCategoryController@destroy')->name('blog-category.destroy');
-    Route::resource('blog', 'BlogController');
-    Route::get('/blog/destroy/{id}', 'BlogController@destroy')->name('blog.destroy');
-    Route::post('/blog/change-status', 'BlogController@change_status')->name('blog.change-status');
+	Route::resource('blog-category', 'BlogCategoryController');
+	Route::get('/blog-category/destroy/{id}', 'BlogCategoryController@destroy')->name('blog-category.destroy');
+	Route::resource('blog', 'BlogController');
+	Route::get('/blog/destroy/{id}', 'BlogController@destroy')->name('blog.destroy');
+	Route::post('/blog/change-status', 'BlogController@change_status')->name('blog.change-status');
 	// website setting
-	Route::group(['prefix' => 'website'], function(){
+	Route::group(['prefix' => 'website'], function () {
 		Route::get('/home', 'SystemConfigurationController@home_settings')->name('website.home');
 		Route::view('/header', 'admin.default.website.header')->name('website.header')->middleware(['permission:show header']);
 		Route::view('/footer', 'admin.default.website.footer')->name('website.footer')->middleware(['permission:show footer']);
@@ -160,21 +160,21 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	// Wallet Recharge History
 	Route::get('/all-wallet-recharge', 'WalletPaymentController@admin_index')->name('all-wallet-recharges_admin');
 	//Addon
-	Route::resource('addons','AddonController');
+	Route::resource('addons', 'AddonController');
 	Route::resource('users', 'UserController');
 	Route::post('/addons/activation', 'AddonController@activation')->name('addons.activation');
 	//expert Review
 	Route::get('/reviews/expert', 'ReviewController@expert_review_index')->name('reviews.expert');
 	Route::get('/reviews/client', 'ReviewController@client_review_index')->name('reviews.client');
 	Route::post('/reviews/published', 'ReviewController@update_review_published')->name('reviews.published');
-	Route::get('/notifications','NotificationController@admin_listing')->name('admin.notifications');
+	Route::get('/notifications', 'NotificationController@admin_listing')->name('admin.notifications');
 	Route::get('/create-permission', 'HomeController@create_permission');
 	Route::resource('staffs', 'StaffController');
 	Route::get('/staffs/delete/{id}', 'StaffController@destroy')->name('staffs.destroy');
 	Route::view('/system/update', 'admin.default.system.update')->name('system_update');
-    Route::view('/system/server-status', 'admin.default.system.server_status')->name('system_server');
-    // uploaded files
-    Route::any('/uploaded-files/file-info', 'AizUploadController@file_info')->name('uploaded-files.info');
-    Route::resource('/uploaded-files', 'AizUploadController');
-    Route::get('/uploaded-files/destroy/{id}', 'AizUploadController@destroy')->name('uploaded-files.destroy');
+	Route::view('/system/server-status', 'admin.default.system.server_status')->name('system_server');
+	// uploaded files
+	Route::any('/uploaded-files/file-info', 'AizUploadController@file_info')->name('uploaded-files.info');
+	Route::resource('/uploaded-files', 'AizUploadController');
+	Route::get('/uploaded-files/destroy/{id}', 'AizUploadController@destroy')->name('uploaded-files.destroy');
 });

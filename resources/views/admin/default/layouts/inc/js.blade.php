@@ -16,3 +16,4 @@
     <script src="{{ asset('templete') }}/src/plugins/src/table/datatable/custom_miscellaneous.js"></script>
 
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+

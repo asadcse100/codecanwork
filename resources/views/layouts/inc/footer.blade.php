@@ -2,141 +2,139 @@
     <footer class="aiz-footer fs-13 mt-auto p-1 p-sm-2 p-lg-4">
         <div class="footer-content rounded-2">
             <div class="aiz-footer-widget">
-                    <div class="aiz-front-widget mb-5">
-                        <img src="{{ custom_asset(get_setting('footer_logo')) }}" height="40" class="mb-4">
-                        <div class="fs-14 text-soft-info-light">
-                            @php
-                            echo get_setting('about_description_footer');
-                            @endphp
+                <div class="aiz-front-widget mb-5">
+                    <img src="{{ custom_asset(get_setting('footer_logo')) }}" height="40" class="mb-4">
+                    <div class="fs-14 text-soft-info-light">
+                        @php
+                        echo get_setting('about_description_footer');
+                        @endphp
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ get_setting('widget_one') }}</h4>
+                            <ul class="menu">
+                                @if (!empty(get_setting('widget_one_labels')))
+                                @foreach (json_decode(get_setting('widget_one_labels'), true) as $key => $value)
+                                <li>
+                                    <a href="{{ json_decode(get_setting('widget_one_links'), true)[$key] }}">{{ $value }}</a>
+                                </li>
+                                @endforeach
+                                @endif
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                <h4 class="title">{{ get_setting('widget_one') }}</h4>
-                                <ul class="menu">
-                                    @if (!empty(get_setting('widget_one_labels')))
-                                    @foreach (json_decode(get_setting('widget_one_labels'), true) as $key => $value)
-                                    <li>
-                                        <a href="{{ json_decode(get_setting('widget_one_links'), true)[$key] }}">{{ $value }}</a>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                <h4 class="title">{{ get_setting('widget_two') }}</h4>
-                                <ul class="menu">
-                                    
-                                    @if (!empty(get_setting('widget_two_labels')))
-                                    @foreach (json_decode(get_setting('widget_two_labels'), true) as $key => $value)
-                                    <li>
-                                        <a href="{{ json_decode(get_setting('widget_two_links'), true)[$key] }}">{{ $value }}</a>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                {{dd(get_setting('widget_three'))}}
-                                <h4 class="title">{{ get_setting('widget_three') }}</h4>
-                                <ul class="menu">
-                                    @if (!empty(get_setting('widget_three_labels')))
-                                    @foreach (json_decode(get_setting('widget_three_labels'), true) as $key => $value)
-                                    <li>
-                                        <a href="{{ json_decode(get_setting('widget_three_links'), true)[$key] }}">{{ $value }}</a>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                <h4 class="title">{{ get_setting('widget_four') }}</h4>
-                                <ul class="menu">
-                                    @if (!empty(get_setting('widget_four_labels')))
-                                    @foreach (json_decode(get_setting('widget_four_labels'), true) as $key => $value)
-                                    <li>
-                                        <a href="{{ json_decode(get_setting('widget_four_links'), true)[$key] }}">{{ $value }}</a>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
-                            </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ get_setting('widget_two') }}</h4>
+                            <ul class="menu">
+                                @if (!empty(get_setting('widget_two_labels')))
+                                @foreach (json_decode(get_setting('widget_two_labels'), true) as $key => $value)
+                                <li>
+                                    <a href="{{ json_decode(get_setting('widget_two_links'), true)[$key] }}">{{ $value }}</a>
+                                </li>
+                                @endforeach
+                                @endif
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-sm-6">
-                            <div class="aiz-front-widget d-inline-block d-md-block mb-4">
-                                <h4 class="title">{{ translate('Subscription') }}</h4>
-                                <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
-                                    @csrf
-                                    <div class="form-group mb-0">
-                                        <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ translate('Subscribe') }}
-                                    </button>
-                                </form>
-                            </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ get_setting('widget_three') }}</h4>
+                            <ul class="menu">
+                                @if (!empty(get_setting('widget_three_labels')))
+                                @foreach (json_decode(get_setting('widget_three_labels'), true) as $key => $value)
+                                <li>
+                                    <a href="{{ json_decode(get_setting('widget_three_links'), true)[$key] }}">{{ $value }}</a>
+                                </li>
+                                @endforeach
+                                @endif
+                            </ul>
                         </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                <h4 class="title">{{ get_setting('social_widget_title') }}</h4>
-                                <ul class="list-inline social">
-                                    @if (!empty(get_setting('facebook_link')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('facebook_link') }}" target="_blank" class="facebook"><i class="lab la-facebook-f"></i></a>
-                                    </li>
-                                    @endif
-                                    @if (!empty(get_setting('twitter_link')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('twitter_link') }}" target="_blank" class="twitter"><i class="lab la-twitter"></i></a>
-                                    </li>
-                                    @endif
-                                    @if (!empty(get_setting('instagram_link')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('instagram_link') }}" target="_blank" class="instagram"><i class="lab la-instagram"></i></a>
-                                    </li>
-                                    @endif
-                                    @if (!empty(get_setting('youtube_link')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('youtube_link') }}" target="_blank" class="youtube"><i class="lab la-youtube"></i></a>
-                                    </li>
-                                    @endif
-                                    @if (!empty(get_setting('linkedin_link')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('linkedin_link') }}" target="_blank" class="linkedin"><i class="lab la-linkedin-in"></i></a>
-                                    </li>
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        @if (get_setting('app_link_section_show') == 'on')
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="aiz-front-widget mb-5">
-                                <h4 class="title">{{ translate('Mobile Apps') }}</h4>
-                                <ul class="list-inline apps">
-                                    @if (!empty(get_setting('app_link_android')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('app_link_android') }}" target="_blank" class="facebook"><i class="lab la-android"></i></a>
-                                    </li>
-                                    @endif
-                                    @if (!empty(get_setting('app_link_apple')))
-                                    <li class="list-inline-item">
-                                        <a href="{{ get_setting('app_link_apple') }}" target="_blank" class="twitter"><i class="lab la-apple"></i></a>
-                                    </li>
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
                     </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ get_setting('widget_four') }}</h4>
+                            <ul class="menu">
+                                @if (!empty(get_setting('widget_four_labels')))
+                                @foreach (json_decode(get_setting('widget_four_labels'), true) as $key => $value)
+                                <li>
+                                    <a href="{{ json_decode(get_setting('widget_four_links'), true)[$key] }}">{{ $value }}</a>
+                                </li>
+                                @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="aiz-front-widget d-inline-block d-md-block mb-4">
+                            <h4 class="title">{{ translate('Subscription') }}</h4>
+                            <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
+                                @csrf
+                                <div class="form-group mb-0">
+                                    <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    {{ translate('Subscribe') }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ get_setting('social_widget_title') }}</h4>
+                            <ul class="list-inline social">
+                                @if (!empty(get_setting('facebook_link')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('facebook_link') }}" target="_blank" class="facebook"><i class="lab la-facebook-f"></i></a>
+                                </li>
+                                @endif
+                                @if (!empty(get_setting('twitter_link')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('twitter_link') }}" target="_blank" class="twitter"><i class="lab la-twitter"></i></a>
+                                </li>
+                                @endif
+                                @if (!empty(get_setting('instagram_link')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('instagram_link') }}" target="_blank" class="instagram"><i class="lab la-instagram"></i></a>
+                                </li>
+                                @endif
+                                @if (!empty(get_setting('youtube_link')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('youtube_link') }}" target="_blank" class="youtube"><i class="lab la-youtube"></i></a>
+                                </li>
+                                @endif
+                                @if (!empty(get_setting('linkedin_link')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('linkedin_link') }}" target="_blank" class="linkedin"><i class="lab la-linkedin-in"></i></a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                    @if (get_setting('app_link_section_show') == 'on')
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="aiz-front-widget mb-5">
+                            <h4 class="title">{{ translate('Mobile Apps') }}</h4>
+                            <ul class="list-inline apps">
+                                @if (!empty(get_setting('app_link_android')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('app_link_android') }}" target="_blank" class="facebook"><i class="lab la-android"></i></a>
+                                </li>
+                                @endif
+                                @if (!empty(get_setting('app_link_apple')))
+                                <li class="list-inline-item">
+                                    <a href="{{ get_setting('app_link_apple') }}" target="_blank" class="twitter"><i class="lab la-apple"></i></a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+                </div>
             </div><!-- .aiz-footer-widget -->
             <div class="container">
                 <hr style="background: #377dff; filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.08));">

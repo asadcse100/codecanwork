@@ -55,7 +55,7 @@
                                                                 <div class="meta-info">
                                                                     <span class="user-name" data-name="{{ $single_chat_thread->receiver->name }}">{{ $single_chat_thread->receiver->name }}</span>
                                                                     @if ($single_chat_thread->chats->last() != null)
-                                                                        @if ($single_chat_thread->chats->last()->message != null)                                                                           
+                                                                        @if (!empty($single_chat_thread->chats->last()->message))                                                                           
                                                                             <span class="preview">{{ $single_chat_thread->chats->last()->message }}</span>
                                                                         @else
                                                                         <span class="preview">{{ translate('Attachments')}}</span>
@@ -99,7 +99,7 @@
                                                                     @endif
                                                                     <span class="badge badge-primary badge-circle flex-shrink-0 ml-4">{{ count($single_chat_thread->chats->where('sender_user_id', '!=', Auth::user()->id)->where('seen', 0)) }}</span>
                                                                 </div>
-                                                                <span class="preview">{{ $single_chat_thread->chats->last()->message }}</span>
+                                                                <span class="preview">@if(!empty($single_chat_thread->chats->last()->message)){{ $single_chat_thread->chats->last()->message }}@endif</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -111,7 +111,7 @@
                                                 <i class="las la-frown la-4x mb-4 opacity-40"></i>
                                                 <h4>{{ translate('Nothing Found')}}</h4>
                                             </div>
-                                        @endforelse                                                                                   
+                                        @endforelse
                                         </div>
                                     </div>
 
@@ -144,22 +144,27 @@
                                             </div>
                                             <div class="chat-footer">
                                                 <div class="chat-input"> 
-                                                    <form id="send-mesaage">                                                    
-                                                        <div class="input-group">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                                            <input type="hidden" id="chat_thread_id" name="chat_thread_id" value="@if(isset($chat_thread) && !empty($chat_thread)){{ $chat_thread->id }}@endif">
-                                                            <input type="text" class="form-control" name="message" id="message" placeholder="Your Message.." autocomplete="off">
-                                                            <input type="hidden" class="" name="attachment" id="attachment">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-circle btn-icon chat-attachment" type="button">
-                                                                    <i class="las la-paperclip"></i>
-                                                                </button>
-                                                                <button class="btn btn-primary btn-circle btn-icon" onclick="send_reply()" type="button">
-                                                                    <i class="las la-paper-plane"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </form>                                                    
+                                                    <form id="send-mesaage">
+                                                        
+                                                        <!-- <div class="row"> -->
+                                                            <!-- <div class="input-group"> -->
+                                                                <!-- <div class="col-xl-12"> -->
+                                                                    <!-- <button class="btn btn-outline-info" type="button">
+                                                                            <i class="far fa-paper-plane"></i>
+                                                                    </button> -->
+                                                                    <!-- <button class="btn btn-outline-info" onclick="send_reply()" type="button"> -->
+                                                                        <!-- <i class="far fa-paper-plane"></i> -->
+                                                                    <!-- </button> -->
+                                                                <!-- </div>
+                                                                <div class="col-xl-10"> -->
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                                                    <input type="hidden" id="chat_thread_id" name="chat_thread_id" value="@if(isset($chat_thread) && !empty($chat_thread)){{ $chat_thread->id }}@endif">
+                                                                    <input type="text" class="form-control" name="message" id="message" placeholder="Your Message.." autocomplete="off">
+                                                                    <input type="hidden" class="" name="attachment" id="attachment">   
+                                                                <!-- </div> -->
+                                                            <!-- </div> -->
+                                                        <!-- </div> -->
+                                                    </form>
                                                 </div>
                                             </div>
 

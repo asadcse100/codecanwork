@@ -14,33 +14,93 @@
         <!-- <div class="card"> -->
         @forelse ($private_projects as $key => $private_project)
         @if ($private_project->project != null)
+        <div class="widget widget-five p-4">
+            {{-- Bidded Projects --}}
+            <div class="row">
+                <div class="col-sm-10 mb-2">
+                    <span class="btn btn-outline-success p-1">{{ single_price($private_project->project->price) }}</span>
+                </div>
+                <div class="col-sm-2">
+                    <span class="btn btn-outline-dark p-1">{{ translate('Pending') }}</span>
+                </div>
+            </div>
+            <div class="widget-content">
+                <h5><a href="{{ route('project.details', $private_project->project->slug) }}" class="text-inherit" target="_blank" style="color:aqua">{{ $private_project->project->name }}</a></h5>
+                <ul class="list-inline opacity-70 fs-12">
+                    <li class="list-inline-item">
+                        <i class="las la-clock opacity-40"></i>
+                        <span>{{ Carbon\Carbon::parse($private_project->created_at)->diffForHumans() }}</span>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="text-inherit">
+                            <i class="las la-stream opacity-40"></i>
+                            <span>@if ($private_project->project->project_category != null) {{ $private_project->project->project_category->name }} @else {{ translate('Removed Category') }} @endif</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="las la-handshake"></i>
+                        <span>{{ $private_project->project->type }}</span>
+                    </li>
+                    <div class="text-muted lh-1-8">
+                        <p>{{ $private_project->project->excerpt }}</p>
+                    </div>
+                </ul>
+                @foreach (json_decode($private_project->project->skills) as $key => $skill_id)
+                @php
+                $skill = \App\Models\Skill::find($skill_id);
+                @endphp
+                @if ($skill != null)
+                <span class="btn btn-light-info">{{ $skill->name }}</span>
+                @endif
+                @endforeach
+                <hr>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <a href="{{ route('client.details', $private_project->client->user_name) }}" class="d-flex mr-3 align-items-center text-reset">
+                            <div class="avatar--group">
+                                <div class="avatar avatar-sm avatar-indicators avatar-online">
+                                    <img alt="avatar" src="{{ asset($private_project->client->photo) }}" />
+                                </div>
+                                <div class="container">
+                                    <div class="media-body">
+                                        <h5 class="media-heading mb-1">{{ $private_project->client->name }}</h5>
+                                        <span>
+                                            <p class="badge badge-warning ">{{ getAverageRating($private_project->client->id) }}</p>
+                                            ({{ getNumberOfReview($private_project->client->id) }} {{ translate('Reviews') }})
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="totalbids">
+                            <a href="{{ route('hiring.reject', encrypt($private_project->id)) }}" class="btn btn-danger btn-sm rounded-1">{{ translate('Reject') }}</a>
+                            <a href="javascript:void(0)" class="btn btn-success btn-sm rounded-1" onclick="hiring_modal('{{ $private_project->project->name }}',{{ $private_project->project->price }}, {{ $private_project->project->id }}, {{ Auth::user()->id }})">{{ translate('Accpet') }}</a>
+                            <a href="{{ route('all.messages') }}" class="btn btn-primary btn-sm rounded-1">{{ translate('Chat With Client') }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- End Bidded Projects --}}
+        </div>
+
+
+
 
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 layout-top-spacing">
             <div class="widget widget-five">
                 <div class="widget-heading">
-                    <a href="{{ route('client.details', $private_project->client->user_name) }}" class="task-info">                                
-                                @if (!empty($private_project->client))
-                                    <div class="avatar-container">
-                                        <div class="avatar avatar-sm avatar-indicators @if (Cache::has('user-is-online-' . $private_project->client->id)) avatar-online @else avatar-offline @endif mb-0">
-                                            <img src="@if (!empty($private_project->client->photo)) {{ asset('profile/photos/' . $private_project->client->photo) }} @else {{ asset('templete') }}/src/assets/img/demoprofile.png @endif" alt="" class="rounded-circle">
-                                        </div>
-                                    </div>
+                    <a href="javascript:void(0)" class="task-info">
+                        <div class="usr-avatar">
+                            <span>FD</span>
+                        </div>
+                        <div class="w-title">
+                            <h5>Figma Design</h5>
+                            <span>Design Project</span>
+                        </div>
+                    </a>
 
-                                    <div class="w-title m-2">
-                                        <h5>{{ $private_project->client->name }}</h5>
-                                        <span>@if(!empty($private_project->client->headline)){{ $private_project->client->headline }}@endif Designation</span>                                        
-                                    </div>
-                                    <span >
-                                        <p class="badge badge-warning ">{{ getAverageRating($private_project->client->id) }}</p>
-                                        ({{ getNumberOfReview($private_project->client->id) }} {{ translate('Reviews') }})
-                                    </span>
-                                @endif
-                            </a>
-
-                    <div class="translateY-axis">
-                        <span class="btn-light-primary btn-rounded p-1 m-1">{{ single_price($private_project->project->price) }}</span>
-                        <span class="btn btn-light-dark btn-rounded p-1 m-2">{{ translate('Pending') }}</span>                        
-                    </div>
                     <div class="task-action">
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="taskaction" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,16 +111,16 @@
                                 </svg>
                             </a>
                             <div class="dropdown-menu left" aria-labelledby="taskaction" style="will-change: transform;">
-                                <a href="javascript:void(0)" class="dropdown-item" onclick="hiring_modal('{{ $private_project->project->name }}',{{ $private_project->project->price }}, {{ $private_project->project->id }}, {{ Auth::user()->id }})">{{ translate('Accpet') }}</a>
-                                <a class="dropdown-item" href="{{ route('hiring.reject', encrypt($private_project->id)) }}">{{ translate('Reject') }}</a>
-                                <a href="{{ route('all.messages') }}" class="dropdown-item">{{ translate('Chat With Client') }}</a>
+                                <a class="dropdown-item" href="javascript:void(0);">View Project</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Edit Project</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Mark as Done</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><hr>
 
                 <div class="widget-content">
-                    <h5><a href="{{ route('project.details', $private_project->project->slug) }}" class="text-inherit" target="_blank" style="color:cornflowerblue">{{ $private_project->project->name }}</a></h5>
+                    <h5><a href="{{ route('project.details', $private_project->project->slug) }}" class="text-inherit" target="_blank">{{ $private_project->project->name }}</a></h5>
                     <ul class="list-inline opacity-70 fs-12">
                         <li class="list-inline-item">
                             <i class="las la-clock opacity-40"></i>
@@ -80,15 +140,6 @@
                             <p>{{ $private_project->project->excerpt }}</p>
                         </div>
                     </ul>
-                    @foreach (json_decode($private_project->project->skills) as $key => $skill_id)
-                    @php
-                    $skill = \App\Models\Skill::find($skill_id);
-                    @endphp
-                    @if ($skill != null)
-                    <span class="btn btn-light-info">{{ $skill->name }}</span>
-                    @endif
-                    @endforeach
-                    <hr>
                     <!-- <div class="progress-data"> -->
                         <!-- <div class="progress-info">
                             <div class="task-count"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square">

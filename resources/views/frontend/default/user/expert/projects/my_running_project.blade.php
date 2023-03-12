@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/light/widgets/modules-widgets.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('templete') }}/src/assets/css/dark/widgets/modules-widgets.css">
+@endsection
 @section('content')
 <div class="layout-px-spacing">
     <!-- Analytics -->
@@ -100,4 +103,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('templete') }}/src/assets/js/widgets/modules-widgets.js"></script>
 @endsection
