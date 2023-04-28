@@ -2,7 +2,6 @@
 
 @section('content')
     <section class="py-4 py-lg-5">
-        <div class="container">
             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 @if ($keyword != null)
                     <div class="row">
@@ -284,19 +283,7 @@
                                                                 </div>
                                                             @endif
                                                         </div>
-                                                        @if ($expert->skills != null)
-                                                            <div>
-                                                                @foreach (json_decode($expert->skills) as $key => $skill_id)
-                                                                    @php
-                                                                        $skill = \App\Models\Skill::find($skill_id->value);
-                                                                    @endphp
-                                                                    @if ($skill != null)
-                                                                        <span class="btn btn-light btn-xs mb-1">{{ $skill->name }}</span>
-                                                                    @endif
-                                                                @endforeach
-
-                                                            </div>
-                                                        @endif
+                                                        
                                                     </div>
                                                     <div class="flex-shrink-0 pt-4 pt-xl-0 pl-xl-5 d-flex flex-row flex-xl-column justify-content-between align-items-center">
                                                         <div class="text-right">
@@ -323,7 +310,6 @@
                     </div>
                 </form>
             </div>
-        </div>
     </section>
 @endsection
 

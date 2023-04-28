@@ -92,9 +92,6 @@
     </section>
 
 
-
-
-
 <!-- 
 <section class="bg-white py-4">
     <div class="container">
@@ -145,32 +142,21 @@
 
 @if (get_setting('client_logo_show') == 'on')
 <section class="bg-white py-4">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="aiz-carousel gutters-10"
-        data-autoplay="true"
-        data-items="6"
-        data-xl-items="6"
-        data-lg-items="5"
-        data-md-items="4"
-        data-sm-items="3"
-        data-xs-items="2"
-        data-infinite="true"
-      >
-        @forelse(explode(',', get_setting('client_logos')) as $logo)
-        <div class="caorusel-box">
-          <img class="img-fluid" src="{{ custom_asset($logo) }}">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="aiz-carousel gutters-10" data-autoplay='true' data-items="6" data-xl-items="6" data-lg-items="5" data-md-items="4" data-sm-items="3" data-xs-items="2" data-infinite='true'>
+                @if (get_setting('client_logos') != null)
+                @foreach (explode(',', get_setting('client_logos')) as $key => $value)
+                <div class="caorusel-box">
+                    <img class="img-fluid" src="{{ custom_asset($value) }}">
+                </div>
+                @endforeach
+                @endif
+            </div>
         </div>
-        @empty
-        <p>No client logos to display.</p>
-        @endforelse
-      </div>
     </div>
-  </div>
 </section>
 @endif
-
-
 
 
 @if (get_setting('latest_project_show') == 'on')
@@ -266,21 +252,32 @@
                 <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
             </div>
             <div class="row gutters-10">
-                @foreach (json_decode(get_setting('featured_category_list', '[]'), true) as $category_id)
-                    @if ($category = \App\Models\ProjectCategory::find($category_id))
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <a class="featured_category d-block card bg-transparent py-5 px-2 text-center text-inherit shadow-none rounded-2 bg-transparent" href="{{ route('projects.category', $category->slug) }}" style="height: 176px;border: 1px solid #ced2d9;">
-                                <img src="{{ custom_asset($category->photo) }}" class="mw-100 h-50px mb-2">
-                                <p class="fs-16 fw-600 text-white mb-0">{{ $category->name }}</p>
-                            </a>
-                        </div>
-                    @endif
+                @if (get_setting('featured_category_list') != null)
+                @foreach (json_decode(get_setting('featured_category_list'), true) as $key => $category_id)
+                @if (($category = \App\Models\ProjectCategory::find($category_id)) != null)
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a class="featured_category d-block card bg-transparent py-5 px-2 text-center text-inherit shadow-none rounded-2 bg-transparent" href="{{ route('projects.category', $category->slug) }}" style="height: 176px;border: 1px solid #ced2d9;">
+                        <img src="{{ custom_asset($category->photo) }}" class="mw-100 h-50px mb-2">
+                        <p class="fs-16 fw-600 text-white mb-0">{{ $category->name }}</p>
+                    </a>
+                </div>
+                @endif
                 @endforeach
+                @endif
             </div>
-            <div class="mt-5">
-                <a href="{{ route('search', ['category' => '']) }}" class="btn bg-white text-primary rounded-1">{{ translate('Browse More Categories') }}</a>
-            </div>
+            {{-- <div class="row gutters-10 mt-5">
+                        <div class="col-lg-6">
+                            <img src="{{ custom_asset(get_setting('featured_category_left_banner')) }}"
+            class="img-fluid">
         </div>
+        <div class="col-lg-6">
+            <img src="{{ custom_asset(get_setting('featured_category_right_banner')) }}" class="img-fluid">
+        </div>
+    </div> --}}
+    <div class="mt-5">
+        <a href="{{ route('search') }}?category=" class="btn bg-white text-primary rounded-1">{{ translate('Browse More Categories') }}</a>
+    </div>
+    </div>
     </div>
 </section>
 @endif

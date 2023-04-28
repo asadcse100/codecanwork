@@ -52,7 +52,6 @@
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
     <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
             <div class="account-content layout-top-spacing">
                 <div class="row mb-3">
                     <div class="col-md-12">
@@ -453,7 +452,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <!--  END CONTENT AREA  -->
 @endsection
